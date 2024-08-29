@@ -1,8 +1,12 @@
+// layout.tsx or app.tsx
+import { Inter, Lato, Poppins } from 'next/font/google';
+import './globals.css';
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ['latin'] });
+const lato = Lato({ subsets: ['latin'], weight: ['100', '300', '400', '700', '900'] }); // Correct weights for Lato
+const poppins = Poppins({ subsets: ['latin'], weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'] }); // Correct weights for Poppins
+
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,7 +20,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${inter.className} ${lato.className} ${poppins.className}`}>
+        {children}
+      </body>
     </html>
   );
 }
