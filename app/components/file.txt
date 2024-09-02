@@ -1,0 +1,268 @@
+"use client"
+import React, { useState } from 'react'
+import Image from 'next/image'
+import img1 from '../public/image/img1.jpg'
+import img2 from '../public/image/img2.jpg'
+import img3 from '../public/image/img3.jpg'
+import img4 from '../public/image/img4.jpg'
+import { motion } from 'framer-motion'
+
+const Banner = () => {
+  const [positionIndexes, setPositionIndexes] = useState([0, 1, 2, 3, 4])
+  
+  const handleNext = () => {
+    setPositionIndexes((prevIndexes) => {
+      const updatedIndexes = prevIndexes.map((prevIndex) => (prevIndex + 1) % 4)
+      return updatedIndexes
+    })
+  }
+  const handlePrev = () => {
+    setPositionIndexes((prevIndexes) => {
+      const updatedIndexes = prevIndexes.map((prevIndex) => (prevIndex - 1) % 4)
+      return updatedIndexes
+    })
+  }
+  
+  const images = [
+    img1,
+    img2,
+    img3,
+    img4,
+  ]
+
+  const position = [
+    "center",
+    "left1",
+    "left",
+    "right",
+    "right1",
+  ]
+
+  const imageVariants = {
+    center: { scale: 1, x: "0%", zIndex: 5 },
+    left1: { scale: 0.7, x: "-50%", zIndex: 2 },
+    left: { scale: 0.5, x: "-90%", zIndex: 1 },
+    right: { scale: 0.3, x: "10%", zIndex: 6 },
+    right1: { scale: 0.7, x: "50%", zIndex: 2 },
+  }
+
+  return (
+    <div className="flex items-center flex-col justify-center bg-black h-screen relative">
+      {images.map((image, index) => (
+        <motion.div
+          key={index}
+          initial="center"
+          animate={position[positionIndexes[index]]}
+          variants={imageVariants}
+          transition={{ duration: 0.5 }}
+          className='w-full absolute'
+        >
+          <Image
+            src={image}
+            alt={`Image ${index}`}
+            className='rounded-[12px]'
+          />
+        </motion.div>
+      ))}
+      <div className='flex mt-[400px] gap-5 z-[100]'>
+        <button className='text-white bg-indigo-400 rounded-md py-2 px-4' onClick={handlePrev}>Prev</button>
+      <button className='text-white bg-indigo-400 rounded-md py-2 px-4' onClick={handleNext}>Next</button>
+        </div>
+    </div>
+  )
+}
+
+export default Banner
+
+
+
+
+// selected
+
+"use client";
+import React, { useEffect, useState } from "react";
+import Image from "next/image";
+import img1 from "../public/image/img1.jpg";
+import img2 from "../public/image/img2.jpg";
+import img3 from "../public/image/img3.jpg";
+import img4 from "../public/image/img4.jpg";
+import { motion } from "framer-motion";
+
+const Banner = () => {
+  const images = [img1, img2, img3, img4];
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  // Automatically change images every 3 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      handleNext();
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Handle Next Image
+  const handleNext = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+  };
+
+  // Handle Previous Image
+  const handlePrev = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? images.length - 1 : prevIndex - 1
+    );
+  };
+
+  // Animation Variants
+  const smallImageVariant = {
+    initial: { scale: 0.3, x: 0, y: 0 },
+    grow: { scale: 1, x: "-100%", y: "-100%" },
+  };
+
+  return (
+    <div className="w-full h-[93vh] relative overflow-hidden">
+      {/* Main Image */}
+      <motion.div
+        key={currentIndex}
+        className="w-full h-full absolute"
+        initial={{ scale: 1 }}
+        animate={{ scale: 1 }}
+        transition={{ duration: 0.8 }}
+      >
+        <Image
+          src={images[currentIndex]}
+          alt={`Image ${currentIndex}`}
+          className="w-full h-full object-cover"
+        />
+      </motion.div>
+
+      {/* Upcoming Images */}
+      <div className="flex absolute gap-4 right-[-3.6rem] bottom-8">
+        {images.map((image, index) => {
+          // Only display upcoming images, excluding the current big image
+          if (index !== currentIndex) {
+            return (
+              <motion.div
+                key={index}
+                className="h-[30vh] w-[15vw] bg-blue-500 rounded-xl overflow-hidden"
+                initial={smallImageVariant.initial}
+                animate={index === (currentIndex + 1) % images.length ? "grow" : "initial"}
+                variants={smallImageVariant}
+                transition={{ duration: 0.8 }}
+              >
+                <Image
+                  src={image}
+                  alt={`Image ${index}`}
+                  className="w-full h-full object-cover"
+                />
+              </motion.div>
+            );
+          }
+          return null;
+        })}
+      </div>
+
+      {/* Next and Prev Buttons */}
+      <div className="flex mt-[400px] gap-5 z-[100]">
+        <button
+          className="text-white bg-indigo-400 rounded-md py-2 px-4"
+          onClick={handlePrev}
+        >
+          Prev
+        </button>
+        <button
+          className="text-white bg-indigo-400 rounded-md py-2 px-4"
+          onClick={handleNext}
+        >
+          Next
+        </button>
+      </div>
+    </div>
+  );
+};
+
+export default Banner;
+
+
+
+
+
+//Finalised animation version part 1
+"use client";
+import React, { useEffect, useState } from "react";
+import Image from "next/image";
+import img1 from "../public/image/img1.jpg";
+import img2 from "../public/image/img2.jpg";
+import img3 from "../public/image/img3.jpg";
+import img4 from "../public/image/img4.jpg";
+import { motion } from "framer-motion";
+
+const Banner = () => {
+   const images = [img1, img2, img3, img4];
+   const [currentIndex, setCurrentIndex] = useState(0);
+
+   useEffect(() => {
+      const interval = setInterval(() => {
+         setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+      }, 5000);
+      return () => clearInterval(interval);
+   }, []);
+
+   // Variants
+   const smallImageVariant = {
+      initial: { scale: 1, opacity: 0.8 },
+      hover: { scale: 1.1, opacity: 1 }
+   };
+
+   const mainImageVariant = {
+      initial: { opacity: 0 },
+      animate: { opacity: 1, height: "100vh", width: "100vw" }
+   };
+
+   return (
+      <div className="w-full h-[93vh] relative overflow-hidden">
+         {/* Main Image */}
+         <motion.div
+            key={currentIndex}
+            className="absolute top-0 left-0 w-full h-full"
+            initial="initial"
+            animate="animate"
+            variants={mainImageVariant}
+            transition={{ duration: 0.8 }}
+         >
+            <Image
+               src={images[currentIndex]}
+               alt={`Image ${currentIndex}`}
+               className="w-full h-full object-cover"
+            />
+         </motion.div>
+
+         {/* Thumbnails */}
+         <div className="absolute right-4 bottom-4 flex gap-2">
+            {images.map((image, index) => {
+               if (index !== currentIndex) {
+                  return (
+                     <motion.div
+                        key={index}
+                        className="h-[15vh] w-[10vw] bg-blue-500 rounded-lg overflow-hidden shadow-lg cursor-pointer"
+                        variants={smallImageVariant}
+                        initial="initial"
+                        whileHover="hover"
+                        onClick={() => setCurrentIndex(index)}
+                     >
+                        <Image
+                           src={image}
+                           alt={`Image ${index}`}
+                           className="w-full h-full object-cover"
+                        />
+                     </motion.div>
+                  );
+               }
+               return null;
+            })}
+         </div>
+      </div>
+   );
+};
+
+export default Banner;
+

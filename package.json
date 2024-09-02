@@ -9,9 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@radix-ui/react-slot": "^1.1.0",
     "@sanity/image-url": "^1.0.2",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "embla-carousel-react": "^8.2.0",
+    "flowbite-react": "^0.10.1",
+    "framer-motion": "^11.3.31",
     "lucide-react": "^0.435.0",
     "next": "14.2.6",
     "next-sanity": "^9.4.7",
@@ -24,6 +28,7 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/react-slick": "^0.23.13",
     "eslint": "^8",
     "eslint-config-next": "14.2.6",
     "postcss": "^8",

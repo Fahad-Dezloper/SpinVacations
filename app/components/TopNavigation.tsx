@@ -1,5 +1,5 @@
-import { client } from '@/lib/sanity';
-import { Instagram, MailIcon, PhoneCallIcon } from 'lucide-react'
+import { client } from '../../app/lib/sanity';
+import { MailIcon, PhoneCallIcon } from 'lucide-react'
 import React from 'react'
 async function getData(){
     const query = "*[_type == 'topNav'][0]";
@@ -12,7 +12,7 @@ async function getData(){
 const TopNavigation = async () => {
      const data = await getData()
   return (
-      <div className='w-full flex justify-between items-center py-4 px-12 text-text font-lato'>
+      <div className='w-full flex justify-between items-center py-2 px-14 text-text border-b font-lato'>
           <div className='flex gap-6'>
               <div className='flex gap-2 items-center'>
                   <PhoneCallIcon className='h-6 w-6' />
@@ -40,3 +40,14 @@ const TopNavigation = async () => {
 }
 
 export default TopNavigation
+
+
+
+// const data = useMemo(() => [
+//     { id: 1, image: 'https://lp-cms-production.imgix.net/features/2019/05/Son-Doong-Cave-Ryan-Deboodt-8e2574f9767f.jpg', title: 'Vietnam', description: 'Description 1' },
+//     { id: 2, image: 'https://wallpapershome.com/images/pages/ico_h/328.jpg', title: 'Japan', description: 'Description 2' },
+//     { id: 3, image: 'https://wallpapershome.com/images/pages/pic_h/666.jpg', title: 'Ranthambore', description: 'Description 3' },
+//     { id: 4, image: 'https://images.unsplash.com/photo-1706188370039-e0cf9bd6ea16?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', title: 'Khajjiar', description: 'Description 4' },
+//     { id: 5, image: 'https://images.unsplash.com/photo-1643346173514-74a489cedccf?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', title: 'Munnar', description: 'Description 5' },
+//     { id: 6, image: 'https://wallpapers.com/images/hd/breathtaking-view-of-kedarnath-temple-amidst-majestic-mountains-drcqjpbqb0z0l60i.jpg', title: 'Kedarnath', description: 'Description 6' },
+//   ], []);
