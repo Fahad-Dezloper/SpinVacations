@@ -4,6 +4,9 @@ import TopNavigation from "@/app/components/TopNavigation";
 import Image from "next/image";
 import Categories from "@/app/components/Categories";
 import ChooseUs from "@/app/components/ChooseUs";
+import FeaturedDestination from "./components/FeaturedDestination";
+import TravelReminder from "./components/TravelReminder";
+import Testimonials from "./components/Testimonials";
 
 export default function Home() {
   return (
@@ -13,6 +16,9 @@ export default function Home() {
       <Banner />
       <ChooseUs />
       <Categories />
+      <FeaturedDestination />
+      <TravelReminder />
+      <Testimonials />
     </div>
   );
 }

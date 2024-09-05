@@ -8,21 +8,18 @@ import { Image } from 'next-sanity/image';
 
 async function getData() {
   const query = `*[_type == "categoriesList"][0]{
-    categories[]->{
-      name,
-      "imageUrl": image.asset->url,
-      slug
-    }
-  }`;
-
+                  categories[]->{
+                    name,
+                    'imageUrl': image.asset->url,
+                    slug
+                  }
+              }`;
   const data = await client.fetch(query);
-
   return data;
 }
 
 const Categories = async () => {
-  const data: { categories: Category[] } = await getData();
-  console.log(data);
+  const data: { categories: CategoryItem[] } = await getData();
 
   return (
     <div className='w-full h-fit px-20 py-10 flex flex-col gap-8'>
@@ -40,7 +37,8 @@ const Categories = async () => {
       </div>
 
       <div className='grid grid-cols-4 justify-between h-full w-full gap-3 grid-rows-2'>
-        {data.categories.map((item, index) => (
+        {data.categories.map((item: CategoryItem, index) => (
+          // eslint-disable-next-line @next/next/no-img-element
           <Link href={item.slug.current} key={index} className='w-[20.5vw] flex hover:bg-[#ffffffbd] border-[#E4E6E8] border-2 flex-col gap-[0.8rem] rounded-xl h-[18vw] p-3'>
             <div className='w-full h-[11vw] rounded-xl bg-blue-300 overflow-hidden'>
               <img
@@ -49,7 +47,7 @@ const Categories = async () => {
                 className="h-full w-full"
               />
             </div>
-            <div className='flex flex-col gap-[0.1rem]'>
+            <div className='flex flex-col'>
               <h1 className='font-sans text-xl font-semibold'>{item.name}</h1>
               <div className='flex items-center justify-between'>
                 <h3 className='font-lato text-base text-[#666666]'>25 Tours</h3>

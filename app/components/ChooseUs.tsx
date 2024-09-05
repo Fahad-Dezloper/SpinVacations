@@ -6,7 +6,7 @@ import map from '../../public/chooseUs/undraw_adventure_map_hnin.svg'
 
 const ChooseUs = () => {
   return (
-      <div className="w-full h-screen flex bg-[#fbfaff] flex-col gap-14 px-14 items-center mt-[4vw]">
+      <div className="w-full h-screen flex bg-[#fbfaff] flex-col gap-14 px-14 items-center mt-[3vw]">
           <div className='flex font-sans flex-col gap-2 items-center justify-center'>
               <h1 className='text-4xl tracking-tight'>Why Our Travelers Keep Coming Back</h1>
               <div className='w-full h-[0.5px] bg-primary mt-[0.3]'></div>
