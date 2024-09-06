@@ -6,6 +6,7 @@ import Categories from "@/app/components/Categories";
 import ChooseUs from "@/app/components/ChooseUs";
 import FeaturedDestination from "./components/FeaturedDestination";
 import TravelReminder from "./components/TravelReminder";
+import Footer from "./components/Footer";
 import Testimonials from "./components/Testimonials";
 
 export default function Home() {
@@ -19,6 +20,7 @@ export default function Home() {
       <FeaturedDestination />
       <TravelReminder />
       <Testimonials />
+      <Footer />
     </div>
   );
 }
