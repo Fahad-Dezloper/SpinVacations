@@ -1,10 +1,10 @@
 import React from 'react';
-import { Button } from '../../components/ui/button';
+import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { ArrowRightIcon } from 'lucide-react';
-import { client } from '../lib/sanity';
-import { Category, CategoryItem } from '../interface';
+import { Category, CategoryItem } from '../../interface';
 import { Image } from 'next-sanity/image';
+import { client } from '@/app/lib/sanity';
 
 async function getData() {
   const query = `*[_type == "categoriesList"][0]{
@@ -39,7 +39,7 @@ const Categories = async () => {
       <div className='grid grid-cols-4 justify-between h-full w-full gap-3 grid-rows-2'>
         {data.categories.map((item: CategoryItem, index) => (
           // eslint-disable-next-line @next/next/no-img-element
-          <Link href={item.slug.current} key={index} className='w-[20.5vw] flex hover:bg-[#ffffffbd] border-[#E4E6E8] border-2 flex-col gap-[0.8rem] rounded-xl h-[18vw] p-3'>
+          <Link href={`/category/${item.slug.current}`} key={index} className='w-[20.5vw] flex hover:bg-[#ffffffbd] border-[#E4E6E8] border-2 flex-col gap-[0.8rem] rounded-xl h-[18vw] p-3'>
             <div className='w-full h-[11vw] rounded-xl bg-blue-300 overflow-hidden'>
               <img
                 src={item.imageUrl}

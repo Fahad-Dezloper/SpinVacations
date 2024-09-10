@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
-import support from '../../public/chooseUs/undraw_travelers_re_y25a.svg'
-import map from '../../public/chooseUs/undraw_adventure_map_hnin.svg'
+import support from '@/public/chooseUs/undraw_travelers_re_y25a.svg'
+import map from '@/public/chooseUs/undraw_adventure_map_hnin.svg'
 
 
 const ChooseUs = () => {
@@ -33,9 +33,11 @@ const ChooseUs = () => {
                       {/* <!-- Bottom two half-width divs --> */}
                       <div className="flex space-x-4 h-1/2">
                         <div className="w-1/2 rounded-xl p-3 flex flex-col justify-end shadow-md bg-[#FFFACD]"> 
-                {/* <!-- Content here --> */}
-                <h1 className='font-sans text-lg leading-tight font-semibold text-text'>Dive into Local Adventures</h1>
-                <p className='font-lato text-base leading-tight text-[#666666]'>Skip the tourist traps and dive into real local adventures. We’ll guide you to the hidden gems that make your trip truly unforgettable.</p>
+                <div className='w-full h-full bg-red-400'>
+                  
+                </div>
+                          
+                          <h1 className='font-sans text-lg leading-tight font-semibold text-text'>Travel Anywhere</h1>
                         </div>
                         <div className="w-1/2 p-3 rounded-xl flex flex-col justify-end shadow-md bg-[#E0FFE0]"> 
                 {/* <!-- Content here --> */}
@@ -45,7 +47,6 @@ const ChooseUs = () => {
                       </div>
                     </div>
             </div>
-{/* <Image src={support} alt="Support" className='h-full w-full object-cover' layout="responsive" /> */}
         
         
         {/* right */}

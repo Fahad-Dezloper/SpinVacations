@@ -2,6 +2,12 @@
 import { Inter, Lato, Poppins } from 'next/font/google';
 import './globals.css';
 import type { Metadata } from "next";
+import { config } from '@fortawesome/fontawesome-svg-core';
+import '@fortawesome/fontawesome-svg-core/styles.css'; // Import the CSS
+config.autoAddCss = false; // Disable auto-adding the CSS
+import MainNav from "@/app/components/MainNav";
+import TopNavigation from "@/app/components/TopNavigation";
+import Footer from "@/app/components/Footer";
 
 const inter = Inter({ subsets: ['latin'] });
 const lato = Lato({ subsets: ['latin'], weight: ['100', '300', '400', '700', '900'] }); // Correct weights for Lato
@@ -21,7 +27,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} ${lato.className} ${poppins.className}`}>
+        <TopNavigation />
+        <MainNav />
         {children}
+        <Footer />
       </body>
     </html>
   );

@@ -23,7 +23,7 @@ const MainNav = async () => {
   const data = await getData()
   // console.log(data.logo);
   return (
-    <div className='absolute w-full top-[20] bg-[#ffffff7e] backdrop-blur-sm z-[100]'>
+    <div className='w-full bg-[#fff] backdrop-blur-sm z-[100]'>
     <div className='flex justify-between items-center px-14 py-1'>
       {/* Logo */}
       <div className=''>
