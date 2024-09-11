@@ -72,7 +72,7 @@ const TravelReminder = () => {
               {timePassedString} ago
             </p>
             <p>
-              Ohh, it's been <strong>3 months</strong>? A quick weekend getaway might be just what you need!
+              Ohh, it&aposs been <strong>3 months</strong>? A quick weekend getaway might be just what you need!
             </p>
             <p>
               <a href="/explore-trips" className="text-blue-600 underline">
@@ -92,7 +92,7 @@ const TravelReminder = () => {
               <strong>6 months</strong>? Time to pack your bags and hit the road!
             </p>
             <p>
-              Don't wait any longer, <a href="/explore-trips" className="text-blue-600 underline">find your next adventure now</a>!
+              Don&apost wait any longer, <a href="/explore-trips" className="text-blue-600 underline">find your next adventure now</a>!
             </p>
           </>
         );
@@ -103,7 +103,7 @@ const TravelReminder = () => {
               {timePassedString} ago
             </p>
             <p>
-              It's been a <strong>year</strong>? You deserve a grand vacation—don't let life pass you by!
+              It&aposs been a <strong>year</strong>? You deserve a grand vacation don&apost let life pass you by!
             </p>
             <p>
               Start planning your <a href="/explore-trips" className="text-blue-600 underline">dream getaway</a> today.
