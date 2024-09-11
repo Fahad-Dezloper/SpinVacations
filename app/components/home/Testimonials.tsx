@@ -1,55 +1,71 @@
 import Image from 'next/image'
 import React from 'react'
 import Reviews from './Reviews'
+import { client } from '@/app/lib/sanity'
+import reviews from '@/sanity/schemaTypes/reviews';
+
+export async function getReviews() {
+  const query = `*[_type == 'reviews']{
+        name,
+        review,
+        stars
+  }`;
 
 
-const Testimonials = () => {
-    const travelImages = [
-        'https://i.pinimg.com/236x/26/67/42/266742e1a6565d6a94b6b881c441c2a3.jpg',
-        'https://i.pinimg.com/564x/9b/d2/48/9bd24846b4cf8410be7f7af43cad1771.jpg',
-        'https://i.pinimg.com/564x/0e/5a/0b/0e5a0b704811986fe2de813b0e317404.jpg',
-        'https://i.pinimg.com/236x/37/f9/9c/37f99ca950359c9ef059addbb59f16d2.jpg',
-        'https://i.pinimg.com/564x/c0/ee/86/c0ee8636d1616ac95e0eaa54fd3e9b88.jpg',
-        'https://i.pinimg.com/564x/ab/1b/89/ab1b8952f6bbac124ff915ead2d68757.jpg',
-        'https://i.pinimg.com/564x/fd/70/e1/fd70e1cacebf10cb5d2b2aca71e80b7d.jpg',
-        'https://i.pinimg.com/564x/98/d4/5c/98d45cddf7e83e93a1fba400a101134f.jpg',
-        'https://i.pinimg.com/736x/b4/fa/b8/b4fab80ced26dad46d426acfd46c5d33.jpg',
-        'https://i.pinimg.com/236x/e6/d4/df/e6d4df05d8dc3d7cd8f1edc2ebd72105.jpg',
-        'https://i.pinimg.com/236x/4f/fe/c0/4ffec039189bf5d455611f51b7040db7.jpg',
-        'https://i.pinimg.com/236x/26/67/42/266742e1a6565d6a94b6b881c441c2a3.jpg',
-        'https://i.pinimg.com/564x/9b/d2/48/9bd24846b4cf8410be7f7af43cad1771.jpg',
-        'https://i.pinimg.com/564x/0e/5a/0b/0e5a0b704811986fe2de813b0e317404.jpg',
-        'https://i.pinimg.com/236x/37/f9/9c/37f99ca950359c9ef059addbb59f16d2.jpg',
-        'https://i.pinimg.com/564x/c0/ee/86/c0ee8636d1616ac95e0eaa54fd3e9b88.jpg',
-        'https://i.pinimg.com/564x/ab/1b/89/ab1b8952f6bbac124ff915ead2d68757.jpg',
-        'https://i.pinimg.com/564x/fd/70/e1/fd70e1cacebf10cb5d2b2aca71e80b7d.jpg',
-        'https://i.pinimg.com/564x/98/d4/5c/98d45cddf7e83e93a1fba400a101134f.jpg',
-        'https://i.pinimg.com/736x/b4/fa/b8/b4fab80ced26dad46d426acfd46c5d33.jpg',
-        'https://i.pinimg.com/236x/e6/d4/df/e6d4df05d8dc3d7cd8f1edc2ebd72105.jpg',
-        'https://i.pinimg.com/236x/4f/fe/c0/4ffec039189bf5d455611f51b7040db7.jpg',
-        'https://i.pinimg.com/564x/fd/70/e1/fd70e1cacebf10cb5d2b2aca71e80b7d.jpg',
-        'https://i.pinimg.com/564x/98/d4/5c/98d45cddf7e83e93a1fba400a101134f.jpg',
-        'https://i.pinimg.com/736x/b4/fa/b8/b4fab80ced26dad46d426acfd46c5d33.jpg',
-        'https://i.pinimg.com/236x/e6/d4/df/e6d4df05d8dc3d7cd8f1edc2ebd72105.jpg',
-        'https://i.pinimg.com/236x/4f/fe/c0/4ffec039189bf5d455611f51b7040db7.jpg',
-        'https://i.pinimg.com/236x/26/67/42/266742e1a6565d6a94b6b881c441c2a3.jpg',
-        'https://i.pinimg.com/564x/9b/d2/48/9bd24846b4cf8410be7f7af43cad1771.jpg',
-        'https://i.pinimg.com/564x/0e/5a/0b/0e5a0b704811986fe2de813b0e317404.jpg',
-        'https://i.pinimg.com/236x/37/f9/9c/37f99ca950359c9ef059addbb59f16d2.jpg',
-        'https://i.pinimg.com/564x/c0/ee/86/c0ee8636d1616ac95e0eaa54fd3e9b88.jpg',
-        'https://i.pinimg.com/564x/ab/1b/89/ab1b8952f6bbac124ff915ead2d68757.jpg',
-        'https://i.pinimg.com/564x/fd/70/e1/fd70e1cacebf10cb5d2b2aca71e80b7d.jpg',
-        'https://i.pinimg.com/564x/98/d4/5c/98d45cddf7e83e93a1fba400a101134f.jpg',
-        'https://i.pinimg.com/736x/b4/fa/b8/b4fab80ced26dad46d426acfd46c5d33.jpg',
-        'https://i.pinimg.com/236x/e6/d4/df/e6d4df05d8dc3d7cd8f1edc2ebd72105.jpg',
-        'https://i.pinimg.com/236x/4f/fe/c0/4ffec039189bf5d455611f51b7040db7.jpg',
-  ]
+  const data = await client.fetch(query);
+  console.log("Fetched Review Data:", data); // data is an array of reviews
+  return data;
+  }
+
+
+const Testimonials = async () => {
+  const reviews = await getReviews();
+  console.log(reviews);
   
-  const reviews = [
-
+  const travelImages = [
+        'https://i.pinimg.com/236x/26/67/42/266742e1a6565d6a94b6b881c441c2a3.jpg',
+        'https://i.pinimg.com/564x/9b/d2/48/9bd24846b4cf8410be7f7af43cad1771.jpg',
+        'https://i.pinimg.com/564x/0e/5a/0b/0e5a0b704811986fe2de813b0e317404.jpg',
+        'https://i.pinimg.com/236x/37/f9/9c/37f99ca950359c9ef059addbb59f16d2.jpg',
+        'https://i.pinimg.com/564x/c0/ee/86/c0ee8636d1616ac95e0eaa54fd3e9b88.jpg',
+        'https://i.pinimg.com/564x/ab/1b/89/ab1b8952f6bbac124ff915ead2d68757.jpg',
+        'https://i.pinimg.com/564x/fd/70/e1/fd70e1cacebf10cb5d2b2aca71e80b7d.jpg',
+        'https://i.pinimg.com/564x/98/d4/5c/98d45cddf7e83e93a1fba400a101134f.jpg',
+        'https://i.pinimg.com/736x/b4/fa/b8/b4fab80ced26dad46d426acfd46c5d33.jpg',
+        'https://i.pinimg.com/236x/e6/d4/df/e6d4df05d8dc3d7cd8f1edc2ebd72105.jpg',
+        'https://i.pinimg.com/236x/4f/fe/c0/4ffec039189bf5d455611f51b7040db7.jpg',
+        'https://i.pinimg.com/236x/26/67/42/266742e1a6565d6a94b6b881c441c2a3.jpg',
+        'https://i.pinimg.com/564x/9b/d2/48/9bd24846b4cf8410be7f7af43cad1771.jpg',
+        'https://i.pinimg.com/564x/0e/5a/0b/0e5a0b704811986fe2de813b0e317404.jpg',
+        'https://i.pinimg.com/236x/37/f9/9c/37f99ca950359c9ef059addbb59f16d2.jpg',
+        'https://i.pinimg.com/564x/c0/ee/86/c0ee8636d1616ac95e0eaa54fd3e9b88.jpg',
+        'https://i.pinimg.com/564x/ab/1b/89/ab1b8952f6bbac124ff915ead2d68757.jpg',
+        'https://i.pinimg.com/564x/fd/70/e1/fd70e1cacebf10cb5d2b2aca71e80b7d.jpg',
+        'https://i.pinimg.com/564x/98/d4/5c/98d45cddf7e83e93a1fba400a101134f.jpg',
+        'https://i.pinimg.com/736x/b4/fa/b8/b4fab80ced26dad46d426acfd46c5d33.jpg',
+        'https://i.pinimg.com/236x/e6/d4/df/e6d4df05d8dc3d7cd8f1edc2ebd72105.jpg',
+        'https://i.pinimg.com/236x/4f/fe/c0/4ffec039189bf5d455611f51b7040db7.jpg',
+        'https://i.pinimg.com/564x/fd/70/e1/fd70e1cacebf10cb5d2b2aca71e80b7d.jpg',
+        'https://i.pinimg.com/564x/98/d4/5c/98d45cddf7e83e93a1fba400a101134f.jpg',
+        'https://i.pinimg.com/736x/b4/fa/b8/b4fab80ced26dad46d426acfd46c5d33.jpg',
+        'https://i.pinimg.com/236x/e6/d4/df/e6d4df05d8dc3d7cd8f1edc2ebd72105.jpg',
+        'https://i.pinimg.com/236x/4f/fe/c0/4ffec039189bf5d455611f51b7040db7.jpg',
+        'https://i.pinimg.com/236x/26/67/42/266742e1a6565d6a94b6b881c441c2a3.jpg',
+        'https://i.pinimg.com/564x/9b/d2/48/9bd24846b4cf8410be7f7af43cad1771.jpg',
+        'https://i.pinimg.com/564x/0e/5a/0b/0e5a0b704811986fe2de813b0e317404.jpg',
+        'https://i.pinimg.com/236x/37/f9/9c/37f99ca950359c9ef059addbb59f16d2.jpg',
+        'https://i.pinimg.com/564x/c0/ee/86/c0ee8636d1616ac95e0eaa54fd3e9b88.jpg',
+        'https://i.pinimg.com/564x/ab/1b/89/ab1b8952f6bbac124ff915ead2d68757.jpg',
+        'https://i.pinimg.com/564x/fd/70/e1/fd70e1cacebf10cb5d2b2aca71e80b7d.jpg',
+        'https://i.pinimg.com/564x/98/d4/5c/98d45cddf7e83e93a1fba400a101134f.jpg',
+        'https://i.pinimg.com/736x/b4/fa/b8/b4fab80ced26dad46d426acfd46c5d33.jpg',
+        'https://i.pinimg.com/236x/e6/d4/df/e6d4df05d8dc3d7cd8f1edc2ebd72105.jpg',
+        'https://i.pinimg.com/236x/4f/fe/c0/4ffec039189bf5d455611f51b7040db7.jpg',
   ]
+
+  
     return (
-      <div className='w-full h-screen mt-[4vw] flex flex-col items-center relative'>
+      <div className='w-full h-[110vh] mt-[4vw] flex flex-col items-center relative overflow-hidden'>
        
         <div className='avatar w-full h-[66vh] relative'>
           <div className='w-28 h-28 absolute overflow-hidden shadow-xl bottom-[10vw] right-[5vw] bg-yellow-300 rounded-full'>
@@ -102,10 +118,7 @@ const Testimonials = () => {
       </div>
         </div>
 
-        
-        
-        
-        {/* <Reviews /> */}
+        <Reviews reviews={reviews} />
             </div>
   )
 }

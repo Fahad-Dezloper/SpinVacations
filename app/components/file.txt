@@ -346,3 +346,39 @@ bottom<hr className="mb-6 border-gray-200 dark:border-gray-700" />
         <span className="text-sm text-gray-500 dark:text-gray-400">© 2024 <a href="https://spinvacations.in" className="hover:underline">Spin Vacations™</a>. All Rights Reserved.</span>
         <span className="text-sm text-gray-500 dark:text-gray-400">Crafted with ❤️ by <a href="https://x.com/l_fahadkhan_l" className="hover:underline">𝕏</a></span>
       </div>
+
+
+reviews
+
+{reviews.length > 0 ? (
+        <div className="relative w-[]">
+          {/* Display current review */}
+          <div className="review-item transition-transform ease-in-out duration-500">
+            <h3 className="text-xl font-semibold mb-2">
+              {reviews[currentIndex].name}
+            </h3>
+            <p className="mb-4 text-gray-600 italic">
+              "{reviews[currentIndex].review}"
+            </p>
+            <div className="flex justify-center mb-4 text-yellow-500 text-xl">
+              {renderStars(reviews[currentIndex].stars)}
+            </div>
+          </div>
+
+          {/* Carousel Controls */}
+          <button
+            className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-100 hover:bg-gray-200 text-gray-600 font-bold p-3 rounded-full shadow-md focus:outline-none"
+            onClick={prevReview}
+          >
+            &#9664; {/* Left arrow */}
+          </button>
+          <button
+            className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-100 hover:bg-gray-200 text-gray-600 font-bold p-3 rounded-full shadow-md focus:outline-none"
+            onClick={nextReview}
+          >
+            &#9654; {/* Right arrow */}
+          </button>
+        </div>
+      ) : (
+        <p className="text-gray-600">No reviews available.</p>
+      )}

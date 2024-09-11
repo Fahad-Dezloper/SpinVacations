@@ -40,7 +40,7 @@ const MainNav = async () => {
       {/* Main Navigation */}
       <div className='flex gap-6 items-center'>
         {data.menuItems.map((item: MenuItem) => (
-          <Link className='font-lato text-base font-medium' href={item.link} key={item._key}>
+          <Link className='font-sans text-base font-medium' href={item.link} key={item._key}>
             {item.menuName}
           </Link>
         ))}
@@ -49,7 +49,7 @@ const MainNav = async () => {
       {/* Search */}
       <div className='flex gap-6 items-center'>
         <SearchIcon />
-        <Link href="/contact" className="bg-primary text-base border-primary border-2 rounded-md text-white shadow-md px-6 py-3 hover:bg-transparent hover:text-text duration-200">Contact</Link>
+        {/* <Link href="/contact" className="bg-primary text-base border-primary border-2 rounded-md text-white shadow-md px-6 py-3 hover:bg-transparent hover:text-text duration-200">Contact</Link> */}
       </div>
       </div>
     </div>
