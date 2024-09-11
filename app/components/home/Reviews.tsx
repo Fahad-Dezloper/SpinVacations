@@ -2,7 +2,7 @@
 "use client";
 import React, { useEffect } from 'react';
 import { motion, useAnimation } from 'framer-motion';
-import { fill, fill } from 'three/src/extras/TextureUtils.js';
+import { fill } from 'three/src/extras/TextureUtils.js';
 
 interface Review {
   review: string;
