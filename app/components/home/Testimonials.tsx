@@ -2,7 +2,6 @@ import Image from 'next/image'
 import React from 'react'
 import Reviews from './Reviews'
 import { client } from '@/app/lib/sanity'
-import reviews from '@/sanity/schemaTypes/reviews';
 
 export async function getReviews() {
   const query = `*[_type == 'reviews']{
