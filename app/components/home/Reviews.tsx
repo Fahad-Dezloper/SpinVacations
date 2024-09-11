@@ -11,7 +11,7 @@ interface ReviewsProps {
 }
 
 const Reviews: React.FC<ReviewsProps> = ({ reviews = [] }) => { // Fallback to empty array
-  console.log(reviews); // Debugging to ensure the reviews are logged correctly
+  // console.log(reviews); // Debugging to ensure the reviews are logged correctly
 
   return (
     <div>
