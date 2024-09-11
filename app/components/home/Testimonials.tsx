@@ -105,7 +105,7 @@ const Testimonials = () => {
         
         
         
-        <Reviews />
+        {/* <Reviews /> */}
             </div>
   )
 }
