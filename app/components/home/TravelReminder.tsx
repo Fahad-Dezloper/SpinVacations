@@ -92,7 +92,7 @@ const TravelReminder = () => {
               <strong>6 months</strong>? Time to pack your bags and hit the road!
             </p>
             <p>
-              Don&apost wait any longer, <a href="/explore-trips" className="text-blue-600 underline">find your next adventure now</a>!
+              Don&apost wait any longer, <a href="/explore-trips" className="text-blue-600 underline">find your next adventure now</a>
             </p>
           </>
         );
