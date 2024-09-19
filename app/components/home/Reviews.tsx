@@ -77,9 +77,9 @@ const Reviews: React.FC<ReviewsProps> = ({ reviews = [] }) => {
     <div className="h-full absolute w-[80vw] top-[17vw] rounded-md flex flex-col items-center gap-4 overflow-hidden">
       <div className="flex flex-col gap-1 items-center w-full justify-center">
         <h2 className="font-sans text-4xl">Love From Our Travellers</h2>
-        <h3 className="text-[#666666]">Don`&apos;`t believe our words</h3>
+        <h3 className="text-[#666666]">Don&apos;t believe our words</h3>
       </div>
-      <div className="relative w-full h-[20vw] overflow-hidden">
+      <div className="relative w-full h-[20vw] overflow-hidden rounded-2xl">
         <motion.div
           className="flex w-full gap-4"
           animate={controls}
@@ -88,12 +88,12 @@ const Reviews: React.FC<ReviewsProps> = ({ reviews = [] }) => {
           {extendedReviews.map((review, index) => (
             <div
               key={index}
-              className="p-4 shadow-md h-[20vw] flex flex-col justify-between rounded-md w-[25vw] flex-shrink-0"
+              className="p-4 shadow-md h-[20vw] bg-white flex flex-col justify-between rounded-md w-[25vw] flex-shrink-0"
             >
-              <p className="text-base leading-snug text-gray-600 font-lato text-wrap">`&quot;`{review.review}`&quot;`</p>
-              <div className="flex justify-center mb-4 text-xl">
+              <p className="text-base leading-snug text-gray-600 font-lato text-wrap">&quot;{review.review}&quot;</p>
+              {/* <div className="flex justify-center mb-4 text-xl">
                 {renderStars(review.stars)}
-              </div>
+              </div> */}
               <div className='w-fit flex flex-col'>
               <span className="text-xl font-sans font-medium leading-tight">
                 {review.name}

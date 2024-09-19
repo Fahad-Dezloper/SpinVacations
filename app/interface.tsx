@@ -5,6 +5,7 @@ export interface CategoryItem {
   slug: {
     current: string;  // Updated to reflect the slug structure
   };
+  tripsCount: number; 
 }
 
 export interface Category {
@@ -14,12 +15,26 @@ export interface Category {
 
 
 // Tours
-export interface TourCard {
-  name: string;             // The name of the destination, e.g., Tokyo
-  description: string;      // A short description of the destination
-  imageUrl: string;         // URL of the image for the destination
-  location: string;         // The location of the destination, e.g., Tokyo, Japan
+export interface TripCard {
+   slug: string;
+  imageUrl: string;
+  name: string;
+  description: string;
+  location: string;
   price: number;
-  slug: string;// The price of the tour, e.g., ₹15,000
+  days: number;
+  nights: number;
+  meals: {
+    breakfast: boolean;
+    lunch: boolean;
+    dinner: boolean;
+  };
+  transport: {
+    flight: boolean;
+    train: boolean;
+    bus: boolean;
+    localTravelVehicle: boolean;
+    vehicleType?: string;
+  };
 }
 

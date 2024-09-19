@@ -1,5 +1,4 @@
 // layout.tsx or app.tsx
-import { Inter, Lato, Poppins } from 'next/font/google';
 import './globals.css';
 import type { Metadata } from "next";
 import { config } from '@fortawesome/fontawesome-svg-core';
@@ -9,9 +8,9 @@ import MainNav from "@/app/components/MainNav";
 import TopNavigation from "@/app/components/TopNavigation";
 import Footer from "@/app/components/Footer";
 
-const inter = Inter({ subsets: ['latin'] });
-const lato = Lato({ subsets: ['latin'], weight: ['100', '300', '400', '700', '900'] }); // Correct weights for Lato
-const poppins = Poppins({ subsets: ['latin'], weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'] }); // Correct weights for Poppins
+// const inter = Inter({ subsets: ['latin']  , weight: ['400', '700'] });
+// const lato = Lato({ subsets: ['latin'], weight: ['100', '300', '400', '700', '900'] }); // Correct weights for Lato
+// const poppins = Poppins({ subsets: ['latin'], weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'] }); // Correct weights for Poppins
 
 
 export const metadata: Metadata = {
@@ -26,7 +25,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} ${lato.className} ${poppins.className}`}>
+      <head>
+        {/* Link Google Fonts manually */}
+        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+      </head>
+      <body>
         <TopNavigation />
         <MainNav />
         {children}

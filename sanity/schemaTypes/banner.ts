@@ -10,7 +10,7 @@ export default {
       of: [
         {
           type: 'image',
-          title: 'Image',
+          title: 'Custom Image',
           options: {
             hotspot: true, // Enables hotspot for better cropping and focus
           },
@@ -36,6 +36,15 @@ export default {
               description: 'Optional link for the banner image',
             },
           ],
+        },
+        {
+          type: 'reference',
+          title: 'Trip Image',
+          to: [{type: 'tripDetails'}],
+          description: 'Select an image from an existing trip',
+          options: {
+            filter: 'defined(featuredImage)', // Only allow trips that have a featured image
+          },
         },
       ],
     },

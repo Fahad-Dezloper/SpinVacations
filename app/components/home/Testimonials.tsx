@@ -12,14 +12,14 @@ export async function getReviews() {
 
 
   const data = await client.fetch(query);
-  console.log("Fetched Review Data:", data); // data is an array of reviews
+  // console.log("Fetched Review Data:", data); // data is an array of reviews
   return data;
   }
 
 
 const Testimonials = async () => {
   const reviews = await getReviews();
-  console.log(reviews);
+  // console.log(reviews);
   
   const travelImages = [
         'https://i.pinimg.com/236x/26/67/42/266742e1a6565d6a94b6b881c441c2a3.jpg',

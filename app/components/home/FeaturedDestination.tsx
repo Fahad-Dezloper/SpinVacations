@@ -1,21 +1,37 @@
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowRightIcon, ChevronLeft, ChevronRight } from 'lucide-react';
 import React from 'react';
 import Link from 'next/link';
 import { client } from '@/app/lib/sanity';
-import { TourCard } from '../../interface';
 import TripCard from '../shared/TripCard';
+import { Button } from '@/components/ui/button';
 
 async function getData() {
-  const query = `*[_type == "destinations"]{
-  name,
-    'imageUrl': image.asset->url,
-    location,
-    description,
-    'slug': slug.current,
-    price
-    }`;
+  const query = `*[_type == "tripDetails" && isFeaturedTrip == true] {
+    name,
+    slug,
+    avgprice,
+    "featuredImageUrl": featuredImage.asset->url,
+    packageOverview {
+      tripDuration {
+        days,
+        nights
+      },
+      meals {
+        breakfast,
+        lunch,
+        dinner
+      },
+      transport {
+        flight,
+        train,
+        bus,
+        localTravelVehicle,
+        vehicleType
+      }
+    }
+  }`;
 
-  const data: TourCard[] = await client.fetch(query);
+  const data = await client.fetch(query);
 
   return data;
 }
@@ -32,25 +48,33 @@ const FeaturedDestination = async () => {
   };
 
   return (
-    <div className='w-full flex flex-col gap-7 h-fit px-20 py-10'>
+    <div className='w-full flex flex-col gap-7 h-fit px-20'>
       <div className='flex justify-between items-center'>
         <div>
           <h3 className='text-[#666666]'>Top Destination</h3>
           <h1 className='font-sans text-4xl'>Explore Top Destinations</h1>
         </div>
-        <div className='flex items-center gap-3'>
-          <div className='p-3 rounded-full border-2 border-primary'>
-            <ChevronLeft />
-          </div>
-          <div className='p-3 rounded-full border-2 border-primary'>
-            <ChevronRight />
-          </div>
-        </div>
+        <Link href="/top-destinations">
+        <Button className='text-white rounded-full py-6 px-6 flex gap-3 items-center'>
+            <span>View All</span>
+            <span><ArrowRightIcon /></span>
+          </Button>
+          </Link>
       </div>
 
-      <div className='grid grid-cols-3 justify-items-center px-3 h-full gap-6 w-full gap-y-8 grid-rows-2'>
-        {data.map((item: TourCard, index) => (
-          <TripCard key={index} slug={item.slug} imageUrl={item.imageUrl} name={item.name} description={item.description} location={item.location} price={item.price} />
+      <div className='grid grid-cols-3 justify-items-center h-full gap-7 w-full gap-y-8 grid-rows-1'>
+        {data.map((item, index) => (
+          <TripCard
+            key={index}
+            avgPrice={item.avgprice}
+          slug={item.slug}
+          imageUrl={item.featuredImageUrl}
+          name={item.name}
+          days={item.packageOverview.tripDuration.days}
+          nights={item.packageOverview.tripDuration.nights}
+          meals={item.packageOverview.meals}
+          transport={item.packageOverview.transport}
+        />
         ))}
       </div>
     </div>

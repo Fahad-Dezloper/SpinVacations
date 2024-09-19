@@ -4,8 +4,8 @@ import { client } from '@/app/lib/sanity';
 import TripCard from '@/app/components/shared/TripCard';
 
 // Function to fetch trips based on category slug
-async function getTripsByCategory(slug: string) {
-  const query = `*[_type == "tripDetails" && $slug in categories[]->slug.current]{
+async function upcomingTrips() {
+  const query = `*[_type == "tripDetails" && isUpcomingTrip == true]{
     name,
     slug,
     avgprice,
@@ -29,19 +29,19 @@ async function getTripsByCategory(slug: string) {
       }
     }
   }`;
-  const trips = await client.fetch(query, { slug });
+  const trips = await client.fetch(query);
   return trips;
 }
 
 // Component for category trips page
-const CategoryTripsPage = async ({ params }: { params: { slug: string } }) => {
-  const trips = await getTripsByCategory(params.slug); // Fetch trips by category
+const upcomingTripsPage = async () => {
+  const trips = await upcomingTrips(); // Fetch trips by category
 
   return (
     <div className="w-full flex flex-col gap-7 h-fit px-20 py-10">
       <div className="flex justify-between items-center">
         <div>
-          <h3 className="text-[#666666]">Trips in Category</h3>
+          <h3 className="text-[#666666]">Upcoming Trips</h3>
           <h1 className="font-sans text-4xl">Explore Trips</h1>
         </div>
       </div>
@@ -65,4 +65,4 @@ const CategoryTripsPage = async ({ params }: { params: { slug: string } }) => {
   );
 };
 
-export default CategoryTripsPage;
+export default upcomingTripsPage;

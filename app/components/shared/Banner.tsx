@@ -4,38 +4,38 @@ import BannerCarousel from '@/app/components/home/BannerCarousel';
 import { client } from '@/app/lib/sanity';
 
 // Server-side function to fetch banner data
-export async function getServerSideProps() {
+const fetchBannerImages = async () => {
   const query = `*[_type == "imgBanner"][0]{
-   bannerImages[]{
-     'imageUrl': asset->url,
-     caption,
-     altText,
-     link
-   }
- }`;
+    bannerImages[]{
+      _type == "image" => {
+        "imageUrl": asset->url,
+        caption,
+        altText,
+      },
+      _type == "reference" => {
+        "imageUrl": @->featuredImage.asset->url,
+        "name": @->name,
+        "slug": @->slug.current
+      }
+    }
+  }`;
 
-  const data = await client.fetch(query);
+    const data = await client.fetch(query);
+  return data?.bannerImages ?? []; // Return empty array if no data
+};
 
-  return data;
-}
 const HomePage = async () => {
-  const data = await getServerSideProps();
+  const bannerImages = await fetchBannerImages(); // Fetch data
+  // console.log(bannerImages);
+  if (!bannerImages || bannerImages.length === 0) {
+    return <div>No banner images available</div>;
+  } // Log to confirm data is passed as props
+
   return (
     <div>
-      <BannerCarousel bannerImages={data} />
+      <BannerCarousel data={bannerImages} />
     </div>
   );
 };
 
 export default HomePage;
-
-
-
-// *[_type == "imgBanner"][0]{
-//     bannerImages[]{
-//       'imageUrl': asset->url,
-//       caption,
-//       altText,
-//       link
-//     }
-//   }

@@ -10,6 +10,8 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
+import { ArrowRight } from 'lucide-react';
+import Link from 'next/link';
 
 const calculateTimePassed = (months: number) => {
   const now = new Date();
@@ -61,23 +63,23 @@ const TravelReminder = () => {
   const getMessage = () => {
     if (!selectedOption || !timePassed) return <p>Select an option to see more details.</p>;
 
-    const { days, hours, minutes, seconds } = timePassed;
-    const timePassedString = `${days} days, ${hours} hours, ${minutes} minutes, and ${seconds} seconds`;
+    const { days } = timePassed;
+    const timePassedString = `${days} days`;
 
     switch (selectedOption) {
       case '3':
         return (
           <>
             <p className="text-2xl font-bold text-green-500">
-              {timePassedString} ago
+              {timePassedString}
+            </p>
+            <p className='mb-4'>
+              Ohh, it&apos;s been <strong>3 months</strong>? A quick weekend getaway might be just what you need!
             </p>
             <p>
-              Ohh, it&aposs been <strong>3 months</strong>? A quick weekend getaway might be just what you need!
-            </p>
-            <p>
-              <a href="/explore-trips" className="text-blue-600 underline">
-                Explore trips
-              </a>{" "}
+              <Link href="/all-tours" className="text-[#666666] underline decoration-green-500 text-lg">
+                Explore our short trips
+              </Link>{" "}
               and treat yourself!
             </p>
           </>
@@ -86,13 +88,13 @@ const TravelReminder = () => {
         return (
           <>
             <p className="text-2xl font-bold text-yellow-500">
-              {timePassedString} ago
+              {timePassedString}
             </p>
-            <p>
+            <p className='mb-4'>
               <strong>6 months</strong>? Time to pack your bags and hit the road!
             </p>
             <p>
-              Don&apost wait any longer, <a href="/explore-trips" className="text-blue-600 underline">find your next adventure now</a>
+              <Link href="/all-tours" className="decoration-yellow-500 text-lg text-[#666666] underline">Find your next adventure now</Link> Don&apos;t wait any longer, 
             </p>
           </>
         );
@@ -100,13 +102,13 @@ const TravelReminder = () => {
         return (
           <>
             <p className="text-2xl font-bold text-red-500">
-              {timePassedString} ago
+              {timePassedString}
             </p>
-            <p>
-              It&aposs been a <strong>year</strong>? You deserve a grand vacation don&apost let life pass you by!
+            <p className='mb-4'>
+              It&apos;s been a <strong>year</strong>? You deserve a grand vacation don&apos;t let life pass you by!
             </p>
-            <p>
-              Start planning your <a href="/explore-trips" className="text-blue-600 underline">dream getaway</a> today.
+           <p>
+              <a href="/all-tours" className="text-[#666666] decoration-red-500 text-lg underline">Bucket list destinations</a> are calling! Start your adventure and plan the perfect escape NOW!.
             </p>
           </>
         );
@@ -116,20 +118,27 @@ const TravelReminder = () => {
   };
 
   return (
-    <div className='w-full flex flex-col items-center'>
+    <div className='w-full flex flex-col gap-4 items-center'>
       <h1 className='text-8xl font-sans text-center font-bold mb-4'>When did you last travel?</h1>
-
-      <div className='flex gap-4 mb-6'>
-        <button onClick={() => handleOptionChange('3')} className='bg-gray-200 p-2 rounded'>
+      <div className='flex gap-4 items-center'>
+      <div className='flex gap-2 items-center font-sans text-lg text-[#666666] font-semibold'>
+        It&apos;s been
+        <div className='p-1 bg-[#F2F4F6] w-fit h-fit rounded-full border-2 border-r-accent border-t-accent border-b-accent'>
+          <ArrowRight />
+        </div>
+      </div>
+      <div className='flex gap-4 items-center'>
+        <button onClick={() => handleOptionChange('3')} className='bg-gray-200 text-text border hover:bg-primary hover:text-white duration-200 px-3 py-2 rounded-lg'>
           3 months
         </button>
-        <button onClick={() => handleOptionChange('6')} className='bg-gray-200 p-2 rounded'>
+        <button onClick={() => handleOptionChange('6')} className='bg-gray-200 text-text border hover:bg-primary hover:text-white duration-200 px-3 py-2 rounded-lg'>
           6 months
         </button>
-        <button onClick={() => handleOptionChange('12')} className='bg-gray-200 p-2 rounded'>
+        <button onClick={() => handleOptionChange('12')} className='bg-gray-200 text-text border hover:bg-primary hover:text-white duration-200 px-3 py-2 rounded-lg'>
           12 months
         </button>
-      </div>
+        </div>
+        </div>
 
       <AlertDialog open={open} onOpenChange={() => setOpen(false)}>
         <AlertDialogContent>
@@ -144,9 +153,9 @@ const TravelReminder = () => {
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel onClick={() => setOpen(false)}>Cancel</AlertDialogCancel>
+            <AlertDialogCancel onClick={() => setOpen(false)} className='hover:border hover:border-accent hover:bg-[#F2F4F6] duration-200'>Cancel</AlertDialogCancel>
             <AlertDialogAction>
-              <a href="/explore-trips" className="text-blue-600 underline">Explore trips</a>
+              <Link href="/all-tours" className="text-white">Explore trips</Link>
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
