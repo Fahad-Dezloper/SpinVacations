@@ -4,6 +4,7 @@ import { ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
+import styles from '../css/UpcomingSection.module.css'
 
 const formatDate = (dateString) => {
   const getOrdinalSuffix = (day) => {
@@ -32,7 +33,7 @@ const UpcomingData = ({ data }) => { // Accept data as a prop
         <Link
           href={`/trip/${trip.slug.current}`}
           key={i}
-          className='min-w-[25%] cursor-pointer overflow-hidden shadow-gradient-shadow relative h-[50vh] rounded-2xl bg-red-400'
+          className={`${styles.container} flex-none cursor-pointer overflow-hidden shadow-gradient-shadow relative rounded-2xl bg-red-400`}
         >
           <Image
             src={trip.imageUrl}
@@ -41,7 +42,7 @@ const UpcomingData = ({ data }) => { // Accept data as a prop
             style={{ objectFit: "cover" }}
             className='w-full h-full object-cover'
           />
-          <div className='absolute h-[16vh] w-full px-6 bottom-0 bg-white border-accent border-b-2 rounded-2xl shadow-gradient-shadow'>
+          <div className={`absolute h-[16vh] ${styles.tripDetails} w-full px-6 bottom-0 bg-white border-accent border-b-2 rounded-2xl shadow-gradient-shadow`}>
             <div className='flex flex-col h-full'>
               <div className='text-xs bg-pgradient flex items-center justify-center w-full rounded-br-2xl rounded-bl-2xl py-[4px]'>
                 Leaving on&nbsp;

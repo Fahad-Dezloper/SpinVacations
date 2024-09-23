@@ -2,9 +2,10 @@
 import { ArrowLeftIcon, ArrowRightIcon } from "lucide-react";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import styles from '../css/Banner.module.css'
 
 const BannerCarousel = ({ data }) => {
-  console.log("hi", data)
+  // console.log("hi", data)
   const imagesArray = data ? data : [];
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -31,11 +32,11 @@ const BannerCarousel = ({ data }) => {
   }
 
   return (
-    <div className="w-full h-[80vh] flex items-center justify-center">
-      <div className="relative w-[92vw] h-[75vh] overflow-hidden rounded-2xl">
+    <div className={`w-full h-fit ${styles.mainCont} flex items-center justify-center`}>
+      <div className={`relative ${styles.container} overflow-hidden`}>
         {/* Left arrow */}
         <button
-          className="absolute left-0 top-1/2 bg-white border-2 border-bg-gray-600 rounded-full p-2 text-[#F27638] hover:bg-primary hover:text-white hover:border-primary duration-300 transform -translate-y-1/2 z-10"
+          className={`absolute left-0 ${styles.icon} top-1/2 bg-white border-2 border-bg-gray-600 rounded-full p-2 text-[#F27638] hover:bg-primary hover:text-white hover:border-primary duration-300 transform -translate-y-1/2 z-10`}
           onClick={goToPrevSlide}
         >
           <ArrowLeftIcon className="h-6 w-6" />
@@ -43,7 +44,7 @@ const BannerCarousel = ({ data }) => {
 
         {/* Right arrow */}
         <button
-          className="absolute right-0 top-1/2 bg-white border-2 border-bg-gray-600 rounded-full p-2 text-[#F27638] hover:bg-primary hover:text-white hover:border-primary duration-300 transform -translate-y-1/2 z-10"
+          className={`absolute right-0 ${styles.icon} top-1/2 bg-white border-2 border-bg-gray-600 rounded-full p-2 text-[#F27638] hover:bg-primary hover:text-white hover:border-primary duration-300 transform -translate-y-1/2 z-10`}
           onClick={goToNextSlide}
         >
           <ArrowRightIcon className="h-6 w-6" />
@@ -59,7 +60,7 @@ const BannerCarousel = ({ data }) => {
               <Link
                 href={banner.slug ? `/trip/${banner.slug}` : '/'}
                 rel="Trip Featured Image"
-                className="w-[80vw] h-[75vh] overflow-hidden rounded-2xl relative"
+                className={`${styles.imgSize} overflow-hidden relative`}
               >
                 <img
                   src={banner.imageUrl}
@@ -67,7 +68,7 @@ const BannerCarousel = ({ data }) => {
                   className="object-cover w-full h-full"
                 />
                 {/* <div className="absolute inset-0 bg-black opacity-30"></div> */}
-                <div className="absolute top-0 left-0 px-4 py-2 bg-white rounded-br-2xl text-2xl text-text font-sans font-semibold">
+                <div className={`absolute top-0 left-0 px-4 py-2 bg-white rounded-br-2xl ${styles.tripname} text-text font-sans font-semibold`}>
                   {banner.name}
                 </div>
               </Link>

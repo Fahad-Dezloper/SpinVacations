@@ -1,0 +1,35 @@
+.container{
+     padding-left: 3.5rem /* 56px */;
+    padding-right: 3.5rem /* 56px */;
+}
+
+.contactContainer{
+    gap: 1.5rem /* 24px */;
+}
+
+
+@media (max-width: 640px) {
+  .container {
+    padding-left: 1rem /* 32px */;
+    padding-right: 1rem /* 32px */;
+  }
+
+  .contactContainer{
+    justify-content: space-between;
+    width: 100%;
+}
+
+  .hide{
+    display: none;
+  }
+}
+
+
+/* // px-4, hidden, justify-between, w-full */
+/* tablest max width of 1.24px */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .container {
+    padding-left: 1.5rem /* 16px */;
+    padding-right: 1.5rem /* 16px */;
+  }
+}

@@ -5,6 +5,7 @@ import React, { useRef } from 'react';
 import UpcomingData from '../shared/UpcomingData'; // Your data-rendering component
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
+import styles from '../css/UpcomingSection.module.css'
 
 const ScrollableTours = ({ data }) => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -26,9 +27,10 @@ const ScrollableTours = ({ data }) => {
         <div className='flex justify-between items-center'>
             <div>
                 <h3 className='text-[#666666]'>Get the best</h3>
-                <h1 className='font-sans text-4xl'>Upcoming Tours</h1>
+          <h1 className={`font-sans text-4xl ${styles.heading}`}>Upcoming Tours</h1>
             </div>
-            <div className='flex gap-4 items-center'>
+        <div className={`flex gap-4 items-center`}>
+          <div className={`flex gap-4 items-center ${styles.hide}`}>
                 <div
                 onClick={scrollLeft}
                 className='p-3 cursor-pointer rounded-full border-2 border-primary duration-200 hover:bg-accent hover:text-white'
@@ -41,10 +43,11 @@ const ScrollableTours = ({ data }) => {
                 >
                 <ChevronRight />
                   </div>
+          </div>
                   
                     <div className='flex gap-4 items-center'>
                     <Link href="/upcoming-trips">
-                    <Button className="text-white rounded-full py-6 px-6 flex gap-3 items-center bg-primary">
+              <Button className={`text-white rounded-full ${styles.btnSize} p-6 flex gap-3 items-center bg-primary`}>
                     <span>View All</span>
                     <ArrowRightIcon />
                     </Button>
@@ -56,7 +59,7 @@ const ScrollableTours = ({ data }) => {
       {/* Scrollable container */}
       <div
         ref={scrollContainerRef}
-        className='hide-scrollbar flex gap-6 overflow-x-auto whitespace-nowrap'
+        className={`hide-scrollbar flex gap-6 ${styles.scrollCont} flex-none overflow-x-auto whitespace-nowrap`}
         style={{ scrollBehavior: 'smooth' }}
       >
         {/* Render the data dynamically */}

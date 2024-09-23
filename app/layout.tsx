@@ -1,4 +1,4 @@
-// layout.tsx or app.tsx
+import React from 'react';
 import './globals.css';
 import type { Metadata } from "next";
 import { config } from '@fortawesome/fontawesome-svg-core';
@@ -7,11 +7,6 @@ config.autoAddCss = false; // Disable auto-adding the CSS
 import MainNav from "@/app/components/MainNav";
 import TopNavigation from "@/app/components/TopNavigation";
 import Footer from "@/app/components/Footer";
-
-// const inter = Inter({ subsets: ['latin']  , weight: ['400', '700'] });
-// const lato = Lato({ subsets: ['latin'], weight: ['100', '300', '400', '700', '900'] }); // Correct weights for Lato
-// const poppins = Poppins({ subsets: ['latin'], weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'] }); // Correct weights for Poppins
-
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -23,6 +18,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+
   return (
     <html lang="en">
       <head>

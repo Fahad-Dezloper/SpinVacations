@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
+import styles from '../css/TravelReminder.module.css'
 
 const calculateTimePassed = (months: number) => {
   const now = new Date();
@@ -118,12 +119,12 @@ const TravelReminder = () => {
   };
 
   return (
-    <div className='w-full flex flex-col gap-4 items-center'>
-      <h1 className='text-8xl font-sans text-center font-bold mb-4'>When did you last travel?</h1>
-      <div className='flex gap-4 items-center'>
+    <div className={`w-full flex flex-col gap-2 ${styles.mainCont} items-center`}>
+      <h1 className={`${styles.header} font-sans text-center font-bold leading-none mb-4`}>When did you last travel?</h1>
+      <div className={`flex gap-4 items-center ${styles.reminderCont}`}>
       <div className='flex gap-2 items-center font-sans text-lg text-[#666666] font-semibold'>
         It&apos;s been
-        <div className='p-1 bg-[#F2F4F6] w-fit h-fit rounded-full border-2 border-r-accent border-t-accent border-b-accent'>
+          <div className={`p-1 ${styles.rotate} bg-[#F2F4F6] w-fit h-fit rounded-full border-2 border-r-accent border-t-accent border-b-accent`}>
           <ArrowRight />
         </div>
       </div>

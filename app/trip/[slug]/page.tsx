@@ -8,6 +8,7 @@ import wrong from '@/public/exclusion-icon.svg';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import Link from 'next/link';
 import { ChevronRight } from 'lucide-react';
+import styles from './tour.module.css'
 
 
 const formatDate = (dateString) => {
@@ -113,6 +114,8 @@ const TripDetailPage = async ({ params }: { params: { slug: string } }) => {
   if (!similarTrips) {
     return <div>Similiar Trip not found</div>;
   }
+  // Check if packageOverview exists before accessing it
+
 
   const localTransferDescription = trip.packageOverview.transport.localTravelVehicle
   ? ` & Local Transfers by ${trip.packageOverview.transport.vehicleType || ''} Vehicle`
@@ -120,28 +123,28 @@ const TripDetailPage = async ({ params }: { params: { slug: string } }) => {
 
 
   return (
-    <div className='w-full h-fit px-20 py-7'>
+    <div className={`w-full h-fit py-7`}>
       <div className='flex flex-col gap-4 w-full h-full'>
-        <div>
-          <span className='flex gap-1 text-sm items-center text-[#666666]'>
+        <div className={`${styles.container} px-20`}>
+          <span className='flex gap-1 text-xs items-center text-[#666666]'>
             <Link href="/">Home</Link>
-            <ChevronRight />
+            <ChevronRight className='text-sm' />
             <Link href={`/trip/${trip.name}`} className='text-primary'>{trip.name}</Link>
           </span>
-          <h1 className='font-sans font-semibold text-black text-[2.7vw]'>{trip.name}</h1>
+          <h1 className={`font-sans font-semibold ${styles.tripH} text-black text-[2.7vw]`}>{trip.name}</h1>
           <h3 className='text-sm font-bold text-text font-lato'>{trip.packageOverview.tripDuration.days} Days <span className='text-primary'>/</span> {trip.packageOverview.tripDuration.nights} Nights</h3>
         </div>
-      <div className='flex flex-col gap-5'>
-        <div className='flex gap-4 w-full h-full'>
+        <div className='flex flex-col relative gap-5'>
+          <div className={`flex ${styles.tripCont} ${styles.container} px-20 gap-4 w-full h-full`}>
           {/* Left Side */}
           <div className='w-full h-full flex flex-col gap-3'>
-            <div className='w-full h-[26vw] rounded-lg shadow-md'>
+              <div className={`w-full h-[26vw] ${styles.imgSize} rounded-lg shadow-md`}>
               <BannerTrip data={trip.tripPages} />
             </div>
 
-            <div className='bg-white rounded-lg shadow-md'>
-              <Tabs defaultValue="overview" className="w-full">
-                <TabsList className="font-sans">
+            <div className='bg-white rounded-lg shadow-md w-full overflow-hidden'>
+              <Tabs defaultValue="overview" className="w-full overflow-hidden">
+                <TabsList className="font-sans w-full overflow-x-auto">
                   <TabsTrigger value="overview">Overview</TabsTrigger>
                   <TabsTrigger value="itinerary">Day wise Itinerary</TabsTrigger>
                   <TabsTrigger value="inc/exl">Inclusion/Exclusion</TabsTrigger>
@@ -150,7 +153,7 @@ const TripDetailPage = async ({ params }: { params: { slug: string } }) => {
                   </TabsList>
                   
                 <div className='px-4 py-4 font-lato'>
-                <TabsContent value="overview">{trip.overview}</TabsContent>
+                <TabsContent value="overview" className={`${styles.overview} font-lato text-base leading-snug text-text`}>{trip.overview}</TabsContent>
                   
                 <TabsContent value="itinerary">
                     <div>
@@ -159,7 +162,7 @@ const TripDetailPage = async ({ params }: { params: { slug: string } }) => {
                   </TabsContent>
                   
                   <TabsContent value="inc/exl">
-                    <div className='flex w-full h-fit gap-4'>
+                      <div className={`flex ${styles.incexc} w-full h-fit gap-4`}>
                       {/* inclusions */}
                       <div className='w-full p-3 flex flex-col gap-3 rounded-lg bg-[#EAFAEA] shadow-md'>
                         <h1 className='text-xl font-semibold font-sans'>Inclusions</h1>
@@ -196,7 +199,7 @@ const TripDetailPage = async ({ params }: { params: { slug: string } }) => {
                       <div className='flex px-3 py-2 w-full bg-pgradient'>
                         <h1 className='font-semibold'>{info.heading}</h1>
                       </div>
-                      <div className='flex p-4 w-full h-full'>
+                      <div className='flex p-3 font-lato w-full h-full'>
                         <p>{info.paragraph}</p>
                       </div>
                         </div>
@@ -209,7 +212,7 @@ const TripDetailPage = async ({ params }: { params: { slug: string } }) => {
                         <>
                         <div key={index} className='pheading font-lato text-lg font-semibold text-text flex flex-col'>{pricing.heading} <span className="text-base font-bold text-[#666666]">{pricing.subtext}</span>
                         </div>
-                        <div className='text-base font-sans'><span className=''>₹</span>{pricing.price}</div>
+                        <div className={`text-base font-sans ${styles.price}`}><span className=''>₹</span>{pricing.price}</div>
                         </>
                       ))}
                       </div>
@@ -218,10 +221,9 @@ const TripDetailPage = async ({ params }: { params: { slug: string } }) => {
               </Tabs>
             </div>
             </div>       
-            
           {/* Right Side */}
-          <div className='w-[40vw] h-full flex flex-col gap-14'>
-              <div className='flex flex-col h-fit bg-pgradient justify-between overflow-hidden shadow-md rounded-lg'>
+            <div className={`w-[40vw] ${styles.overviewCont} h-full flex flex-col gap-14`}>
+              <div className={`flex flex-col h-fit bg-pgradient justify-between overflow-hidden shadow-md rounded-lg ${styles.priceCont}`}>
                 <div className='flex flex-col px-3 pt-3 py-2'>
                 <p className='text-base'>Starting from</p>
                 <div className='flex items-center gap-2'>
@@ -234,8 +236,8 @@ const TripDetailPage = async ({ params }: { params: { slug: string } }) => {
                 </div>
               </div>
 
-            <div className='w-full h-fit flex flex-col gap-4 px-3 py-6 rounded-lg bg-white border border-accent relative shadow-md'>
-              <div className='px-4 py-2 border-accent text-text font-sans absolute -top-[1.5vw] left-1/4 border rounded-full bg-gray-100'>
+            <div className='w-full h-fit flex flex-col gap-4 px-3 pb-6 pt-8 rounded-lg bg-white border border-accent relative shadow-md'>
+              <div className={`px-4 py-2 border-accent text-text font-sans absolute ${styles.overviewH} -top-[1.5vw] left-1/4 border rounded-full bg-gray-100`}>
                 Package Overview
               </div>
               <div className='grid grid-cols-2 grid-rows-3 gap-y-3'>
@@ -292,17 +294,33 @@ const TripDetailPage = async ({ params }: { params: { slug: string } }) => {
             </div>
             </div>
             
-        </div>
+          </div>
+          
+          {/* <div className='px-4 py-4 w-full bg-red-300 text-white flex items-center sticky bottom-0'> */}
+            <div className={`flex flex-col h-fit bg-pgradient justify-between overflow-hidden sticky bottom-0 shadow-md rounded-lg`}>
+                <div className='flex justify-between items-center px-3 pt-3 py-1'>
+                <p className='text-base'>Starting from</p>
+                <div className='flex items-center'>
+                    <h1 className='text-[6vw] font-bold font-sans'>₹{trip.avgprice}</h1>
+                  {/* <span className='text-sm font-regular tracking-tight'>Per Person</span> */}
+                  </div>
+                  </div>
+                <div className='w-full bg-white flex px-4 py-3 items-center justify-center'>
+                  <button className='w-full h-11 border border-primary rounded-full text-base text-accent font-semibold tracking-tight'>CONTACT US</button>
+                </div>
+              </div>
+            {/* </div> */}
 
-          <div className='w-full h-fit flex flex-col item-center mt-4'>
+          
+          <div className={`w-full h-fit ${styles.container} px-20 flex flex-col item-center mt-4`}>
             {/* Similiar Trips Design */}
             <h1 className='text-4xl font-sans'>Similiar Trips</h1>
-            <div className='grid grid-cols-4 gap-8 mt-6'>
+            <div className={`grid grid-cols-4 ${styles.mainSimiliarCont} gap-8 flex-none overflow-y-auto mt-6`}>
               {similarTrips.map((trip, index) => (
                 <Link
                       href={`/trip/${trip.slug.current}`}
                       key={index}
-                      className='min-w-[25%] cursor-pointer overflow-hidden shadow-gradient-shadow relative h-[50vh] rounded-2xl bg-red-400'
+                      className= {`min-w-[25%] ${styles.similiarContSize} cursor-pointer shrink-0 overflow-hidden shadow-gradient-shadow relative h-[50vh] rounded-2xl bg-red-400 `}
                     >
                       <Image
                         src={trip.imageUrl}
@@ -311,7 +329,7 @@ const TripDetailPage = async ({ params }: { params: { slug: string } }) => {
                         style={{ objectFit: "cover" }}
                         className='w-full h-full object-cover'
                       />
-                      <div className='absolute h-[16vh] w-full px-6 bottom-0 bg-white border-accent border-b-2 rounded-2xl shadow-gradient-shadow'>
+                  <div className={`absolute h-[16vh] ${styles.tripDetails} w-full px-6 bottom-0 bg-white border-accent border-b-2 rounded-2xl shadow-gradient-shadow`}>
                         <div className='flex flex-col h-full'>
                            {trip.dateOfLeaving && (
                               <div className='text-xs bg-pgradient flex items-center justify-center w-full rounded-br-2xl rounded-bl-2xl py-[4px]'>

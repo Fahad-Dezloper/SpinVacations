@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import React from 'react';
 import Image from 'next/image';
+import styles from '../css/TopDest.module.css'
 
 interface TripCardProps {
   slug: string;
@@ -48,8 +49,8 @@ const TripCard = ({  slug,
   // };
 
   return (
-    <Link href={`/trip/${slug.current}`} className='w-full flex shadow-gradient-shadow gradient-shadow flex-col gap-4 h-fit rounded-xl overflow-hidden'>
-            <div className='w-full h-[16vw] shadow-gradient-shadow gradient-shadow rounded-2xl overflow-hidden'>
+    <Link href={`/trip/${slug.current}`} className={`w-full flex shadow-gradient-shadow gradient-shadow flex-col gap-4 h-fit rounded-xl overflow-hidden'`}>
+      <div className={`w-full h-[16vw] ${styles.imgSize} shadow-gradient-shadow gradient-shadow rounded-2xl overflow-hidden`}>
               <img
                 src={imageUrl}
                 alt="category image"
@@ -63,8 +64,8 @@ const TripCard = ({  slug,
         </h1>
         <div className='flex flex-col gap-3'>
           <div className='flex text-sm flex-col gap-4'>
-          <div className='flex px-2 gap-2 items-center'>
-              <h1 className='font-lato'>
+          <div className='flex px-2 gap-2 items-center text-sm'>
+              <h1 className='font-lato whitespace-nowrap'>
                 {/* {days}D <span className='text-accent font-black'>/</span> {nights}N */}
                 {days === 0 ? '' : `${days}D`} 
                 {days !== 0 && nights !== 0 && <span className='text-accent font-black'> / </span>}

@@ -1,4 +1,5 @@
 // schemas/tripDetails.js
+import {embeddingsIndexReferenceInput} from '@sanity/embeddings-index-ui'
 import {Rule} from '@sanity/types'
 
 export default {
@@ -99,6 +100,7 @@ export default {
         },
       ],
       description: 'Select categories for this trip',
+      inputComponent: embeddingsIndexReferenceInput,
     },
     {
       name: 'packageOverview',
@@ -121,6 +123,7 @@ export default {
           title: 'Best For',
           type: 'array',
           of: [{type: 'string'}],
+          inputComponent: embeddingsIndexReferenceInput,
         },
         {
           name: 'tripDuration',
@@ -217,6 +220,7 @@ export default {
           title: 'Travel Highlights',
           type: 'array',
           of: [{type: 'string'}],
+          inputComponent: embeddingsIndexReferenceInput,
         },
       ],
     },

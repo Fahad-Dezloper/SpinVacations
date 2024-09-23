@@ -7,10 +7,13 @@ import TravelReminder from "@/app/components/home/TravelReminder";
 import Testimonials from "@/app/components/home/Testimonials";
 import UpcomingTour from "./components/home/UpcomingTour";
 import AllTrips from "./components/home/AllTrips";
+import SearchTrips from "./components/home/SearchTrips";
 
 export default function Home() {
   return (
-    <div className="overflow-x-hidden !important flex flex-col gap-16">
+    <>
+      {/* <SearchTrips /> */}
+      <div className="overflow-x-hidden !important flex flex-col gap-16 mainPage">
       <Banner />
       <UpcomingTour />
       <Categories />
@@ -21,6 +24,7 @@ export default function Home() {
       <ChooseUs />
       <Testimonials />
       </div>
-    </div>
+      </div>
+      </>
   );
 }

@@ -2,6 +2,7 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
+import styles from '../../trip/[slug]/tour.module.css'
 
 const BannerTrip = ({ data }) => {
   const safeData = Array.isArray(data) ? data : [];
@@ -25,7 +26,7 @@ const BannerTrip = ({ data }) => {
 
 
   useEffect(() => {
-    const interval = setInterval(goToNext, 2000);
+    const interval = setInterval(goToNext, 4000);
     return () => clearInterval(interval);
   }, [currentIndex]);
 
@@ -43,7 +44,7 @@ const BannerTrip = ({ data }) => {
           alt={`carousel-${currentIndex}`}
           fill
           style={{ objectFit: "cover" }}
-          className="w-full h-64 md:h-96 object-cover transition-transform duration-500"
+          className="w-full h-64 object-cover transition-transform duration-500"
         />
       </div>
 

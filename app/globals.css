@@ -68,6 +68,10 @@
   }
 }
 
+/* body{
+  overflow: hidden;
+} */
+
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
 }
@@ -102,3 +106,14 @@ sup {
   background-size: cover;
   background-position: center;
 }
+
+.mainPage{
+ /* gap-12 mt-4  */
+}
+
+@media (max-width: 640px) {
+  .mainPage{
+    gap: 3rem;
+    margin-top: 1rem /* 16px */;
+  }
+} 

@@ -1,7 +1,7 @@
 import { client } from '@/app/lib/sanity';
 import React from 'react';
 import ScrollableTours from './ScrollableTours'; // Import the client-side component
-
+import styles from '../css/UpcomingSection.module.css'
 // Fetch data in the Server Component
 async function getData() {
   const query = `*[_type == "tripDetails" && isUpcomingTrip == true]{
@@ -22,7 +22,7 @@ const UpcomingTour = async () => {
   const data = await getData(); // Fetch data here
 
   return (
-    <div className='px-20 flex flex-col gap-8'>
+    <div className={`px-20 ${styles.mainCont} flex flex-col gap-8`}>
       {/* Pass the data to the client component */}
       <ScrollableTours data={data} />
     </div>
