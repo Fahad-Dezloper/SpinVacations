@@ -84,7 +84,6 @@ const Footer = () => {
                   </div>
               </div>
               
-              {/* Mobile */}
               <div className='w-full h-full flex flex-col gap-6 mb-9'>
                     <div>
                         <h2 className="mb-4 text-sm font-semibold text-gray-900 uppercase dark:text-white">Follow Us</h2>
@@ -132,6 +131,8 @@ const Footer = () => {
               </div>
           </div>
 
+          
+          {/* Tablets */}
           <div className={`w-full h-full ${styles.tablets} hidden flex-col gap-12 items-start`}>
                     <a href="#" className="hidden">
                         <Image src={logo} height={150} width={150} alt='Spin Vacations Logo' />
