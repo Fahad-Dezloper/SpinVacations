@@ -2,7 +2,6 @@
 
 import { client } from '@/app/lib/sanity';
 import TripCard from '@/app/components/shared/TripCard';
-// import styles from './categoriesPage.moduele.css'
 import styles from '../../components/css/Categorypage.module.css'
 
 // Function to fetch trips based on category slug
@@ -36,7 +35,9 @@ async function getTripsByCategory(slug: string) {
 }
 
 interface TripCardProps {
-  slug: string;
+  slug: {
+    current: string;
+  };
   featuredImageUrl: string;
   name: string;
   avgprice: number;
