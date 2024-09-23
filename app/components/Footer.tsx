@@ -84,7 +84,7 @@ const Footer = () => {
                   </div>
               </div>
               
-              {/* MObile */}
+              {/* Mobile */}
               <div className='w-full h-full flex flex-col gap-6 mb-9'>
                     <div>
                         <h2 className="mb-4 text-sm font-semibold text-gray-900 uppercase dark:text-white">Follow Us</h2>
