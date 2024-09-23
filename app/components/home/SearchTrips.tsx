@@ -4,9 +4,19 @@ import { useEffect, useState } from 'react';
 import { client } from '@/app/lib/sanity';
 import Link from 'next/link';
 
+
+interface Trip {
+  _id: string;
+  name: string;
+  imageUrl: string;
+  slug: {
+    current: string;
+  };
+}
+
 const SearchTrips = () => {
   const [searchQuery, setSearchQuery] = useState('');
-  const [tripResults, setTripResults] = useState([]);
+  const [tripResults, setTripResults] = useState<Trip[]>([]);
 
   useEffect(() => {
     const fetchTrips = async () => {
