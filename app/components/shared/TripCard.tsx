@@ -27,6 +27,7 @@ interface TripCardProps {
     localTravelVehicle: boolean;
     vehicleType?: string;
   };
+  className?: string;
 }
 
 const TripCard = ({  slug,
