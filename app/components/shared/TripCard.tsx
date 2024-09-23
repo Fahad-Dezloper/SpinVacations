@@ -9,10 +9,10 @@ interface TripCardProps {
   slug: string;
   imageUrl: string;
   name: string;
-  description: string;
-  location: string;
+  description?: string;
+  location?: string;
   avgPrice: number;
-  price: number;
+  price?: number;
   days: number;
   nights: number;
   meals: {
@@ -40,13 +40,6 @@ const TripCard = ({  slug,
   nights,
   meals,
   transport }: TripCardProps) => {
-  // console.log(slug)
-  // const truncateText = (text: string, limit: number, isDescription: boolean) => {
-  //   if (text.length > limit) {
-  //     return isDescription ? `${text.slice(0, limit)}... <span className='text-[#013E7E]'>more</span>` : `${text.slice(0, limit)}...`;
-  //   }
-  //   return text;
-  // };
 
   return (
     <Link href={`/trip/${slug.current}`} className={`w-full flex shadow-gradient-shadow gradient-shadow flex-col gap-4 h-fit rounded-xl overflow-hidden'`}>
