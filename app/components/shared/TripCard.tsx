@@ -2,11 +2,12 @@
 
 import Link from 'next/link';
 import React from 'react';
-import Image from 'next/image';
 import styles from '../css/TopDest.module.css'
 
 interface TripCardProps {
-  slug: string;
+  slug: {
+    current: string;
+  };
   imageUrl: string;
   name: string;
   description?: string;
