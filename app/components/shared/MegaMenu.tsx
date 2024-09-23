@@ -63,7 +63,7 @@ const Tabs = () => {
     </div>
 }
 
-const Tab = ({ children, tab, handleSetSelected, selected, isDropdown, link }: { children: ReactNode; tab: number; handleSetSelected: (val: number | null) => void; selected: number | null; isDropdown: boolean;  }) => { 
+const Tab = ({ children, tab, handleSetSelected, selected, isDropdown }: { children: ReactNode; tab: number; handleSetSelected: (val: number | null) => void; selected: number | null; isDropdown: boolean;  }) => { 
                 return <Button id={`shift-tab-${tab}`} onMouseOver={() => handleSetSelected(tab)} onClick={() => handleSetSelected(tab)} className={`flex items-center gap-1 font-semibold rounded-full px-3 py-1.5 text-sm transition-colors ${selected === tab ? "text-white bg-primary" : "text-[#666666] bg-white"}`}>
                 <span>{children}</span>
             {isDropdown && <FiChevronDown className={`transition-transform ${selected === tab ? "rotate-180" : ""}`} />}
