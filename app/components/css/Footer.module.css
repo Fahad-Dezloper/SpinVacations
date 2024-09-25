@@ -1,0 +1,67 @@
+.iconsize{
+  font-size: 1.5vw;
+}
+
+@media (max-width: 1118px) {
+  
+.address {
+    font-size: 0.875rem /* 14px */;
+    line-height: 1.25rem /* 20px */;
+  }
+}
+
+
+@media (max-width: 640px) {
+  .footerCont{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mainCont{
+    padding-left: 1rem /* 32px */;
+    padding-right: 1rem /* 32px */;
+  }
+
+  .hide{
+    display: none;
+  }
+
+  .mobile{
+    display: flex;
+  }
+
+  .iconsize{
+    font-size: 5vw;
+  }
+
+  .crafted{
+    /* flex w-full justify-end */
+    display: flex;
+    width: 100%;
+    justify-content: end;
+    margin-top: 2vw;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+   .mainCont{
+     padding-left: 1.5rem /* 16px */;
+    padding-right: 1.5rem /* 16px */;
+  }
+
+  .hide{
+    display: none;
+  }
+
+  .tablets{
+    display: flex;
+  }
+
+  .footerCont{
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .iconsize{
+    font-size: 3vw;
+  }
+}

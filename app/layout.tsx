@@ -1,12 +1,12 @@
-// layout.tsx or app.tsx
-import { Inter, Lato, Poppins } from 'next/font/google';
+import React from 'react';
 import './globals.css';
 import type { Metadata } from "next";
-
-const inter = Inter({ subsets: ['latin'] });
-const lato = Lato({ subsets: ['latin'], weight: ['100', '300', '400', '700', '900'] }); // Correct weights for Lato
-const poppins = Poppins({ subsets: ['latin'], weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'] }); // Correct weights for Poppins
-
+// import { config } from '@fortawesome/fontawesome-svg-core';
+// import '@fortawesome/fontawesome-svg-core/styles.css'; // Import the CSS
+// config.autoAddCss = false; // Disable auto-adding the CSS
+import MainNav from "@/app/components/MainNav";
+import TopNavigation from "@/app/components/TopNavigation";
+import Footer from "@/app/components/Footer";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -18,10 +18,19 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+
   return (
     <html lang="en">
-      <body className={`${inter.className} ${lato.className} ${poppins.className}`}>
+      <head>
+        {/* Link Google Fonts manually */}
+        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+      </head>
+      <body>
+        <TopNavigation />
+        <MainNav />
         {children}
+        <Footer />
       </body>
     </html>
   );

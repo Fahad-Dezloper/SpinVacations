@@ -1,0 +1,291 @@
+<div className='w-full h-fit px-20 py-7'>
+      <div className='flex flex-col gap-4 w-full h-full'>
+        <div>
+          <span>breadcrumbs</span>
+          <h1 className='font-sans font-semibold text-black text-[2.7vw]'>Nepal Heritage & Culture Tour</h1>
+          <h3 className='text-sm font-bold text-text font-lato'>4 Days <span className='text-primary'>/</span> 3 Nights</h3>
+        </div>
+      <div className='flex flex-col gap-5'>
+        <div className='flex gap-4 w-full h-full'>
+          {/* Left Side */}
+          <div className='w-full h-full flex flex-col gap-3'>
+            <div className='w-full h-[26vw] rounded-lg shadow-md'>
+              <BannerTrip data={data} />
+            </div>
+
+            <div className='bg-white rounded-lg shadow-md'>
+              <Tabs defaultValue="account" className="w-full">
+                <TabsList className="font-sans">
+                  <TabsTrigger value="overview">Overview</TabsTrigger>
+                  <TabsTrigger value="itinerary">Day wise Itinerary</TabsTrigger>
+                  <TabsTrigger value="inc/exl">Inclusion/Exclusion</TabsTrigger>
+                  <TabsTrigger value="addinfo">Additional Info</TabsTrigger>
+                  <TabsTrigger value="pricing">Pricing</TabsTrigger>
+                </TabsList>
+                <div className='px-4 py-4 font-lato'>
+                
+                  <TabsContent value="overview">
+                    Discover the rich cultural heritage and spiritual essence of Nepal in this 4-day, 3-night tour. Experience the bustling city of Kathmandu, with its vibrant temples, ancient palaces, and sacred shrines, and delve into the historic town of Janakpur, home to the iconic Janak Mahal. Whether you're a history enthusiast, a devotee, or someone seeking peaceful serenity, this tour offers an unforgettable glimpse into Nepal’s traditions and sacred sites.
+                  </TabsContent>
+                  
+                <TabsContent value="itinerary">
+                    <div>
+                      I am from itinerary i will get designed later
+                  </div>
+                  </TabsContent>
+                  
+                  <TabsContent value="inc/exl">
+                    <div className='flex w-full h-fit gap-4'>
+                      {/* inclusions */}
+                      <div className='w-full p-3 flex flex-col gap-3 rounded-lg bg-[#EAFAEA] shadow-md'>
+                        <h1 className='text-xl font-semibold font-sans'>Inclusions</h1>
+
+                        <div className='font-lato text-sm flex flex-col h-full gap-4'>
+                          <div className='flex items-center gap-2'>
+                            <Image src={tick} alt="inclusion" width={14} height={14} />
+                            <p>Flights (Economy Class)</p>
+                          </div>
+                          
+                          <div className='flex items-start gap-2'>
+                            <Image src={tick} alt="inclusion" className='pt-3' width={14} height={14} />
+                             <p>3-Night Stay in 3-Star Hotels (AC rooms, twin sharing basis)</p>
+                            </div>
+                          <div className='flex items-center gap-2'>
+                            <Image src={tick} alt="inclusion" width={14} height={14} />
+                          <p className="leading-none">All times meals</p>
+                          </div>
+                          <div className='flex items-center gap-2'>
+                            <Image src={tick} alt="inclusion" width={14} height={14} />
+                          <p className="leading-none">Local Transfers & Sightseeing in AC Vehicles</p>
+                          </div>
+                          <div className='flex items-center gap-2'>
+                            <Image src={tick} alt="inclusion" width={14} height={14} />
+                          <p className="leading-none">Sightseeing</p>
+                          </div>
+                          <div className='flex items-center gap-2'>
+                            <Image src={tick} alt="inclusion" width={14} height={14} />
+                          <p className="leading-none">Tour Coordinator</p>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      {/* exclusions */}
+                      <div className='w-full p-3 flex flex-col gap-3 rounded-lg bg-[#FBEBEB] shadow-md'>
+                        <h1 className='text-xl font-semibold font-sans'>Exclusions</h1>
+
+                        <div className='font-lato text-sm flex flex-col h-full gap-4'>
+                          <div className='flex items-center gap-2'>
+                            <Image src={wrong} alt="exclusion" width={14} height={14} />
+                            <p>RT-PCR or any required test costs</p>
+                          </div>
+                          
+                          <div className='flex items-center gap-2'>
+                            <Image src={wrong} alt="exclusion" className='' width={14} height={14} />
+                             <p>Travel Insurance</p>
+                            </div>
+                          <div className='flex items-center gap-2'>
+                            <Image src={wrong} alt="exclusion" width={14} height={14} />
+                          <p className="leading-none">Personal expenses (shopping, laundry, tips, etc.)</p>
+                          </div>
+                          <div className='flex items-center gap-2'>
+                            <Image src={wrong} alt="exclusion" width={14} height={14} />
+                          <p className="leading-none">Entry fees for temples or attractions</p>
+                          </div>
+                          <div className='flex items-center gap-2'>
+                            <Image src={wrong} alt="exclusion" width={14} height={14} />
+                          <p className="leading-none">Local/Internal transport within the sightseeing spots</p>
+                          </div>
+                          <div className='flex items-center gap-2'>
+                            <Image src={wrong} alt="exclusion" width={14} height={14} />
+                          <p className="leading-none">Meals not mentioned (lunches, snacks)</p>
+                          </div>
+                          <div className='flex items-center gap-2'>
+                            <Image src={wrong} alt="exclusion" width={14} height={14} />
+                          <p className="leading-none">Airport transfers to/from Delhi</p>
+                          </div>
+                          <div className='flex items-center gap-2'>
+                            <Image src={wrong} alt="exclusion" width={14} height={14} />
+                          <p className="">Any additional expenses due to airline cancellations</p>
+                          </div>
+                          <div className='flex items-center gap-2'>
+                            <Image src={wrong} alt="exclusion" width={14} height={14} />
+                          <p className="leading-none">Camera/Video camera charges at sightseeing locations</p>
+                          </div>
+                          <div className='flex items-center gap-2'>
+                            <Image src={wrong} alt="exclusion" width={14} height={14} />
+                          <p className="leading-none">Additional usage of vehicles beyond the itinerary</p>
+                          </div>
+                        </div>
+                        </div>
+                    </div>
+                  </TabsContent>
+
+                  <TabsContent value="addinfo" className='flex flex-col gap-4'>
+                    <div className='w-full h-fit flex flex-col border border-primary rounded-md overflow-hidden'>
+                      <div className='flex px-3 py-2 w-full bg-pgradient'>
+                        <h1 className='font-semibold'>Group Tour</h1>
+                      </div>
+                      <div className='flex p-4 w-full h-full'>
+                        <p>This is a group tour, and all activities will run as per the tour coordinator’s schedule</p>
+                      </div>
+                    </div>
+                    <div className='w-full h-fit flex flex-col border border-primary rounded-md overflow-hidden'>
+                      <div className='flex px-3 py-2 w-full bg-pgradient'>
+                        <h1 className='font-semibold'>No Smoking or Alcohol</h1>
+                      </div>
+                      <div className='flex p-4 w-full h-full'>
+                        <p>Smoking, tobacco, and alcohol consumption are strictly prohibited during the tour</p>
+                      </div>
+                    </div>
+                    <div className='w-full h-fit flex flex-col border border-primary rounded-md overflow-hidden'>
+                      <div className='flex px-3 py-2 w-full bg-pgradient'>
+                        <h1 className='font-semibold'>Seat Allocation</h1>
+                      </div>
+                      <div className='flex p-4 w-full h-full'>
+                        <p>Seats in the vehicle will be assigned at the time of booking, based on availability</p>
+                      </div>
+                    </div>
+                    <div className='w-full h-fit flex flex-col border border-primary rounded-md overflow-hidden'>
+                      <div className='flex px-3 py-2 w-full bg-pgradient'>
+                        <h1 className='font-semibold'>Booking & Payment</h1>
+                      </div>
+                      <div className='flex p-4 w-full h-full'>
+                        <p>Full payment is required at least 15 days before departure. Prices are subject to change based on airfare, hotel tariffs, and government taxes</p>
+                      </div>
+                    </div>
+                    <div className='w-full h-fit flex flex-col border border-primary rounded-md overflow-hidden'>
+                      <div className='flex px-3 py-2 w-full bg-pgradient'>
+                        <h1 className='font-semibold'>Cancellation Policy</h1>
+                      </div>
+                      <div className='flex p-4 w-full h-full'>
+                        <p>
+                          <li>
+                            100% of the booking amount will be forfeited if canceled within 15 days of departure
+                          </li>
+                          <li>Refunds (if applicable) may take up to 30 days</li>
+                        </p>
+                      </div>
+                    </div>
+                  </TabsContent>
+
+                  <TabsContent value="pricing">
+                    <div className='w-full h-full grid grid-cols-2 grid-rows-4 gap-y-5 border-l-2 border-accent items-center pl-4'>
+                        <div className='pheading font-lato text-lg font-semibold text-text flex flex-col'>Adult <span className="text-base font-bold text-[#666666]">2 Persons in 1 Room</span></div>
+                        <div className='text-base font-sans'><span className=''>₹</span>29,990</div>
+                        <div className='pheading font-lato text-lg font-semibold text-text flex flex-col'>Stag <span className="text-base font-bold text-[#666666]">(Solo Traveler): 1 Person in 1 Room</span></div>
+                        <div className='text-base font-sans'><span className=''>₹</span>34,990</div>
+                        <div className='pheading font-lato text-lg font-semibold text-text flex flex-col'>Child <span className="text-base font-bold text-[#666666]">(Infant)</span></div>
+                        <div className='text-base font-sans'><span className=''>₹</span>5,000</div>
+                        <div className='pheading font-lato text-lg font-semibold text-text flex flex-col'>Child <span className="text-base font-bold text-[#666666]">(2-5 Years)</span></div>
+                        <div className='text-base font-sans'><span className=''>₹</span>24,990</div>
+                    </div>
+                  </TabsContent>
+                  </div>
+              </Tabs>
+            </div>
+          </div>       
+          {/* Right Side */}
+          <div className='w-[40vw] h-full flex flex-col gap-14'>
+              <div className='flex flex-col h-fit bg-pgradient justify-between overflow-hidden shadow-md rounded-lg'>
+                <div className='flex flex-col px-3 pt-3 py-2'>
+                <p className='text-base'>Starting from</p>
+                <div className='flex items-center gap-2'>
+                  <h1 className='text-[2.5vw] font-bold font-sans'>₹59,000</h1>
+                  <span className='text-sm font-regular tracking-tight'>Per Person</span>
+                  </div>
+                  </div>
+                <div className='w-full bg-white flex px-4 py-4 items-center justify-center'>
+                  <button className='w-full h-12 border border-primary rounded-full text-base text-accent font-semibold tracking-tight'>CONTACT US</button>
+                </div>
+              </div>
+
+            <div className='w-full h-fit flex flex-col gap-4 px-3 py-6 rounded-lg bg-white border border-accent relative shadow-md'>
+              <div className='px-4 py-2 border-accent text-text font-sans absolute -top-[1.5vw] left-1/4 border rounded-full bg-gray-100'>
+                Package Overview
+              </div>
+              <div className='grid grid-cols-2 grid-rows-3 gap-y-3'>
+                <div className='flex flex-col'>
+                  <h1 className='text-accent font-semibold font-lato'>Trip Type: </h1>
+                  <h3 className='text-text leading-snug font-lato'>Domestic</h3>
+                </div>
+                <div className='flex flex-col gap-1'>
+                  <h1 className='text-accent font-semibold font-lato'>Travel Locations: </h1>
+                  <h3 className='text-text leading-snug font-lato flex flex-wrap gap-2'><Badge className='text-gray-500 bg-gray-200'>Kathmandu</Badge><Badge className='text-gray-500 bg-gray-200'>Janakpur</Badge></h3>
+                </div>
+                <div className='flex flex-col'>
+                  <h1 className='text-accent font-semibold font-lato'>Trip Duration: </h1>
+                  <h3 className='text-text leading-snug font-lato'>4 Days / 3 Nights</h3>
+                </div>
+                <div className='flex flex-col'>
+                  <h1 className='text-accent font-semibold font-lato'>Accommodation: </h1>
+                  <h3 className='text-text leading-snug font-lato'>3-Star Hotel</h3>
+                </div>
+                <div className='flex flex-col'>
+                  <h1 className='text-accent font-semibold font-lato'>Meals: </h1>
+                  <h3 className='text-text leading-snug font-lato'>Breakfast & Dinner</h3>
+                </div>
+                <div className='flex flex-col'>
+                  <h1 className='text-accent font-semibold font-lato'>Transport: </h1>
+                  <h3 className='text-text leading-snug font-lato'>Flight & Local Transfers by AC Vehicle</h3>
+                </div>
+              </div>
+              <div className='flex flex-col gap-3'>
+                  <h1 className='text-accent font-semibold font-lato'>Travel Highlights: </h1>
+                <h3 className='text-text leading-snug font-lato flex flex-wrap gap-2'>
+                  <Badge className='text-gray-500 bg-gray-200'>Kathmandu Durbar Square</Badge>
+                  <Badge className='text-gray-500 bg-gray-200'>Swayumbhunath Temple</Badge>
+                  <Badge className='text-gray-500 bg-gray-200'>Pashupatinath Temple</Badge>
+                  <Badge className='text-gray-500 bg-gray-200'>Guhyeshwari Temple (Shaktipeeth)</Badge>
+                  <Badge className='text-gray-500 bg-gray-200'>Budhaneelkantha Temple</Badge>
+                  <Badge className='text-gray-500 bg-gray-200'>Bouddhanath Stupa</Badge>
+                  <Badge className='text-gray-500 bg-gray-200'>Janak Mahal</Badge>
+                  <Badge className='text-gray-500 bg-gray-200'>Sita-Ram Vivah Mandap</Badge>
+                  <Badge className='text-gray-500 bg-gray-200'>Danushadham</Badge>
+                </h3>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+
+          <div className='w-full h-[10vh] flex item-center justify-center bg-green-300'>
+            {/* Similiar Trips Design */}
+            <h1>Similiar Trips Design</h1>
+          </div>
+          </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+    choose us
+
+    <div className="col-span-2 flex flex-col space-y-4">
+                      {/* <!-- Top full-width div --> */}
+            <div className="bg-[#E0F7FA] rounded-xl flex flex-col justify-end shadow-md p-3 h-1/2"> 
+                        {/* <!-- Content here --> */}
+              <h1 className='font-sans text-lg leading-tight font-semibold text-text'>Friendly Travel Buddies</h1>
+              <p className='font-lato text-base leading-tight text-[#666666]'>A playful illustration of two people with backpacks, maps, and wide smiles, showing camaraderie.</p>
+            </div>
+                      
+                      {/* <!-- Bottom two half-width divs --> */}
+                      <div className="flex space-x-4 h-1/2">
+                        <div className="w-1/2 rounded-xl p-3 flex flex-col justify-end shadow-md bg-[#FFFACD]"> 
+                <div className='w-full h-full bg-red-400'>
+                  
+                </div>
+                          
+                          <h1 className='font-sans text-lg leading-tight font-semibold text-text'>Travel Anywhere</h1>
+                        </div>
+                        <div className="w-1/2 p-3 rounded-xl flex flex-col justify-end shadow-md bg-[#E0FFE0]"> 
+                {/* <!-- Content here --> */}
+                <h1 className='font-sans text-lg leading-tight font-semibold text-text'>No Surprises, Just Good Vibes</h1>
+                <p className='font-lato text-base leading-tight text-[#666666]'>With us, what you see is what you get—honest advice and clear plans. No surprises, just good vibes for your entire trip.</p>
+                        </div>
+                      </div>
+                    </div>

@@ -1,0 +1,166 @@
+.stepsFont{
+    font-size: 0.875rem /* 14px */;
+    line-height: 16px /* 20px */;
+}
+
+.cont{
+  align-items: center;
+}
+
+
+@media (max-width: 1118px) {
+  .stepsFont {
+    font-size: 0.75rem /* 12px */;
+    line-height: 0.75rem /* 16px */;
+  }
+}
+
+
+@media (max-width: 640px) {
+  .mainCont{
+     padding-left: 1rem /* 16px */;
+    padding-right: 1rem /* 16px */;
+    height: fit-content;
+    gap: 1rem;
+  }
+
+  .cont{
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  .rightCont{
+    width: 100%;
+  }
+
+  .card{
+    /* background-color: red; */
+    width: 65vw;
+    height: 25vh;
+    flex-shrink: 0;
+  }
+
+  .imgSize{
+    width: 16vw;
+    height: 15vw;
+  }
+
+  .leftCont{
+    width: 100%;
+    gap: 1rem;
+  }
+
+  .leftCont2{
+    width: 100%;
+    gap: 2rem;
+  }
+
+  .stepsH{
+    display: flex;
+  }
+
+  .stepsHide{
+    display: none;
+  }
+}
+
+@media (min-width: 390px) and (max-width: 640px) {
+  .imgSize{
+    height: 8vh;
+    width: 25vw;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+   .mainCont{
+     padding-left: 1.5rem /* 16px */;
+    padding-right: 1.5rem /* 16px */;
+    height: fit-content;
+    /* background-color: red; */
+  }
+
+  .cont{
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+    /* height: fit-content; */
+  }
+
+  .rightCont{
+    width: 100%;
+    height: fit-content;
+  }
+
+  .card{
+    /* background-color: red; */
+    width: 21.5vw;
+    height: 19vh;
+    flex-shrink: 0;
+  }
+
+  .imgSize{
+    height: 7vh;
+    width: 13vw;
+  }
+
+  .cardCont{
+    justify-content: center;
+    /* background-color: red; */
+    padding-bottom: 0;
+  }
+
+  .title{
+    font-size: 1.3vw;
+  }
+
+  .stepsFont{
+    font-size: 1.6vw;
+    line-height: 1.4vw;
+  }
+
+   .stepsH{
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .stepshow{
+    display: flex;
+  }
+
+  .stepsHide{
+    display: none;
+  }
+
+  .scroller{
+    height: fit-content;
+  }
+
+   .leftCont{
+    width: 100%;
+    gap: 2.5rem;
+  }
+
+  .arrow{
+    rotate: 265deg;
+  }
+
+  .step1{
+    justify-content: flex-end;
+    padding-right:4vw;
+  }
+
+  .step2{
+    justify-content: flex-start;
+    padding-left:4vw;
+  }
+
+  .step3{
+    justify-content: center;
+    margin-top: 3vw;
+  }
+
+  .leftCont2{
+    gap: 1.3rem;
+  }
+}

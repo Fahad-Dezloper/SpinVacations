@@ -1,0 +1,74 @@
+@media (max-width: 640px) {
+  .container {
+    padding-left: 1rem /* 32px */;
+    padding-right: 1rem /* 32px */;
+  }
+
+  .tripH{
+    font-size: 6vw;
+    margin-top: 3vw;
+  }
+
+  .tripCont{
+    flex-direction: column;
+    gap: 2.5rem /* 40px */;
+  }
+
+  .imgSize{
+    height: 30vh;
+  }
+
+  /* .overview{
+    font-family: 'Lato', 'sans-serif';
+    line-height: 1.5rem;
+  } */
+
+  .incexc{
+    flex-direction: column;
+  }
+
+  .price{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .priceCont{
+    display: none;
+  }
+
+  .overviewCont{
+    width: 100%;
+  }
+
+  .overviewH{
+    top: -5vw;
+    left: 24%;
+  }
+
+  .similiarContSize{
+    min-width: 63vw;
+    height: 42vh;
+    flex-shrink: 0;
+  }
+
+  .mainSimiliarCont{
+    gap: 16rem;
+  }
+}
+
+@media (min-width: 390px) and (max-width: 640px) {
+  .similiarContSize{
+    min-width: 70vw;
+    height: 38vh;
+    flex-shrink: 0;
+  }
+
+  .mainSimiliarCont{
+    gap: 20rem;
+  }
+
+  .tripDetails{
+    height: 14vh;
+  }
+}

@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import flowbite from "flowbite-react/tailwind";
 
 const config: Config = {
   darkMode: ["class"],
@@ -7,6 +8,7 @@ const config: Config = {
     './components/**/*.{ts,tsx}',
     './app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
+    flowbite.content(),
   ],
   prefix: "",
   theme: {
@@ -33,10 +35,16 @@ const config: Config = {
           foreground: "hsl(var(--card-foreground))",
         },
       },
+       backgroundImage: {
+         'pgradient': 'linear-gradient(166deg, hsla(20, 100%, 78%, 1) 0%, hsla(20, 100%, 92%, 1) 100%)',
+      },
+         boxShadow: {
+        'gradient-shadow': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)', // Standard shadow
+      },
       fontFamily: {
         sans: ['Poppins', 'sans-serif'],
         lato: ['Lato', 'sans-serif'],
-        serif: ['Playfair Display', 'serif'],
+        serif: ['Playfair Display', 'sans-serif'],
       },
       borderRadius: {
         DEFAULT: '0.5rem',
@@ -60,7 +68,11 @@ const config: Config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate"),
+    flowbite.plugin(),
+    require('tailwind-scrollbar'),
+  ],
 };
 
 export default config;

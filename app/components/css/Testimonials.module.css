@@ -1,0 +1,158 @@
+.testimonials{
+    font-size: 1rem /* 16px */;
+    line-height: 1.3rem /* 24px */;
+}
+
+.testimonialsH{
+    font-size: 1.25rem /* 20px */;
+    line-height: 1.75rem /* 28px */;
+}
+
+.position13{
+  top: 0.5vw;
+}
+
+.position14{
+  left: 35vw;
+  top:0;
+}
+
+.position11{
+  left: 13vw;
+  top: 9vw;
+}
+
+.position16{
+  top: 0.5vw;
+   right: 33vw;
+}
+
+.position8{
+  top: 6vw;
+  right: 26vw;
+}
+
+ .position1{
+    bottom: 10vw;
+    right: 5vw;
+  }
+
+ .position7{
+    top: 4vw;
+    right: 19vw;
+  }
+
+ .position15{
+   top: 0.5vw;
+    right: 8vw;
+  }
+
+
+@media (max-width: 1118px) {
+  .testimonials {
+    font-size: 0.875rem /* 14px */;
+    line-height: 1.15rem /* 20px */;
+  }
+
+  .testimonialsH{
+    font-size: 1rem /* 16px */;
+    line-height: 1.5rem /* 24px */;
+    }
+}
+
+@media (max-width: 1024px) {
+  .position13{
+      top: 0;
+  }
+
+  .position11{
+      top: 10vw;
+      left: 15vw;
+  }
+
+  .position14{
+      left: 38vw;
+  }
+
+  .position16{
+      display: none;
+  }
+
+  .position8{
+    top: 1vw;
+    right: 29vw;
+  }
+
+  .position1{
+    bottom: 12vw;
+    right: 8vw;
+  }
+
+  .position7{
+    top: 8vw;
+    right: 22vw;
+  }
+
+  .position15{
+   top: 0.5vw;
+    right: 10vw;
+  }
+}
+
+/* mobile */
+@media (max-width: 640px) {
+  .avatar{
+    display: none;
+  }
+
+  .mainCont{
+    height: fit-content;
+  }
+
+  .reviewsSection{
+    position: relative;
+    height: 60vh;
+    width: 100vw;
+  }
+
+  .heading{
+    font-size: 1.5rem /* 24px */;
+    line-height: 2rem /* 32px */;
+  }
+
+  .reviewCard{
+    height: 30vh;
+    width: 70vw;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+   .mainCont{
+     padding-left: 1.5rem /* 16px */;
+    padding-right: 1.5rem /* 16px */;
+    height: fit-content;
+    margin-top: 0;
+  }
+
+  .reviewsSection{
+    position: relative;
+    top: 0;
+    height: 40vh;
+    width: 100vw;
+    margin-top: 7vw;
+  }
+
+  .heading{
+    font-size: 1.5rem /* 24px */;
+    line-height: 2rem /* 32px */;
+  }
+
+  .reviewCard{
+    height: 20vh;
+    width: 40vw;
+  }
+
+  .avatar{
+    display: none;
+  }
+}

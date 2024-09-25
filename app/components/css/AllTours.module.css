@@ -1,0 +1,60 @@
+.container{
+    min-width: 25%;
+    height: 50vh;
+}
+
+@media (max-width: 1118px) {
+  .container{
+    min-width: 28%;
+    height: 46vh;
+}
+}
+
+@media (max-width: 640px) {
+  .mainCont{
+     padding-left: 1rem /* 16px */;
+    padding-right: 1rem /* 16px */;
+  }
+
+  .heading{
+    /* background-color: red; */
+    font-size: 1.5rem /* 24px */;
+    line-height: 2rem /* 32px */;
+  }
+
+  .hide{
+    display: none;
+  }
+
+  .btnSize{
+    font-size: 0.75rem /* 12px */;
+    line-height: 1rem /* 16px */;
+    padding: 1rem /* 16px */;
+  }
+
+  .container{
+    min-width: 63vw;
+    height: 42vh;
+    flex-shrink: 0;
+}
+}
+
+@media (min-width: 390px) and (max-width: 640px) {
+  .container{
+    height: 38vh;
+    min-width: 70vw;
+    /* display: none; */
+  }
+
+  .tripDetails{
+    height: 14vh;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+   .mainCont{
+     padding-left: 1.5rem /* 16px */;
+    padding-right: 1.5rem /* 16px */;
+    /* background-color: red; */
+  }
+}

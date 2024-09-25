@@ -1,0 +1,36 @@
+.header{
+    font-size: 6rem;
+    line-height: none;
+}
+
+@media (max-width: 1118px) {
+  .header {
+    font-size: 5rem;
+  }
+}
+
+@media (max-width: 1041px) {
+  .header {
+    font-size: 4.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .header {
+    font-size: 2rem;
+  }
+
+  .reminderCont{
+    flex-direction: column;
+  }
+
+  .rotate{
+    --tw-rotate: 90deg;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  }
+
+  .mainCont{
+    gap: 0.5rem /* 8px */;
+  }
+} 
+

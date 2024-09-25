@@ -1,0 +1,73 @@
+.sidebar{
+    display: none;
+  }
+
+.searchBar{
+  position: absolute;
+  right: 1rem;
+  width: 20vw;
+  z-index: 999;
+}
+
+
+.container{
+  padding-left: 3.5rem /* 56px */;
+  padding-right: 3.5rem /* 56px */;
+}
+
+@media (max-width: 1118px) {
+  .mainnav {
+    display: none;
+  }
+
+  .sidebar{
+    display: flex;
+  }
+
+  .container{
+    justify-content: space-between;
+  }
+
+  .searchBar{
+    position: relative;
+    width: 60vw;
+    z-index: 20;
+  }
+}
+
+
+/* MObile max width of 640px*/
+@media (max-width: 640px) {
+  .searchBar{
+    display: none;
+  }
+
+  .container{
+  padding-left: 1rem /* 16px */;
+  padding-right: 1rem /* 16px */;
+}
+
+  .logo{
+  height: 13vw;
+  width: 24vw;
+}
+}
+
+/* tablets max width of 1024px */
+/* Target screens for tablets (641px to 1024px) */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  /* .logo{
+    height: 6vw;
+    width: 20vw;
+    display: none;
+    background-color: red;
+  } */
+
+  
+}
+
