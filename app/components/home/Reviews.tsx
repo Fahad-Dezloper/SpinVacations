@@ -17,6 +17,7 @@ interface ReviewsProps {
 const Reviews: React.FC<ReviewsProps> = ({ reviews = [] }) => {
   // Duplicate reviews for continuous loop effect
   const extendedReviews = [...reviews, ...reviews, ...reviews, ...reviews];
+  // console.log(reviews)
 
 
   const controls = useAnimation();
