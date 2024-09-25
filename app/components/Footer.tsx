@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookF, faGoogle, faInstagram } from '@fortawesome/free-brands-svg-icons';
 import { MailIcon, MapIcon, MapPin } from 'lucide-react';
 import styles from './css/Footer.module.css'
+import Link from 'next/link';
 
 const Footer = () => {
   return (
@@ -89,15 +90,15 @@ const Footer = () => {
                         <h2 className="mb-4 text-sm font-semibold text-gray-900 uppercase dark:text-white">Follow Us</h2>
                         <div className="text-gray-500 flex gap-4 dark:text-gray-400">
                         {/* Social Media Icons */}
-                        <div className='w-10 h-10 rounded-full bg-[#F27638] hover:bg-white hover:text-text  duration-200 flex items-center justify-center border-2 border-primary'>
-                            <FontAwesomeIcon icon={faFacebookF} className={`text-white ${styles.iconsize}`} />
-                        </div>
-                        <div className='w-10 h-10 rounded-full bg-[#F27638] hover:bg-white hover:text-text  duration-200 flex items-center justify-center border-2 border-primary'>
-                            <FontAwesomeIcon icon={faInstagram} className={`text-white ${styles.iconsize}`} />
-                        </div>
-                        <div className='w-10 h-10 rounded-full bg-[#F27638] hover:bg-white hover:text-text  duration-200 flex items-center justify-center border-2 border-primary'>
-                            <FontAwesomeIcon icon={faGoogle} className={`text-white ${styles.iconsize}`}  />
-                        </div>
+                        <Link href="https://www.facebook.com/spinvacations/" className='w-10 h-10 rounded-full bg-[#F27638] text-white hover:bg-white hover:text-text  duration-200 flex items-center justify-center border-2 border-primary'>
+                            <FontAwesomeIcon icon={faFacebookF} className={`${styles.iconsize}`} />
+                        </Link>
+                        <Link href="https://www.instagram.com/spinvacations/" className='w-10 h-10 rounded-full bg-[#F27638] text-white hover:bg-white hover:text-text  duration-200 flex items-center justify-center border-2 border-primary'>
+                            <FontAwesomeIcon icon={faInstagram} className={`${styles.iconsize}`} />
+                        </Link>
+                        <Link href="https://maps.app.goo.gl/5wxnQ5etv7cY6nGv9" className='w-10 h-10 rounded-full bg-[#F27638] text-white hover:bg-white hover:text-text  duration-200 flex items-center justify-center border-2 border-primary'>
+                            <FontAwesomeIcon icon={faGoogle} className={`${styles.iconsize}`}  />
+                        </Link>
                         </div>
                   </div>
                   <div>

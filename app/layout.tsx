@@ -1,9 +1,9 @@
 import React from 'react';
 import './globals.css';
 import type { Metadata } from "next";
-import { config } from '@fortawesome/fontawesome-svg-core';
-import '@fortawesome/fontawesome-svg-core/styles.css'; // Import the CSS
-config.autoAddCss = false; // Disable auto-adding the CSS
+// import { config } from '@fortawesome/fontawesome-svg-core';
+// import '@fortawesome/fontawesome-svg-core/styles.css'; // Import the CSS
+// config.autoAddCss = false; // Disable auto-adding the CSS
 import MainNav from "@/app/components/MainNav";
 import TopNavigation from "@/app/components/TopNavigation";
 import Footer from "@/app/components/Footer";
@@ -24,7 +24,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         {/* Link Google Fonts manually */}
-        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Inter:wght@400;700&display=swap" rel="stylesheet" defer />
       </head>
       <body>
         <TopNavigation />

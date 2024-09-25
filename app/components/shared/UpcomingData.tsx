@@ -33,7 +33,7 @@ const UpcomingData = ({ data }) => { // Accept data as a prop
         <Link
           href={`/trip/${trip.slug.current}`}
           key={i}
-          className={`${styles.container} flex-none cursor-pointer overflow-hidden shadow-gradient-shadow relative rounded-2xl bg-red-400`}
+          className={`${styles.container} flex-none cursor-pointer overflow-hidden shadow-gradient-shadow relative rounded-2xl`}
         >
           <Image
             src={trip.imageUrl}

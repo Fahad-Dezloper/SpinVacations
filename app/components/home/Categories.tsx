@@ -37,11 +37,13 @@ const Categories = async () => {
         {data.categories.map((item: CategoryItem, index) => (
           // eslint-disable-next-line @next/next/no-img-element
           <Link href={`/category/${item.slug.current}`} key={index} className={`w-[20.5vw] ${styles.categoriesEachcont} flex hover:bg-[#ffffffbd] border-[#E4E6E8] border-2 flex-col gap-[0.8rem] rounded-xl h-[18vw] p-3`}>
-            <div className={`w-full ${styles.imgSize} h-[11vw] rounded-xl bg-blue-300 overflow-hidden`}>
-              <img
+            <div className={`w-full ${styles.imgSize} h-[11vw] relative rounded-xl overflow-hidden`}>
+              <Image
                 src={item.imageUrl}
                 alt="category image"
-                className="h-full w-full"
+                fill
+                style={{objectFit: "cover"}}
+                className="h-full w-full object-cover"
               />
             </div>
             <div className='flex flex-col'>

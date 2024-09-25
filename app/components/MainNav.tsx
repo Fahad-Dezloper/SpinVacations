@@ -26,10 +26,10 @@ const MainNav = async () => {
   // console.log(data.logo);  
   return (
     <div className='w-full z-[999]'>
-      <div className={`${styles.container} flex items-center px-4 pt-2 pb-2 relative`}>
+      <div className={`${styles.container} flex items-center pt-2 pb-6 relative`}>
       {/* Logo */}
       
-        <Link href="/" className={`${styles.logo} relative overflow-hidden`}>
+        <Link href="/" className={`${styles.logo} relative h-[4.5vw] w-[8.5vw] overflow-hidden`}>
               <Image src={urlFor(data.logo).url()}
                         alt = "GreatPhoto"
                         className="h-full w-full object-cover"
@@ -44,12 +44,12 @@ const MainNav = async () => {
         </div>
 
         {/* Search */}
-        <div className={`${styles.searchBar}`}>
+        {/* <div className={`${styles.searchBar}`}>
         <div className='cursor-pointer w-full relative flex items-center'>
           <SearchIcon className='absolute top-2 left-2 text-[#666666]' />
           <SearchTrips />
           </div>
-        </div>
+        </div> */}
 
         <div className={`${styles.sidebar}`}>
           <Sidebar />

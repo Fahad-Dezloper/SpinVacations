@@ -3,6 +3,7 @@ import { ArrowLeftIcon, ArrowRightIcon } from "lucide-react";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import styles from '../css/Banner.module.css'
+import Image from "next/image";
 
 const BannerCarousel = ({ data }) => {
   // console.log("hi", data)
@@ -56,15 +57,17 @@ const BannerCarousel = ({ data }) => {
           style={{ transform: `translateX(-${currentIndex * 100}%)` }}
         >
           {imagesArray.map((banner, index) => (
-            <div key={index} className="min-w-full h-full flex justify-center items-center">
+            <div key={index} className="min-w-full h-full flex relative justify-center items-center">
               <Link
                 href={banner.slug ? `/trip/${banner.slug}` : '/'}
                 rel="Trip Featured Image"
                 className={`${styles.imgSize} overflow-hidden relative`}
               >
-                <img
+                <Image
                   src={banner.imageUrl}
                   alt={banner.altText || "Banner Image"}
+                  fill
+                  style={{objectFit: "cover"}}
                   className="object-cover w-full h-full"
                 />
                 {/* <div className="absolute inset-0 bg-black opacity-30"></div> */}

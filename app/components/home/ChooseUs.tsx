@@ -60,8 +60,8 @@ const ChooseUs = () => {
             <div className={`flex gap-4 flex-none shrink-0 h-fit ${styles.cardCont} w-full items-center pb-12`}>
               {data.map((item, i) => (
                 <div key={i} className={`w-[20vw] ${styles.card} flex-none border shrink-0 h-[18vw] rounded-2xl flex items-center justify-center`} style={{ backgroundColor: item.bgColor }}>
-                <div className='w-full h-full flex flex-col gap-4 items-center justify-center'>
-                    <div className={`${styles.imgSize} w-[8vw] h-[8vw] relative overflow-hidden`}>
+                <div className='w-full h-full flex flex-col  gap-4 items-center justify-center'>
+                    <div className={`${styles.imgSize} w-[9vw] h-[6vw] relative overflow-hidden`}>
                     <Image src={item.img} alt="Why choose us" fill style={{ objectFit: "cover" }} />
                   </div>
                   <div className='flex flex-col px-6 gap-2 items-center justify-center'>
@@ -82,8 +82,8 @@ const ChooseUs = () => {
         </div>
 
          {/* left */}
-        <div className={`w-[40%] ${styles.leftCont} flex flex-col gap-8 items-center`}>
-          <div className={`w-full flex flex-col ${styles.leftCont2} h-full`}>
+        <div className={`w-[40%] ${styles.leftCont} flex flex-col gap-9 items-center`}>
+          <div className={`w-full flex flex-col ${styles.leftCont2} gap-12 h-full`}>
             <div className={`w-full flex ${styles.step1} justify-start relative`}>
               <div className={`${styles.stepsFont} flex px-5 py-2 rounded-full bg-white shadow-gradient-shadow items-center`}>
                 <div className={`p-1 hidden ${styles.stepshow} mr-2 rounded-full bg-[#F2F4F6] border-l-primary border-b-primary border-2`}>
@@ -106,7 +106,7 @@ const ChooseUs = () => {
                 </div>
                 <div className='text-accent font-semibold'>🤳🏼 Step 2: &nbsp;</div>
                 <div>Select the trip and 📞 Us</div>
-                <div className={`p-1 ml-2 ${styles.stepshow} rounded-full bg-[#F2F4F6] border-r-primary border-b-primary border-2`}>
+                <div className={`p-1 ml-2 ${styles.stepshow} hidden rounded-full bg-[#F2F4F6] border-r-primary border-b-primary border-2`}>
                   <ArrowDownRight />
                 </div>
               </div>

@@ -69,52 +69,52 @@ const Testimonials = async () => {
       <div className={`w-full h-[110vh] mt-[4vw] ${styles.mainCont} flex flex-col items-center relative overflow-hidden`}>
        
         <div className={`avatar ${styles.avatar} w-full h-[66vh] relative`}>
-          <div className={`w-28 h-28 absolute overflow-hidden shadow-xl ${styles.position1} bg-yellow-300 rounded-full`}>
+          <div className={`w-28 h-28 absolute overflow-hidden shadow-xl ${styles.position1} rounded-full`}>
         <Image src={travelImages[0]} alt="Travel Image 1" fill style={{ objectFit: "cover" }} />
       </div>
-      <div className='w-32 h-32 absolute overflow-hidden shadow-xl bottom-[6vw] left-[4vw] bg-blue-300 rounded-full'>
+      <div className='w-32 h-32 absolute overflow-hidden shadow-xl bottom-[6vw] left-[4vw]  rounded-full'>
         <Image src={travelImages[1]} alt="Travel Image 2" fill style={{ objectFit: "cover" }} />
       </div>
-      <div className='w-32 h-32 absolute overflow-hidden shadow-xl bottom-0 right-[-3vw] bg-green-300 rounded-full'>
+      <div className='w-32 h-32 absolute overflow-hidden shadow-xl bottom-0 right-[-3vw] rounded-full'>
         <Image src={travelImages[2]} alt="Travel Image 3" fill style={{ objectFit: "cover" }} />
       </div>
-      <div className='w-16 h-16 absolute overflow-hidden shadow-xl bottom-0 left-[-2vw] bg-red-300 rounded-full'>
+      <div className='w-16 h-16 absolute overflow-hidden shadow-xl bottom-0 left-[-2vw] rounded-full'>
         <Image src={travelImages[3]} alt="Travel Image 4" fill style={{ objectFit: "cover" }} />
       </div>
-      <div className='w-16 h-16 absolute overflow-hidden shadow-xl top-[6vw] left-[-2vw] bg-red-300 rounded-full'>
+      <div className='w-16 h-16 absolute overflow-hidden shadow-xl top-[6vw] left-[-2vw] rounded-full'>
         <Image src={travelImages[4]} alt="Travel Image 5" fill style={{ objectFit: "cover" }} />
       </div>
-      <div className='w-16 h-16 absolute overflow-hidden shadow-xl top-[6vw] right-[-2vw] bg-red-300 rounded-full'>
+      <div className='w-16 h-16 absolute overflow-hidden shadow-xl top-[6vw] right-[-2vw] rounded-full'>
         <Image src={travelImages[5]} alt="Travel Image 6" fill style={{ objectFit: "cover" }} />
       </div>
-          <div className={`w-16 h-16 absolute overflow-hidden shadow-xl ${styles.position7} bg-red-300 rounded-full`}>
+          <div className={`w-16 h-16 absolute overflow-hidden shadow-xl ${styles.position7} rounded-full`}>
         <Image src={travelImages[6]} alt="Travel Image 7" fill style={{ objectFit: "cover" }} />
       </div>
-          <div className={`w-20 h-20 absolute overflow-hidden shadow-xl ${styles.position8} top-[6vw] right-[26vw] bg-blue-300 rounded-full`}>
+          <div className={`w-20 h-20 absolute overflow-hidden shadow-xl ${styles.position8} top-[6vw] right-[26vw]  rounded-full`}>
         <Image src={travelImages[7]} alt="Travel Image 8" fill style={{ objectFit: "cover" }} />
       </div>
-      <div className='w-20 h-20 absolute overflow-hidden shadow-xl top-[6vw] left-[30vw] bg-blue-300 rounded-full'>
+      <div className='w-20 h-20 absolute overflow-hidden shadow-xl top-[6vw] left-[30vw]  rounded-full'>
         <Image src={travelImages[8]} alt="Travel Image 9" fill style={{ objectFit: "cover" }} />
       </div>
-      <div className='w-16 h-16 absolute overflow-hidden shadow-xl top-[4.5vw] right-[44vw] bg-green-300 rounded-full'>
+      <div className='w-16 h-16 absolute overflow-hidden shadow-xl top-[4.5vw] right-[44vw] rounded-full'>
         <Image src={travelImages[9]} alt="Travel Image 10" fill style={{ objectFit: "cover" }} />
       </div>
-          <div className={`w-16 h-16 absolute overflow-hidden shadow-xl ${styles.position11} bg-red-300 rounded-full`}>
+          <div className={`w-16 h-16 absolute overflow-hidden shadow-xl ${styles.position11} rounded-full`}>
         <Image src={travelImages[10]} alt="Travel Image 11" fill style={{ objectFit: "cover" }} />
       </div>
-      <div className='w-16 h-16 absolute overflow-hidden shadow-xl top-[0.5vw] left-[6.8vw] bg-red-300 rounded-full'>
+      <div className='w-16 h-16 absolute overflow-hidden shadow-xl top-[0.5vw] left-[6.8vw] rounded-full'>
         <Image src={travelImages[11]} alt="Travel Image 12" fill style={{ objectFit: "cover" }} />
       </div>
-      <div className={`w-24 h-24 absolute overflow-hidden shadow-xl ${styles.position13} left-[19vw] bg-green-300 rounded-full`}>
+      <div className={`w-24 h-24 absolute overflow-hidden shadow-xl ${styles.position13} left-[19vw] rounded-full`}>
         <Image src={travelImages[12]} alt="Travel Image 13" fill style={{ objectFit: "cover" }} />
       </div>
-        <div className={`w-16 h-16 absolute overflow-hidden shadow-xl ${styles.position14} bg-red-300 rounded-full`}>
+        <div className={`w-16 h-16 absolute overflow-hidden shadow-xl ${styles.position14} rounded-full`}>
         <Image src={travelImages[13]} alt="Travel Image 14" fill style={{ objectFit: "cover" }} />
       </div>
-          <div className={`w-24 h-24 absolute overflow-hidden shadow-xl ${styles.position15} bg-green-300 rounded-full`}>
+          <div className={`w-24 h-24 absolute overflow-hidden shadow-xl ${styles.position15} rounded-full`}>
         <Image src={travelImages[14]} alt="Travel Image 15" fill style={{ objectFit: "cover" }} />
       </div>
-          <div className={`w-24 h-24 absolute overflow-hidden shadow-xl ${styles.position16} bg-green-300 rounded-full`}>
+          <div className={`w-24 h-24 absolute overflow-hidden shadow-xl ${styles.position16} rounded-full`}>
         <Image src={travelImages[15]} alt="Travel Image 16" fill style={{ objectFit: "cover" }} />
       </div>
         </div>
