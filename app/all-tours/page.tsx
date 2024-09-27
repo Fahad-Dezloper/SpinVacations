@@ -1,5 +1,5 @@
 // app/category/[slug]/page.tsx
-
+"use client"
 import { client } from '@/app/lib/sanity';
 import TripCard from '@/app/components/shared/TripCard';
 import styles from '../components/css/Categorypage.module.css';
