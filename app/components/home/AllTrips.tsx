@@ -1,10 +1,22 @@
+"use client"
 import { client } from '@/app/lib/sanity';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import AllScrollableTours from './AllScrollableTours';
-import styles from '../css/AllTours.module.css'
+import styles from '../css/AllTours.module.css';
 
-// Fetch data in the Server Component
-async function getData() {
+// Define the expected type for the trip details
+type Trip = {
+  imageUrl: string;
+  name: string;
+  avgprice: number;
+  dateOfLeaving: string;
+  days: number;
+  nights: number;
+  slug: string;
+};
+
+// Function to fetch data
+const fetchTrips = async () => {
   const query = `*[_type == "tripDetails"]{
     "imageUrl": featuredImage.asset->url,
     name,
@@ -16,11 +28,32 @@ async function getData() {
   }`;
 
   const data = await client.fetch(query);
+  // console.log("from all", data)
   return data;
-}
+};
 
-const AllTrips = async () => {
-  const data = await getData(); // Fetch data here
+const AllTrips = () => {
+  const [data, setData] = useState<Trip[]>([]); // State to store fetched data
+
+  // Fetch data on component mount
+  useEffect(() => {
+    fetchTrips().then((fetchedData) => {
+      setData(fetchedData);
+    });
+
+    // real-time subscription 
+    const subscription = client.listen('*[_type == "tripDetails"]').subscribe((update) => {
+      if (update.result) {
+        fetchTrips().then((fetchedData) => {
+          setData(fetchedData);
+        });
+      }
+    });
+
+    return () => {
+      subscription.unsubscribe();
+    };
+  }, []);
 
   return (
     <div className={`px-20 ${styles.mainCont} flex flex-col gap-8`}>

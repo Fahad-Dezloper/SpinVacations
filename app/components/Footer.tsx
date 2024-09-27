@@ -10,9 +10,7 @@ import Link from 'next/link';
 
 const Footer = () => {
   return (
-      
-
-<footer className={`w-full bg-white border ${styles.mainCont} h-fit flex flex-col px-14 py-8`}>
+    <footer className={`w-full bg-white border ${styles.mainCont} h-fit flex flex-col px-14 py-8`}>
           <div className={`w-full h-full ${styles.footerCont} grid grid-cols-4 justify-between`}>
               
               <div className={`w-full h-full flex ${styles.hide} flex-col gap-12 items-start`}>

@@ -1,11 +1,11 @@
-// app/category/[slug]/page.tsx
-
+"use client"
+import { useState, useEffect } from 'react';
 import { client } from '@/app/lib/sanity';
 import TripCard from '@/app/components/shared/TripCard';
-import styles from '../components/css/Categorypage.module.css'
+import styles from '../components/css/Categorypage.module.css';
 
-// Function to fetch trips based on category slug
-async function upcomingTrips() {
+// Function to fetch upcoming trips
+async function fetchUpcomingTrips() {
   const query = `*[_type == "tripDetails" && isUpcomingTrip == true]{
     name,
     slug,
@@ -30,13 +30,33 @@ async function upcomingTrips() {
       }
     }
   }`;
-  const trips = await client.fetch(query);
-  return trips;
+  return await client.fetch(query);
 }
 
 // Component for category trips page
-const upcomingTripsPage = async () => {
-  const trips = await upcomingTrips(); // Fetch trips by category
+const UpcomingTripsPage = () => {
+  const [trips, setTrips] = useState<any[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        const tripsData = await fetchUpcomingTrips();
+        setTrips(tripsData);
+      } catch (error) {
+        console.error('Error fetching upcoming trips:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className={`w-full flex flex-col gap-7 h-fit ${styles.container} px-20 py-10`}>
@@ -50,15 +70,15 @@ const upcomingTripsPage = async () => {
       <div className={`grid grid-cols-3 justify-items-center ${styles.tripsCont} h-full gap-6 w-full gap-y-8 grid-rows-2`}>
         {trips.map((item, index) => (
           <TripCard
-          key={index}
-          avgPrice={item.avgprice}
-          slug={item.slug}
-          imageUrl={item.featuredImageUrl}
-          name={item.name}
-          days={item.packageOverview.tripDuration.days}
-          nights={item.packageOverview.tripDuration.nights}
-          meals={item.packageOverview.meals}
-          transport={item.packageOverview.transport}
+            key={index}
+            avgPrice={item.avgprice}
+            slug={item.slug}
+            imageUrl={item.featuredImageUrl}
+            name={item.name}
+            days={item.packageOverview.tripDuration.days}
+            nights={item.packageOverview.tripDuration.nights}
+            meals={item.packageOverview.meals}
+            transport={item.packageOverview.transport}
           />
         ))}
       </div>
@@ -66,4 +86,4 @@ const upcomingTripsPage = async () => {
   );
 };
 
-export default upcomingTripsPage;
+export default UpcomingTripsPage;

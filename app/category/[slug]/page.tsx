@@ -1,11 +1,40 @@
 // app/category/[slug]/page.tsx
-
+"use client"
 import { client } from '@/app/lib/sanity';
 import TripCard from '@/app/components/shared/TripCard';
-import styles from '../../components/css/Categorypage.module.css'
+import styles from '../../components/css/Categorypage.module.css';
+import { useEffect, useState } from 'react';
+
+// Define the expected type for the trip details
+type Trip = {
+  name: string;
+  slug: {
+    current: string;
+  };
+  avgprice: number;
+  featuredImageUrl: string;
+  packageOverview: {
+    tripDuration: {
+      days: number;
+      nights: number;
+    };
+    meals: {
+      breakfast: boolean;
+      lunch: boolean;
+      dinner: boolean;
+    };
+    transport: {
+      flight: boolean;
+      train: boolean;
+      bus: boolean;
+      localTravelVehicle: boolean;
+      vehicleType: string;
+    };
+  };
+};
 
 // Function to fetch trips based on category slug
-async function getTripsByCategory(slug: string) {
+const fetchTripsByCategory = async (slug: string) => {
   const query = `*[_type == "tripDetails" && $slug in categories[]->slug.current]{
     name,
     slug,
@@ -31,39 +60,34 @@ async function getTripsByCategory(slug: string) {
     }
   }`;
   const trips = await client.fetch(query, { slug });
+  // console.log(trips)
   return trips;
-}
-
-interface TripCardProps {
-  slug: {
-    current: string;
-  };
-  featuredImageUrl: string;
-  name: string;
-  avgprice: number;
-  packageOverview: {
-    tripDuration: {
-      days: number;
-      nights: number;
-    };
-    meals: {
-      breakfast: boolean;
-      lunch: boolean;
-      dinner: boolean;
-    };
-    transport: {
-      flight: boolean;
-      train: boolean;
-      bus: boolean;
-      localTravelVehicle: boolean;
-      vehicleType?: string;
-    };
-  };
-}
+};
 
 // Component for category trips page
-const CategoryTripsPage = async ({ params }: { params: { slug: string } }) => {
-  const trips = await getTripsByCategory(params.slug); // Fetch trips by category
+const CategoryTripsPage = ({ params }: { params: { slug: string } }) => {
+  const [trips, setTrips] = useState<Trip[]>([]); // State to hold the trips
+
+  // Fetch trips when the component mounts
+  useEffect(() => {
+    fetchTripsByCategory(params.slug).then((fetchedTrips) => {
+      setTrips(fetchedTrips);
+    });
+
+    // Listen for real-time updates to the trips data
+    const subscription = client.listen(`*[_type == "tripDetails" && $slug in categories[]->slug.current]`, { slug: params.slug }).subscribe((update) => {
+      if (update.result) {
+        fetchTripsByCategory(params.slug).then((fetchedTrips) => {
+          setTrips(fetchedTrips);
+        });
+      }
+    });
+
+    // Clean up the subscription when the component unmounts
+    return () => {
+      subscription.unsubscribe();
+    };
+  }, [params.slug]); // Dependency on slug
 
   return (
     <div className={`w-full flex flex-col ${styles.container} gap-7 h-fit px-20 py-10`}>
@@ -75,17 +99,17 @@ const CategoryTripsPage = async ({ params }: { params: { slug: string } }) => {
       </div>
 
       <div className={`grid grid-cols-3 ${styles.tripsCont} justify-items-center h-full gap-6 w-full gap-y-8 grid-rows-2`}>
-        {trips.map((item :TripCardProps, index) => (
+        {trips.map((item, i) => (
           <TripCard
-          key={index}
-          avgPrice={item.avgprice}
-          slug={item.slug}
-          imageUrl={item.featuredImageUrl}
-          name={item.name}
-          days={item.packageOverview.tripDuration.days}
-          nights={item.packageOverview.tripDuration.nights}
-          meals={item.packageOverview.meals}
-          transport={item.packageOverview.transport}
+            key={i} // Using slug as the key for uniqueness
+            avgPrice={item.avgprice}
+            slug={item.slug}
+            imageUrl={item.featuredImageUrl}
+            name={item.name}
+            days={item.packageOverview.tripDuration.days}
+            nights={item.packageOverview.tripDuration.nights}
+            meals={item.packageOverview.meals}
+            transport={item.packageOverview.transport}
           />
         ))}
       </div>

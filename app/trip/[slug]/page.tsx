@@ -1,4 +1,5 @@
 // Import necessary dependencies
+"use client"
 import { client } from '@/app/lib/sanity';
 import { Badge } from '@/components/ui/badge';
 import Image from 'next/image';
@@ -9,6 +10,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import Link from 'next/link';
 import { ChevronRight } from 'lucide-react';
 import styles from './tour.module.css'
+import { useEffect, useState } from 'react';
 // import { usePathname } from 'next/navigation';
 
 
@@ -32,62 +34,34 @@ const formatDate = (dateString) => {
   return `${day}${ordinalSuffix} ${month}, ${year}`;
 };
 
-// Define the query to fetch a specific trip by slug
-async function getTripBySlug(slug: string) {
+// Fetch trip details by slug
+async function fetchTripBySlug(slug: string) {
   const query = `*[_type == "tripDetails" && slug.current == $slug][0]{
     name,
     "featuredImageUrl": featuredImage.asset->url,
     "tripPages": tripImages[].asset->url,
     avgprice,
-    price[]{
-      heading,
-      subtext,
-      price
-    },
+    price[] { heading, subtext, price },
     slug,
-    packageOverview{
+    packageOverview {
       tripType,
       bestFor,
-      tripDuration{
-        days,
-        nights
-      },
+      tripDuration { days, nights },
       accommodation,
-      meals{
-        breakfast,
-        lunch,
-        dinner
-      },
-      transport{
-        flight,
-        train,
-        bus,
-        localTravelVehicle,
-        vehicleType
-      },
+      meals { breakfast, lunch, dinner },
+      transport { flight, train, bus, localTravelVehicle, vehicleType },
       travelHighlights
     },
     overview,
-    itinerary[]{
-      dayNumber,
-      heading,
-      overview
-    },
-    inclusionsExclusions{
-      inclusions,
-      exclusions
-    },
-    additionalInfo[]{
-      heading,
-      paragraph
-    }
+    itinerary[] { dayNumber, heading, overview },
+    inclusionsExclusions { inclusions, exclusions },
+    additionalInfo[] { heading, paragraph }
   }`;
-
-  const trip = await client.fetch(query, { slug });
-  return trip;
+  return await client.fetch(query, { slug });
 }
 
-async function getSimilarTrips(tripType: string, bestFor: string[]) {
+// Fetch similar trips by trip type and best for criteria
+async function fetchSimilarTrips(tripType: string, bestFor: string[]) {
   const query = `*[_type == "tripDetails" && packageOverview.tripType == $tripType || packageOverview.bestFor in $bestFor && !(_id in path("drafts.**"))][0...4]{
     "imageUrl": featuredImage.asset->url,
     name,
@@ -97,35 +71,50 @@ async function getSimilarTrips(tripType: string, bestFor: string[]) {
     "nights": packageOverview.tripDuration.nights,
     slug
   }`;
-
-  const similarTrips = await client.fetch(query, { tripType, bestFor });
-  return similarTrips;
+  return await client.fetch(query, { tripType, bestFor });
 }
+
 // Page component to display trip details
-const TripDetailPage = async ({ params }: { params: { slug: string } }) => {
-    
-  // const pathname = usePathname();
-  // console.log(pathname)
+const TripDetailPage = ({ params }: { params: { slug: string } }) => {
+    const [trip, setTrip] = useState<any>(null);
+  const [similarTrips, setSimilarTrips] = useState<any[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
+  useEffect(() => {
+    // Fetch trip details and similar trips
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        const tripData = await fetchTripBySlug(params.slug);
+        if (tripData) {
+          const similarTripsData = await fetchSimilarTrips(
+            tripData.packageOverview.tripType,
+            tripData.packageOverview.bestFor
+          );
+          setTrip(tripData);
+          setSimilarTrips(similarTripsData);
+        }
+      } catch (error) {
+        console.error('Error fetching trip data:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  // Fetch trip data based on the slug
-  const trip = await getTripBySlug(params.slug);
-  const similarTrips = await getSimilarTrips(trip.packageOverview.tripType, trip.packageOverview.bestFor);
-  // console.log(trip)
+    fetchData();
+  }, [params.slug]);
 
-  // If no trip is found, return a message
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
   if (!trip) {
     return <div>Trip not found</div>;
   }
-  if (!similarTrips) {
-    return <div>Similiar Trip not found</div>;
-  }
-  // Check if packageOverview exists before accessing it
-
 
   const localTransferDescription = trip.packageOverview.transport.localTravelVehicle
-  ? ` & Local Transfers by ${trip.packageOverview.transport.vehicleType || ''} Vehicle`
-  : '';
+    ? ` & Local Transfers by ${trip.packageOverview.transport.vehicleType || ''} Vehicle`
+    : '';
 
 
   return (

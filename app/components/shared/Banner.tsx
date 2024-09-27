@@ -1,12 +1,12 @@
-// pages/index.tsx
-import React from 'react';
+"use client"
+import React, { useState, useEffect } from 'react';
 import BannerCarousel from '@/app/components/home/BannerCarousel';
 import { client } from '@/app/lib/sanity';
 
-// Server-side function to fetch banner data
+// Function to fetch banner data
 const fetchBannerImages = async () => {
   const query = `*[_type == "imgBanner"][0]{
-    bannerImages[]{
+    bannerImages[] {
       _type == "image" => {
         "imageUrl": asset->url,
         caption,
@@ -20,16 +20,29 @@ const fetchBannerImages = async () => {
     }
   }`;
 
-    const data = await client.fetch(query);
+  const data = await client.fetch(query);
   return data?.bannerImages ?? []; // Return empty array if no data
 };
 
-const HomePage = async () => {
-  const bannerImages = await fetchBannerImages(); // Fetch data
-  // console.log(bannerImages);
+const BannerPage = () => {
+  const [bannerImages, setBannerImages] = useState<any[]>([]); // State to hold banner data
+  const [loading, setLoading] = useState(true); // State for loading
+
+  useEffect(() => {
+    // Fetch banner images when the component mounts
+    fetchBannerImages().then((fetchedBannerImages) => {
+      setBannerImages(fetchedBannerImages);
+      setLoading(false); // Set loading to false after data is fetched
+    });
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
   if (!bannerImages || bannerImages.length === 0) {
     return <div>No banner images available</div>;
-  } // Log to confirm data is passed as props
+  }
 
   return (
     <div>
@@ -38,4 +51,4 @@ const HomePage = async () => {
   );
 };
 
-export default HomePage;
+export default BannerPage;

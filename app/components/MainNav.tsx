@@ -1,62 +1,74 @@
+"use client"
 import { client, urlFor } from '../../app/lib/sanity';
 import { SearchIcon } from 'lucide-react';
-import Link from 'next/link'
-import React from 'react'
+import Link from 'next/link';
+import React, { useState, useEffect } from 'react';
 import { MegaMenu } from './shared/MegaMenu';
 import SearchTrips from './home/SearchTrips';
-import styles from './css/MainNav.module.css'
-import {Sidebar} from '@/components/component/sidebar'
+import styles from './css/MainNav.module.css';
+import { Sidebar } from '@/components/component/sidebar';
 import Image from 'next/image';
-async function getData(){
-    const query = "*[_type == 'mainNav'][0]";
 
-    const data = await client.fetch(query);
+// Function to fetch main navigation data
+const fetchData = async () => {
+  const query = "*[_type == 'mainNav'][0]";
+  const data = await client.fetch(query);
+  return data;
+};
 
-    return data;
-}
+const MainNav = () => {
+  const [data, setData] = useState<any>(null); // State to hold navigation data
+  const [loading, setLoading] = useState(true); // State to manage loading state
 
-interface MenuItem {
-  _key: string;
-  menuName: string;
-  link: string;
-}
+  useEffect(() => {
+    fetchData().then((fetchedData) => {
+      setData(fetchedData);
+      setLoading(false); // Set loading to false after data is fetched
+    });
+  }, []);
 
-const MainNav = async () => {
-  const data = await getData()
-  // console.log(data.logo);  
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (!data) {
+    return <div>No navigation data available</div>;
+  }
+
   return (
-    <div className='w-full z-[999]'>
+    <div className="w-full z-[999]">
       <div className={`${styles.container} flex items-center pt-2 pb-6 relative`}>
-      {/* Logo */}
-      
+        {/* Logo */}
         <Link href="/" className={`${styles.logo} relative h-[4.5vw] w-[8.5vw] overflow-hidden`}>
-              <Image src={urlFor(data.logo).url()}
-                        alt = "GreatPhoto"
-                        className="h-full w-full object-cover"
-                        fill
-                        style={{objectFit: "cover"}}
-                         />
-          </Link>
+          <Image
+            src={urlFor(data.logo).url()}
+            alt="Logo"
+            className="h-full w-full object-cover"
+            fill
+            style={{ objectFit: 'cover' }}
+          />
+        </Link>
 
         {/* Main Navigation */}
         <div className={`w-full z-[999] mr-16 ${styles.mainnav}`}>
           <MegaMenu />
         </div>
 
-        {/* Search */}
+        {/* Search (commented out if not needed) */}
         {/* <div className={`${styles.searchBar}`}>
-        <div className='cursor-pointer w-full relative flex items-center'>
-          <SearchIcon className='absolute top-2 left-2 text-[#666666]' />
-          <SearchTrips />
+          <div className="cursor-pointer w-full relative flex items-center">
+            <SearchIcon className="absolute top-2 left-2 text-[#666666]" />
+            <SearchTrips />
           </div>
         </div> */}
 
+        {/* Sidebar */}
         <div className={`${styles.sidebar}`}>
           <Sidebar />
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default MainNav
+export default MainNav;

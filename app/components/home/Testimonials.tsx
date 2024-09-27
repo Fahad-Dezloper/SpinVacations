@@ -1,27 +1,52 @@
+"use client"
 import Image from 'next/image'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Reviews from './Reviews'
 import { client } from '@/app/lib/sanity'
 import styles from '../css/Testimonials.module.css'
 
+type Reviews = {
+  name: string;
+  review: string;
+  stars: number;
+};
 
-export async function getReviews() {
+const fetchReviews = async () => { 
   const query = `*[_type == 'reviews']{
         name,
         review,
         stars
   }`;
 
-
-  const data = await client.fetch(query);
-  // console.log("Fetched Review Data:", data); // data is an array of reviews
+   const data = await client.fetch(query);
+  // console.log("from all", data)
   return data;
-  }
+}
 
 
-const Testimonials = async () => {
-  const reviews = await getReviews();
+const Testimonials = () => {
+  const [reviews, setData] = useState<Reviews[]>([]);
   // console.log(reviews);
+
+  // Fetch data on component mount
+  useEffect(() => {
+    fetchReviews().then((fetchedData) => {
+      setData(fetchedData);
+    });
+
+    // real-time subscription 
+    const subscription = client.listen('*[_type == "reviews"]{name,review,stars}').subscribe((update) => {
+      if (update.result) {
+        fetchReviews().then((fetchedData) => {
+          setData(fetchedData);
+        });
+      }
+    });
+
+    return () => {
+      subscription.unsubscribe();
+    };
+  }, []);
   
   const travelImages = [
         'https://i.pinimg.com/236x/26/67/42/266742e1a6565d6a94b6b881c441c2a3.jpg',
@@ -63,6 +88,8 @@ const Testimonials = async () => {
         'https://i.pinimg.com/236x/e6/d4/df/e6d4df05d8dc3d7cd8f1edc2ebd72105.jpg',
         'https://i.pinimg.com/236x/4f/fe/c0/4ffec039189bf5d455611f51b7040db7.jpg',
   ]
+
+  if (!reviews) return <div>Loading...</div>;
 
   
     return (
