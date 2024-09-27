@@ -1,11 +1,10 @@
 // app/category/[slug]/page.tsx
-"use client"
+
 import { client } from '@/app/lib/sanity';
 import TripCard from '@/app/components/shared/TripCard';
-import styles from '../components/css/Categorypage.module.css'
+import styles from '../components/css/Categorypage.module.css';
 import { useEffect, useState } from 'react';
 
-// Function to fetch trips based on category slug
 // Define the expected type for the trip details
 type Trip = {
   name: string;
@@ -38,7 +37,7 @@ type Trip = {
 const fetchTrips = async () => {
   const query = `*[_type == "tripDetails"]{
     name,
-    slug,
+    slug ,
     avgprice,
     "featuredImageUrl": featuredImage.asset->url,
     packageOverview {
@@ -66,7 +65,7 @@ const fetchTrips = async () => {
 
 // Component for category trips page
 const AllToursPage = () => {
- const [trips, setTrips] = useState<Trip[]>([]); // State to hold the trips
+  const [trips, setTrips] = useState<Trip[]>([]); // State to hold the trips
 
   // Fetch the data initially and listen for real-time updates
   useEffect(() => {
@@ -101,17 +100,17 @@ const AllToursPage = () => {
       </div>
 
       <div className={`grid grid-cols-3 ${styles.tripsCont} justify-items-center h-full gap-6 w-full gap-y-8 grid-rows-2`}>
-        {trips.map((item, index) => (
+        {trips.map((item, i) => (
           <TripCard
-          key={index}
-          avgPrice={item.avgprice}
-          slug={item.slug}
-          imageUrl={item.featuredImageUrl}
-          name={item.name}
-          days={item.packageOverview.tripDuration.days}
-          nights={item.packageOverview.tripDuration.nights}
-          meals={item.packageOverview.meals}
-          transport={item.packageOverview.transport}
+            key={i} // Using slug as the key for uniqueness
+            avgPrice={item.avgprice}
+            slug={item.slug}
+            imageUrl={item.featuredImageUrl}
+            name={item.name}
+            days={item.packageOverview.tripDuration.days}
+            nights={item.packageOverview.tripDuration.nights}
+            meals={item.packageOverview.meals}
+            transport={item.packageOverview.transport}
           />
         ))}
       </div>
