@@ -9,6 +9,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import Link from 'next/link';
 import { ChevronRight } from 'lucide-react';
 import styles from './tour.module.css'
+// import { usePathname } from 'next/navigation';
 
 
 const formatDate = (dateString) => {
@@ -102,6 +103,11 @@ async function getSimilarTrips(tripType: string, bestFor: string[]) {
 }
 // Page component to display trip details
 const TripDetailPage = async ({ params }: { params: { slug: string } }) => {
+    
+  // const pathname = usePathname();
+  // console.log(pathname)
+
+
   // Fetch trip data based on the slug
   const trip = await getTripBySlug(params.slug);
   const similarTrips = await getSimilarTrips(trip.packageOverview.tripType, trip.packageOverview.bestFor);
@@ -232,7 +238,9 @@ const TripDetailPage = async ({ params }: { params: { slug: string } }) => {
                   </div>
                   </div>
                 <div className='w-full bg-white flex px-4 py-4 items-center justify-center'>
-                  <button className='w-full h-12 border border-primary rounded-full text-base text-accent font-semibold tracking-tight'>CONTACT US</button>
+                  <button className='w-full h-12 border border-primary rounded-full text-base text-accent font-semibold tracking-tight'>
+                  <a href={`https://wa.me/9315600374?text=Hey%20there!%20%F0%9F%8C%8D%20I%20just%20found%20this%20amazing%20%5BTrip%20Name%5D%20adventure,%20and%20I%E2%80%99m%20ready%20to%20explore!%20%F0%9F%98%8E%20Here%E2%80%99s%20the%20link:%20%5BTrip%20Link%5D`} target="_blank" className=''>CONTACT US</a>
+                  </button>
                 </div>
               </div>
 

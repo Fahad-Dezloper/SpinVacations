@@ -1,11 +1,41 @@
 // app/category/[slug]/page.tsx
-
+"use client"
 import { client } from '@/app/lib/sanity';
 import TripCard from '@/app/components/shared/TripCard';
 import styles from '../components/css/Categorypage.module.css'
+import { useEffect, useState } from 'react';
 
 // Function to fetch trips based on category slug
-async function allTrips() {
+// Define the expected type for the trip details
+type Trip = {
+  name: string;
+  slug: {
+    current: string;
+  };
+  avgprice: number;
+  featuredImageUrl: string;
+  packageOverview: {
+    tripDuration: {
+      days: number;
+      nights: number;
+    };
+    meals: {
+      breakfast: boolean;
+      lunch: boolean;
+      dinner: boolean;
+    };
+    transport: {
+      flight: boolean;
+      train: boolean;
+      bus: boolean;
+      localTravelVehicle: boolean;
+      vehicleType: string;
+    };
+  };
+};
+
+// Function to fetch trips based on category slug
+const fetchTrips = async () => {
   const query = `*[_type == "tripDetails"]{
     name,
     slug,
@@ -32,11 +62,34 @@ async function allTrips() {
   }`;
   const trips = await client.fetch(query);
   return trips;
-}
+};
 
 // Component for category trips page
 const allToursPage = async () => {
-  const trips = await allTrips(); // Fetch trips by category
+ const [trips, setTrips] = useState<Trip[]>([]); // State to hold the trips
+
+  // Fetch the data initially and listen for real-time updates
+  useEffect(() => {
+    // Fetch the initial data
+    fetchTrips().then((fetchedTrips) => {
+      setTrips(fetchedTrips);
+    });
+
+    // Listen for real-time updates to the trips data
+    const subscription = client.listen('*[_type == "tripDetails"]').subscribe((update) => {
+      if (update.result) {
+        // If the result is not an array, we need to re-fetch all trips.
+        fetchTrips().then((fetchedTrips) => {
+          setTrips(fetchedTrips);
+        });
+      }
+    });
+
+    // Clean up the subscription when the component unmounts
+    return () => {
+      subscription.unsubscribe();
+    };
+  }, []);
 
   return (
     <div className={`w-full flex flex-col gap-7 h-fit ${styles.container} px-20 py-10`}>
