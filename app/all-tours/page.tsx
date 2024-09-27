@@ -65,7 +65,7 @@ const fetchTrips = async () => {
 };
 
 // Component for category trips page
-const allToursPage = async () => {
+const AllToursPage = () => {
  const [trips, setTrips] = useState<Trip[]>([]); // State to hold the trips
 
   // Fetch the data initially and listen for real-time updates
@@ -119,4 +119,4 @@ const allToursPage = async () => {
   );
 };
 
-export default allToursPage;
+export default AllToursPage;
