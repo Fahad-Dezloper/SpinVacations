@@ -60,6 +60,7 @@ const fetchTrips = async () => {
     }
   }`;
   const trips = await client.fetch(query);
+  console.log(trips);
   return trips;
 };
 
