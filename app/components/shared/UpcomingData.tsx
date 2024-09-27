@@ -61,7 +61,7 @@ const UpcomingData = ({ data }) => { // Accept data as a prop
                     </p>
                   </div>
                   <div className='flex justify-between items-center'>
-                    <p className='font-sans text-xl font-semibold'>₹{trip.avgprice}</p>
+                    <p className='font-sans text-xl'>₹{trip.avgprice}</p>
                   </div>
                 </div>
                 <div className='flex justify-center items-center'>

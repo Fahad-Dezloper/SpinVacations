@@ -71,4 +71,8 @@
   .tripDetails{
     height: 14vh;
   }
+
+  .show{
+    display: flex;
+  }
 }

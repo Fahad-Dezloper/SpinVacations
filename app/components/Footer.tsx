@@ -91,13 +91,13 @@ const Footer = () => {
                         <div className="text-gray-500 flex gap-4 dark:text-gray-400">
                         {/* Social Media Icons */}
                         <Link href="https://www.facebook.com/spinvacations/" className='w-10 h-10 rounded-full bg-[#F27638] text-white hover:bg-white hover:text-text  duration-200 flex items-center justify-center border-2 border-primary'>
-                            <FontAwesomeIcon icon={faFacebookF} className={`${styles.iconsize}`} />
+                            <FontAwesomeIcon icon={faFacebookF} className={`${styles.iconsize} w-5 h-5`} />
                         </Link>
                         <Link href="https://www.instagram.com/spinvacations/" className='w-10 h-10 rounded-full bg-[#F27638] text-white hover:bg-white hover:text-text  duration-200 flex items-center justify-center border-2 border-primary'>
-                            <FontAwesomeIcon icon={faInstagram} className={`${styles.iconsize}`} />
+                            <FontAwesomeIcon icon={faInstagram} className={`${styles.iconsize} w-5 h-5`} />
                         </Link>
                         <Link href="https://maps.app.goo.gl/5wxnQ5etv7cY6nGv9" className='w-10 h-10 rounded-full bg-[#F27638] text-white hover:bg-white hover:text-text  duration-200 flex items-center justify-center border-2 border-primary'>
-                            <FontAwesomeIcon icon={faGoogle} className={`${styles.iconsize}`}  />
+                            <FontAwesomeIcon icon={faGoogle} className={`${styles.iconsize} w-5 h-5`}  />
                         </Link>
                         </div>
                   </div>

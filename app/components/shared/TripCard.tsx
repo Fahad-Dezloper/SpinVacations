@@ -90,7 +90,7 @@ const TripCard = ({  slug,
                   {/* {truncateText(location, 20, false)} */}
                   Starting from
                       </h3>
-                <h1 className='font-sans text-xl font-semibold'>₹{avgPrice}</h1>
+                <h1 className='font-sans text-xl'>₹{avgPrice}</h1>
                     </div>
                     <div className='py-2 px-4 text-sm shadow-md bg-primary rounded-full text-white'>
                       Know More

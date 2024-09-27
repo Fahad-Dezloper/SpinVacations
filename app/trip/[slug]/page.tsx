@@ -297,7 +297,7 @@ const TripDetailPage = async ({ params }: { params: { slug: string } }) => {
           </div>
           
           {/* <div className='px-4 py-4 w-full bg-red-300 text-white flex items-center sticky bottom-0'> */}
-            <div className={`flex flex-col h-fit bg-pgradient justify-between overflow-hidden sticky bottom-0 shadow-md rounded-lg`}>
+            <div className={`flex-col ${styles.show} h-fit bg-pgradient justify-between overflow-hidden hidden sticky bottom-0 shadow-md rounded-lg`}>
                 <div className='flex justify-between items-center px-3 pt-3 py-1'>
                 <p className='text-base'>Starting from</p>
                 <div className='flex items-center'>
