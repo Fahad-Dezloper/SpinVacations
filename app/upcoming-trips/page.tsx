@@ -48,27 +48,21 @@ const upcomingTripsPage = async () => {
       </div>
 
       <div className={`grid grid-cols-3 justify-items-center ${styles.tripsCont} h-full gap-6 w-full gap-y-8 grid-rows-2`}>
-        {trips.map((item, index) => {
-          if (item) {
-            return (
-              <TripCard
-                key={index}
-                avgPrice={item.avgprice}
-                slug={item.slug}
-                imageUrl={item.featuredImageUrl}
-                name={item.name}
-                days={item.packageOverview.tripDuration.days}
-                nights={item.packageOverview.tripDuration.nights}
-                meals={item.packageOverview.meals}
-                transport={item.packageOverview.transport}
+        {trips.map((item, index) => (
+          <TripCard
+          key={index}
+          avgPrice={item.avgprice}
+          slug={item.slug}
+          imageUrl={item.featuredImageUrl}
+          name={item.name}
+          days={item.packageOverview.tripDuration.days}
+          nights={item.packageOverview.tripDuration.nights}
+          meals={item.packageOverview.meals}
+          transport={item.packageOverview.transport}
           />
-            )
-          }
-          return null;
-        })}
+        ))}
       </div>
     </div>
-    // falsf
   );
 };
 
