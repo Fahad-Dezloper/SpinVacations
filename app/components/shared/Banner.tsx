@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import BannerCarousel from '@/app/components/home/BannerCarousel';
 import { client } from '@/app/lib/sanity';
+import Loading from '../home/Loading';
 
 // Function to fetch banner data
 const fetchBannerImages = async () => {
@@ -37,7 +38,7 @@ const BannerPage = () => {
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 
   if (!bannerImages || bannerImages.length === 0) {

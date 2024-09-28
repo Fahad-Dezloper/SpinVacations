@@ -14,7 +14,7 @@ const Footer = () => {
           <div className={`w-full h-full ${styles.footerCont} grid grid-cols-4 justify-between`}>
               
               <div className={`w-full h-full flex ${styles.hide} flex-col gap-12 items-start`}>
-                    <a href="#" className="">
+                    <a href="/" className="">
                         <Image src={logo} height={150} width={150} alt='Spin Vacations Logo' />
                     </a>
                     <div className='transform -scale-x-100'>
@@ -27,18 +27,18 @@ const Footer = () => {
               <div className={`w-full ${styles.tablets} hidden h-full flex-col`}>
                     <h2 className="mb-4 text-sm font-semibold text-gray-900 uppercase dark:text-white">About</h2>
                     <ul className="text-gray-500 dark:text-gray-400 flex flex-col gap-4 font-medium">
-                    <li><a href="#" className="hover:underline">Home</a></li>
-                    <li><a href="#" className="hover:underline">About Us</a></li>
-                    <li><a href="#" className="hover:underline">All Trips</a></li>
+                    <li><Link href="/" className="hover:underline">Home</Link></li>
+                    <li><Link href="/about" className="hover:underline">About Us</Link></li>
+                    <li><Link href="/all-tours" className="hover:underline">All Trips</Link></li>
                     </ul>
               </div> 
 
               <div className={`w-full ${styles.tablets} hidden h-full flex-col`}>
                     <h2 className="mb-4 text-sm font-semibold text-gray-900 uppercase dark:text-white">Legal</h2>
                     <ul className="text-gray-500 dark:text-gray-400 flex flex-col gap-4 font-medium">
-                    <li><a href="#" className="hover:underline">Privacy Policy</a></li>
-                    <li><a href="#" className="hover:underline">Payment Policy</a></li>
-                    <li><a href="#" className="hover:underline">Travel Policy</a></li>
+                    <li><Link href="/privacy-policy" className="hover:underline">Privacy Policy</Link></li>
+                    <li><Link href="/payment-policy" className="hover:underline">Payment Policy</Link></li>
+                    <li><Link href="/travel-policy" className="hover:underline">Travel Policy</Link></li>
                     </ul>
               </div>
               
@@ -46,18 +46,18 @@ const Footer = () => {
               <div className={`w-full ${styles.hide} h-full flex flex-col`}>
                     <h2 className="mb-4 text-sm font-semibold text-gray-900 uppercase dark:text-white">About</h2>
                     <ul className="text-gray-500 dark:text-gray-400 flex flex-col gap-4 font-medium">
-                    <li><a href="#" className="hover:underline">Home</a></li>
-                    <li><a href="#" className="hover:underline">About Us</a></li>
-                    <li><a href="#" className="hover:underline">All Trips</a></li>
+                    <li><Link href="/" className="hover:underline">Home</Link></li>
+                    <li><Link href="/about" className="hover:underline">About Us</Link></li>
+                    <li><Link href="/all-tours" className="hover:underline">All Trips</Link></li>
                     </ul>
               </div>     
 
               <div className={`w-full ${styles.hide} h-full flex flex-col`}>
                     <h2 className="mb-4 text-sm font-semibold text-gray-900 uppercase dark:text-white">Legal</h2>
                     <ul className="text-gray-500 dark:text-gray-400 flex flex-col gap-4 font-medium">
-                    <li><a href="#" className="hover:underline">Privacy Policy</a></li>
-                    <li><a href="#" className="hover:underline">Payment Policy</a></li>
-                    <li><a href="#" className="hover:underline">Travel Policy</a></li>
+                    <li><Link href="/privacy-policy" className="hover:underline">Privacy Policy</Link></li>
+                    <li><Link href="/payment-policy" className="hover:underline">Payment Policy</Link></li>
+                    <li><Link href="/travel-policy" className="hover:underline">Travel Policy</Link></li>
                     </ul>
                   </div>
 
@@ -67,18 +67,18 @@ const Footer = () => {
               <div className='w-full h-full flex flex-col'>
                     <h2 className="mb-4 text-sm font-semibold text-gray-900 uppercase dark:text-white">About</h2>
                     <ul className="text-gray-500 dark:text-gray-400 flex flex-col gap-4 font-medium">
-                    <li><a href="#" className="hover:underline">Home</a></li>
-                    <li><a href="#" className="hover:underline">About Us</a></li>
-                    <li><a href="#" className="hover:underline">All Trips</a></li>
+                    <li><Link href="/" className="hover:underline">Home</Link></li>
+                    <li><Link href="/about" className="hover:underline">About Us</Link></li>
+                    <li><Link href="/all-tours" className="hover:underline">All Trips</Link></li>
                     </ul>
               </div>     
 
               <div className='w-full h-full flex flex-col'>
                     <h2 className="mb-4 text-sm font-semibold text-gray-900 uppercase dark:text-white">Legal</h2>
                     <ul className="text-gray-500 dark:text-gray-400 flex flex-col gap-4 font-medium">
-                    <li><a href="#" className="hover:underline">Privacy Policy</a></li>
-                    <li><a href="#" className="hover:underline">Payment Policy</a></li>
-                    <li><a href="#" className="hover:underline">Travel Policy</a></li>
+                    <li><Link href="/privacy-policy" className="hover:underline">Privacy Policy</Link></li>
+                    <li><Link href="/payment-policy" className="hover:underline">Payment Policy</Link></li>
+                    <li><Link href="/travel-policy" className="hover:underline">Travel Policy</Link></li>
                     </ul>
                   </div>
               </div>
@@ -121,7 +121,7 @@ const Footer = () => {
               </div> 
               
                <div className={`w-full h-full ${styles.mobile} hidden flex-col gap-12 items-start`}>
-                    <a href="#" className="hidden">
+                    <a href="/" className="hidden">
                         <Image src={logo} height={150} width={150} alt='Spin Vacations Logo' />
                     </a>
                     <div className='transform -scale-x-100'>
@@ -133,7 +133,7 @@ const Footer = () => {
           
           {/* Tablets */}
           <div className={`w-full h-full ${styles.tablets} hidden flex-col gap-12 items-start`}>
-                    <a href="#" className="hidden">
+                    <a href="/" className="hidden">
                         <Image src={logo} height={150} width={150} alt='Spin Vacations Logo' />
                     </a>
                     <div className='transform -scale-x-100 w-full h-[43vh]'>

@@ -6,6 +6,7 @@ import { CategoryItem } from '../../interface';
 import { Image } from 'next-sanity/image';
 import { client } from '@/app/lib/sanity';
 import styles from '../css/CategorySection.module.css';
+import Loading from './Loading';
 
 // Define the expected type for the categories
 type CategoryData = {
@@ -38,7 +39,7 @@ const Categories = () => {
     });
   }, []);
 
-  if (!data) return <div>Loading...</div>; // Show loading state if data is not yet fetched
+  if (!data) return <Loading />; // Show loading state if data is not yet fetched
 
   return (
     <div className={`w-full h-fit ${styles.mainCont} px-20 flex flex-col gap-8`}>

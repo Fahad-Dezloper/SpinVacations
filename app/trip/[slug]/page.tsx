@@ -11,7 +11,8 @@ import Link from 'next/link';
 import { ChevronRight } from 'lucide-react';
 import styles from './tour.module.css'
 import { useEffect, useState } from 'react';
-// import { usePathname } from 'next/navigation';
+import { usePathname } from 'next/navigation';
+import Loading from '@/app/components/home/Loading';
 
 
 const formatDate = (dateString) => {
@@ -74,8 +75,12 @@ async function fetchSimilarTrips(tripType: string, bestFor: string[]) {
   return await client.fetch(query, { tripType, bestFor });
 }
 
+
+
 // Page component to display trip details
 const TripDetailPage = ({ params }: { params: { slug: string } }) => {
+  const pathname = usePathname();
+  console.log(pathname)
     const [trip, setTrip] = useState<any>(null);
   const [similarTrips, setSimilarTrips] = useState<any[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -105,7 +110,7 @@ const TripDetailPage = ({ params }: { params: { slug: string } }) => {
   }, [params.slug]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 
   if (!trip) {
@@ -115,6 +120,24 @@ const TripDetailPage = ({ params }: { params: { slug: string } }) => {
   const localTransferDescription = trip.packageOverview.transport.localTravelVehicle
     ? ` & Local Transfers by ${trip.packageOverview.transport.vehicleType || ''} Vehicle`
     : '';
+  
+  
+
+const generateWhatsAppLink = (tripName) => {
+  const message = `
+    Hi Spin Vacations,
+    I just came across your amazing ${tripName} trip, and I’d love to book it!
+    Looking forward to hearing from you!
+
+    Here’s the link: https://spin-vacations.vercel.app${pathname}
+  `;
+
+  // Remove the `\n` and extra spaces for WhatsApp link
+  const cleanMessage = message.trim().replace(/\s+/g, ' '); // Removes all newlines and extra spaces
+  const encodedMessage = encodeURIComponent(cleanMessage);
+  return `https://wa.me/9315600374?text=${encodedMessage}`;
+};
+
 
 
   return (
@@ -215,7 +238,8 @@ const TripDetailPage = ({ params }: { params: { slug: string } }) => {
                   </div>
               </Tabs>
             </div>
-            </div>       
+            </div>
+            
           {/* Right Side */}
             <div className={`w-[40vw] ${styles.overviewCont} h-full flex flex-col gap-14`}>
               <div className={`flex flex-col h-fit bg-pgradient justify-between overflow-hidden shadow-md rounded-lg ${styles.priceCont}`}>
@@ -223,12 +247,19 @@ const TripDetailPage = ({ params }: { params: { slug: string } }) => {
                 <p className='text-base'>Starting from</p>
                 <div className='flex items-center gap-2'>
                     <h1 className='text-[2.5vw] font-bold font-sans'>₹{trip.avgprice}</h1>
-                  <span className='text-sm font-regular tracking-tight'>Per Person</span>
+                    <span className='text-sm font-regular tracking-tight'>Per Person</span>
                   </div>
                   </div>
                 <div className='w-full bg-white flex px-4 py-4 items-center justify-center'>
                   <button className='w-full h-12 border border-primary rounded-full text-base text-accent font-semibold tracking-tight'>
-                  <a href={`https://wa.me/9315600374?text=Hey%20there!%20%F0%9F%8C%8D%20I%20just%20found%20this%20amazing%20%5BTrip%20Name%5D%20adventure,%20and%20I%E2%80%99m%20ready%20to%20explore!%20%F0%9F%98%8E%20Here%E2%80%99s%20the%20link:%20%5BTrip%20Link%5D`} target="_blank" className=''>CONTACT US</a>
+                    <a 
+                      href={generateWhatsAppLink(trip.name)} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className=''
+                    >
+                      CONTACT US
+                    </a>
                   </button>
                 </div>
               </div>
@@ -317,7 +348,7 @@ const TripDetailPage = ({ params }: { params: { slug: string } }) => {
                 <Link
                       href={`/trip/${trip.slug.current}`}
                       key={index}
-                      className= {`min-w-[25%] ${styles.similiarContSize} cursor-pointer shrink-0 overflow-hidden shadow-gradient-shadow relative h-[50vh] rounded-2xl bg-red-400 `}
+                      className= {`min-w-[25%] ${styles.similiarContSize} cursor-pointer shrink-0 overflow-hidden shadow-gradient-shadow relative h-[50vh] rounded-2xl`}
                     >
                       <Image
                         src={trip.imageUrl}

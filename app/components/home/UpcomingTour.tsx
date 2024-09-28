@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import ScrollableTours from './ScrollableTours'; // Import the client-side component
 import { client } from '@/app/lib/sanity';
 import styles from '../css/UpcomingSection.module.css';
+import Loading from './Loading';
 
 // Define the expected structure of the trip data
 type Trip = {
@@ -43,7 +44,7 @@ const UpcomingTour = () => {
     });
   }, []);
 
-  if (!data) return <div>Loading...</div>
+  if (!data) return <Loading />
   
   return (
     <div className={`px-20 ${styles.mainCont} flex flex-col gap-8`}>

@@ -6,6 +6,7 @@ import { client } from '@/app/lib/sanity';
 import TripCard from '../shared/TripCard';
 import { Button } from '@/components/ui/button';
 import styles from '../css/TopDest.module.css';
+import Loading from './Loading';
 
 // Define the expected structure of the trip data
 type Trip = {
@@ -76,15 +77,7 @@ const FeaturedDestination = () => {
     });
   }, []);
 
-  // Function to truncate text if necessary
-  // const truncateText = (text: string, limit: number, isDescription: boolean) => {
-  //   if (text.length > limit) {
-  //     return isDescription
-  //       ? `${text.slice(0, limit)}... <span className='text-[#013E7E]'>more</span>`
-  //       : `${text.slice(0, limit)}...`;
-  //   }
-  //   return text;
-  // };
+  if (!data) return <Loading />;
 
   return (
     <div className={`w-full flex flex-col gap-7 h-fit ${styles.mainCont} px-20`}>

@@ -8,6 +8,7 @@ import SearchTrips from './home/SearchTrips';
 import styles from './css/MainNav.module.css';
 import { Sidebar } from '@/components/component/sidebar';
 import Image from 'next/image';
+import { Skeleton } from '@/components/ui/skeleton';
 
 // Function to fetch main navigation data
 const fetchData = async () => {
@@ -28,7 +29,10 @@ const MainNav = () => {
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div className={`w-full pt-2 pb-6 ${styles.skeleton}`}>
+      <Skeleton className="w-[6vw] h-[3vw] bg-gray-300 rounded-md" />
+      <Skeleton className="w-[30vw] h-[3vw] bg-gray-300 rounded-md" />
+    </div>;
   }
 
   if (!data) {
@@ -37,17 +41,19 @@ const MainNav = () => {
 
   return (
     <div className="w-full z-[999]">
-      <div className={`${styles.container} flex items-center pt-2 pb-6 relative`}>
+      <div className={`${styles.container} flex items-center pt-2 relative`}>
         {/* Logo */}
-        <Link href="/" className={`${styles.logo} relative h-[4.5vw] w-[8.5vw] overflow-hidden`}>
-          <Image
-            src={urlFor(data.logo).url()}
-            alt="Logo"
-            className="h-full w-full object-cover"
-            fill
-            style={{ objectFit: 'cover' }}
-          />
-        </Link>
+        <Link href="/" className={`${styles.logo} relative overflow-hidden`}>
+            <Image
+              src={urlFor(data.logo).url()}
+              alt="Logo"
+              className="h-full w-full object-cover"
+              fill
+              priority
+              sizes="(max-width: 640px) 7rem, 8.5vw"
+              style={{ objectFit: 'cover' }}
+            />
+      </Link>
 
         {/* Main Navigation */}
         <div className={`w-full z-[999] mr-16 ${styles.mainnav}`}>

@@ -1,66 +1,85 @@
-import Image from 'next/image'
-import React from 'react'
+import { client } from '@/app/lib/sanity';
+import Image from 'next/image';
+import React, { useEffect, useState } from 'react';
+import Loading from '../home/Loading';
+import Link from 'next/link';
+
+type Trip = {
+  name: string;
+  slug: {
+    current: string;
+  };
+  avgprice: number;
+  featuredImageUrl: string; // Remove quotes for consistency
+  packageOverview: {
+    tripDuration: {
+      days: number;
+      nights: number;
+    };
+  };
+};
+
+const fetchUpcomingFeaturedTrips = async () => {
+  const query = `*[_type == "mainNav"][0]{
+    upcomingFeaturedTrips[]->{
+      name,
+      slug,
+      avgprice,
+      "featuredImageUrl": featuredImage.asset->url,
+      packageOverview {
+        tripDuration {
+          days,
+          nights
+        }
+      }
+    }
+  }`;
+
+  const data = await client.fetch(query);
+  return data?.upcomingFeaturedTrips || []; // Ensure you return the correct array
+};
 
 const UpcomingNav = () => {
+  const [data, setData] = useState<Trip[]>([]); // State to hold the fetched data
+
+  useEffect(() => {
+    // Fetch the featured trips when the component mounts
+    fetchUpcomingFeaturedTrips().then((fetchedData) => {
+      setData(fetchedData);
+    });
+  }, []);
+
+  // Ensure the loading state is correctly handled
+  if (!data || data.length === 0) return <Loading />;
+
   return (
     <div className='grid grid-cols-3 w-full h-full gap-4'>
-        
-        <div className='relative overflow-hidden rounded-lg w-[14.2vw] h-[20vw] bg-blue-400'>
-            {/* Image */}
-                <Image
-                src="https://i.pinimg.com/564x/97/b7/47/97b7478deca26eecb33066f3560aff04.jpg"
-                alt="Trip to Maldives"
-                fill
-                style={{ objectFit: "cover" }}
-                className="w-full h-full object-cover"
-                />
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
-                {/* Trip Details */}
-                <div className="absolute bottom-4 left-4 text-white space-y-2">
-                <h2 className="text-2xl font-bold">Maldives Getaway</h2>
-                <p className="text-lg">Price: $1200</p>
-                <p className="text-lg">Duration: 7 Days</p>
-                <p className="text-lg">Destination: Maldives</p>
-                </div>
-        </div>
-        {/* Trip 2 */}
-        <div className="relative overflow-hidden w-[14.2vw] h-[20vw] rounded-lg">
-            <Image
-            src="https://i.pinimg.com/236x/02/21/ad/0221ad079845c3157be2a3e2bef978ce.jpg"
-            alt="Trip to Bali"
+      {data.map((item, i) => (
+        <Link href={item.slug.current} key={i} className='relative overflow-hidden rounded-lg w-[14.2vw] h-[20vw]'>
+          {/* Image */}
+          <Image
+            src={item.featuredImageUrl}
+            alt={item.name}
             fill
             style={{ objectFit: "cover" }}
             className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
-            <div className="absolute bottom-4 left-4 text-white space-y-2">
-            <h2 className="text-2xl font-bold">Bali Adventure</h2>
-            <p className="text-lg">Price: $950</p>
-            <p className="text-lg">Duration: 5 Days</p>
-            <p className="text-lg">Destination: Bali</p>
-            </div>
-        </div>
-        
-        {/* Trip 3 */}
-        <div className="relative overflow-hidden w-[14.2vw] h-[20vw] rounded-lg">
-            <Image
-            src="https://i.pinimg.com/474x/6f/de/28/6fde28d83ecf14413862e98525a51656.jpg"
-            alt="Trip to Santorini"
-            fill
-            style={{ objectFit: "cover" }}
-            className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
-            <div className="absolute bottom-4 left-4 text-white space-y-2">
-            <h2 className="text-2xl font-bold">Santorini Escape</h2>
-            <p className="text-lg">Price: $1500</p>
-            <p className="text-lg">Duration: 6 Days</p>
-            <p className="text-lg">Destination: Santorini</p>
-            </div>
-        </div>
+          />
+          {/* Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+          {/* Trip Details */}
+          <div className="absolute bottom-4 left-4 text-white">
+            <h2 className="text-2xl font-bold">{item.name}</h2>
+            <p className="text-sm">Starting from: ₹{item.avgprice}</p>
+            <p className="text-sm">
+              Duration: {item.packageOverview.tripDuration.days === 0 ? '' : `${item.packageOverview.tripDuration.days}D`} 
+                {item.packageOverview.tripDuration.days !== 0 && item.packageOverview.tripDuration.nights !== 0 && <span className='text-accent font-black'> / </span>}
+                {item.packageOverview.tripDuration.nights !== 0 && `${item.packageOverview.tripDuration.nights}N`}
+            </p>
+          </div>
+        </Link>
+      ))}
     </div>
-  )
-}
+  );
+};
 
-export default UpcomingNav
+export default UpcomingNav;

@@ -63,13 +63,15 @@ const BannerCarousel = ({ data }) => {
                 rel="Trip Featured Image"
                 className={`${styles.imgSize} overflow-hidden relative`}
               >
-                <Image
-                  src={banner.imageUrl}
-                  alt={banner.altText || "Banner Image"}
-                  fill
-                  style={{objectFit: "cover"}}
-                  className="object-cover w-full h-full"
-                />
+                 <Image
+                    src={banner.imageUrl}
+                    alt={banner.altText || "Banner Image"}
+                    fill
+                    style={{ objectFit: "cover" }}
+                    priority
+                    className="object-cover w-full h-full"
+                    sizes="(max-width: 640px) 100vw, (min-width: 641px) and (max-width: 1024px) 80vw, 80vw"
+                  />
                 {/* <div className="absolute inset-0 bg-black opacity-30"></div> */}
                 <div className={`absolute top-0 left-0 px-4 py-2 bg-white rounded-br-2xl ${styles.tripname} text-text font-sans font-semibold`}>
                   {banner.name}

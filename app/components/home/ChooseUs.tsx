@@ -85,10 +85,7 @@ const ChooseUs = () => {
         <div className={`w-[40%] ${styles.leftCont} flex flex-col gap-9 items-center`}>
           <div className={`w-full flex flex-col ${styles.leftCont2} gap-12 h-full`}>
             <div className={`w-full flex ${styles.step1} justify-start relative`}>
-              <div className={`${styles.stepsFont} flex px-5 py-2 rounded-full bg-white shadow-gradient-shadow items-center`}>
-                <div className={`p-1 hidden ${styles.stepshow} mr-2 rounded-full bg-[#F2F4F6] border-l-primary border-b-primary border-2`}>
-                  <ArrowDownLeft />
-                </div>
+              <div className={`${styles.stepsFont} flex px-5 py-3 rounded-full bg-white shadow-gradient-shadow items-center`}>
                 <div className='flex'>
                 <div className={`text-accent ${styles.stepsFont} font-semibold`}>🌐 Step 1: &nbsp;</div>
                   <div>Visit the website</div>
@@ -100,15 +97,12 @@ const ChooseUs = () => {
             </div>
 
             <div className={`w-full flex ${styles.step2} justify-end relative`}>
-              <div className={`${styles.stepsFont} flex px-5 py-2 rounded-full bg-white shadow-gradient-shadow items-center`}>
+              <div className={`${styles.stepsFont} flex px-5 py-3 rounded-full bg-white shadow-gradient-shadow items-center`}>
                 <div className={`p-1 mr-2 ${styles.stepsHide} rounded-full bg-[#F2F4F6] border-l-primary border-b-primary border-2`}>
                   <ArrowDownLeft />
                 </div>
                 <div className='text-accent font-semibold'>🤳🏼 Step 2: &nbsp;</div>
                 <div>Select the trip and 📞 Us</div>
-                <div className={`p-1 ml-2 ${styles.stepshow} hidden rounded-full bg-[#F2F4F6] border-r-primary border-b-primary border-2`}>
-                  <ArrowDownRight />
-                </div>
               </div>
             </div>
 

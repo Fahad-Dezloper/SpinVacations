@@ -31,41 +31,43 @@ export function Sidebar() {
             <span className="sr-only">Toggle navigation menu</span>
           </Button>
         </SheetTrigger>
-        <SheetContent side="right" className="w-64 bg-background p-4">
+        <SheetContent side="right" className="w-64 bg-background p-8 flex flex-col justify-between">
           <nav className="grid gap-2">
             <Link
               href="#"
-              className="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-muted hover:text-muted-foreground"
+              className="px-3 py-2 text-base font-medium font-sans"
               prefetch={false}
             >
-              <HomeIcon className="h-5 w-5" />
               Home
             </Link>
             <Link
-              href="#"
-              className="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-muted hover:text-muted-foreground"
+              href="https://spin-vacations.vercel.app/all-tours"
+              className="px-3 py-2 text-base font-medium font-sans"
               prefetch={false}
             >
-              <InfoIcon className="h-5 w-5" />
-              About
+              Tour Packages
+            </Link>
+            <Link
+              href="https://spin-vacations.vercel.app/upcoming-trips"
+              className="px-3 py-2 text-base font-medium font-sans"
+              prefetch={false}
+            >
+              Upcoming Tours
             </Link>
             <Link
               href="#"
-              className="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-muted hover:text-muted-foreground"
+              className="px-3 py-2 text-base font-medium font-sans"
               prefetch={false}
             >
-              <ServerIcon className="h-5 w-5" />
-              Services
-            </Link>
-            <Link
-              href="#"
-              className="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-muted hover:text-muted-foreground"
-              prefetch={false}
-            >
-              <ContactIcon className="h-5 w-5" />
-              Contact
+              Gallery
             </Link>
           </nav>
+
+          <div className="bg-primary text-white px-6 py-2 rounded-full flex items-center justify-center">
+            <Link href="https://wa.me/9315600374?text=Hi,%20Spin%20Vacations!%20I%27m%20interested%20in%20planning%20a%20trip%20with%20you">
+                <button>Contact Us</button>
+            </Link>
+          </div>
         </SheetContent>
       </Sheet>
     </div>

@@ -3,6 +3,7 @@ import { client } from '@/app/lib/sanity';
 import React, { useEffect, useState } from 'react';
 import AllScrollableTours from './AllScrollableTours';
 import styles from '../css/AllTours.module.css';
+import Loading from './Loading';
 
 // Define the expected type for the trip details
 type Trip = {
@@ -54,6 +55,8 @@ const AllTrips = () => {
       subscription.unsubscribe();
     };
   }, []);
+
+  if (!data) return <Loading />;
 
   return (
     <div className={`px-20 ${styles.mainCont} flex flex-col gap-8`}>
