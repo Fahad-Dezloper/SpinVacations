@@ -1,0 +1,65 @@
+.container{
+    padding-left: 8rem /* 128px */;
+    padding-right: 8rem /* 128px */;
+}
+
+
+.mobile{
+    display: none;
+}
+
+
+@media (max-width: 640px) {
+  /* .heading{
+    font-size: ;
+  } */
+   .container{
+    padding-left: 2rem /* 128px */;
+    padding-right: 2rem /* 128px */;
+    height: 20vh;
+   }
+
+   .internalContainer{
+    padding: 10px /* 32px */;
+    gap: 6px;
+   }
+
+   .heading{
+    font-size: 1.875rem /* 30px */;
+    line-height: 2.25rem /* 36px */;
+   }
+
+   .gif{
+    width: 100vw;
+   }
+
+   .lap{
+    display: none;
+    }
+
+    .mobile{
+        display: flex;
+    }
+}
+
+@media (min-width: 390px) and (max-width: 640px) {
+  .tripDetails{
+    height: 14vh;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+   .container{
+    padding-left: 5rem /* 128px */;
+    padding-right: 5rem /* 128px */;
+}
+
+   .internalContainer{
+    padding: 13px /* 32px */;
+    gap: 6px;
+   }
+
+   .btn{
+    line-height: 1.25rem /* 20px */;
+   }
+}

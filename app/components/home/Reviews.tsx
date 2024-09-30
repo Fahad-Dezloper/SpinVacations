@@ -15,27 +15,20 @@ interface ReviewsProps {
 }
 
 const Reviews: React.FC<ReviewsProps> = ({ reviews = [] }) => {
-  // Duplicate reviews for continuous loop effect
-  const extendedReviews = [...reviews, ...reviews, ...reviews, ...reviews];
-  // console.log(reviews)
-
-
   const controls = useAnimation();
 
   // Automatically rotate reviews infinitely
   useEffect(() => {
-    const totalWidth = (extendedReviews.length / 3) * 100;
-    const scrollDuration = (totalWidth / 3) * 3;
     controls.start({
-      x: `-${totalWidth}vw`,
+      x: ['0%', '-100%'], // Animate from 0% to -100%
       transition: {
         repeat: Infinity,
         repeatType: 'loop',
-        duration: scrollDuration, // Adjust duration as needed
+        duration: reviews.length * 5, // Adjust duration based on number of reviews
         ease: 'linear',
       },
     });
-  }, [extendedReviews.length, controls]);
+  }, [reviews, controls]);
 
   // Pause the scrolling when the user is dragging
   const handleDragStart = () => {
@@ -44,14 +37,12 @@ const Reviews: React.FC<ReviewsProps> = ({ reviews = [] }) => {
 
   // Resume the scrolling animation after dragging
   const handleDragEnd = () => {
-    const totalWidth = (extendedReviews.length / 3) * 100;
-    const scrollDuration = (totalWidth / 3) * 3;
     controls.start({
-      x: `-${totalWidth}vw`,
+      x: ['0%', '-100%'], // Animate from 0% to -100%
       transition: {
         repeat: Infinity,
         repeatType: 'loop',
-        duration: scrollDuration, // Adjust duration as needed
+        duration: reviews.length * 5, // Adjust duration as needed
         ease: 'linear',
       },
     });
@@ -72,13 +63,36 @@ const Reviews: React.FC<ReviewsProps> = ({ reviews = [] }) => {
           className="flex w-full gap-4 cursor-grab" // Cursor changes to 'grab'
           animate={controls}
           drag="x" // Allow horizontal dragging
-          dragConstraints={{ left: -extendedReviews.length * 100, right: 0 }} // Restrict the drag area
+          dragConstraints={{ left: -reviews.length * 100, right: 0 }} // Restrict the drag area
           onDragStart={handleDragStart} // Stop animation on drag
           onDragEnd={handleDragEnd} // Resume animation after drag
+          style={{ display: 'flex', whiteSpace: 'nowrap' }} // Keep reviews in a single row
         >
-          {extendedReviews.map((review, index) => (
+          {reviews.map((review, index) => (
             <div
               key={index}
+              className={`p-4 shadow-md ${styles.reviewCard} h-[20vw] bg-white flex flex-col justify-between rounded-md w-[25vw] flex-shrink-0`}
+            >
+              <p
+                className={`${styles.testimonials} leading-snug text-gray-600 font-lato text-wrap`}
+              >
+                &quot;{review.review}&quot;
+              </p>
+              <div className="w-fit flex flex-col">
+                <span
+                  className={`${styles.testimonialsH} font-sans font-medium leading-tight`}
+                >
+                  {review.name}
+                </span>
+                <div className="w-full h-[2px] bg-primary rounded-full"></div>
+              </div>
+            </div>
+          ))}
+
+          {/* Duplicate the reviews once to create a loop effect */}
+          {reviews.map((review, index) => (
+            <div
+              key={index + reviews.length}
               className={`p-4 shadow-md ${styles.reviewCard} h-[20vw] bg-white flex flex-col justify-between rounded-md w-[25vw] flex-shrink-0`}
             >
               <p

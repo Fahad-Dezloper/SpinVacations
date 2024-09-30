@@ -4,6 +4,7 @@
     padding-right: 1rem /* 32px */;
   }
 
+  
   .tripH{
     font-size: 6vw;
     margin-top: 3vw;
@@ -16,6 +17,10 @@
 
   .imgSize{
     height: 30vh;
+  }
+
+  .show{
+    display: flex;
   }
 
   /* .overview{

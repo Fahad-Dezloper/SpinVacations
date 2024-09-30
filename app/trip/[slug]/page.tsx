@@ -13,6 +13,7 @@ import styles from './tour.module.css'
 import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import Loading from '@/app/components/home/Loading';
+import React from 'react';
 
 
 const formatDate = (dateString) => {
@@ -174,10 +175,39 @@ const generateWhatsAppLink = (tripName) => {
                 <TabsContent value="overview" className={`${styles.overview} font-lato text-base leading-snug text-text`}>{trip.overview}</TabsContent>
                   
                 <TabsContent value="itinerary">
-                    <div>
-                      I am from itinerary i will get designed later
-                  </div>
-                  </TabsContent>
+                      <div className="relative flex flex-col gap-4 w-full justify-center">
+                        {trip.itinerary.map((item, i) => (
+                          <div key={i} className='flex gap-4 items-start'>
+                          <div className="flex flex-col items-center">
+                            <h1>Day</h1>
+                              <div className='py-2 px-4 text-white overflow-hidden rounded-full font-semibold bg-primary'>{item.dayNumber}</div>
+                          </div>
+                          
+                          <div className='w-full h-fit flex flex-col border border-primary rounded-md overflow-hidden'>
+                              <div className='flex px-3 py-2 w-full bg-pgradient'>
+                                <h1 className='font-semibold'>{item.heading}</h1>
+                              </div>
+                              <div className='flex p-3 font-lato w-full h-full'>
+                                <p>{item.overview}</p>
+                              </div>
+                          </div>
+                          
+                        </div>
+                        ))}
+                      
+                        {/* {trip.itinerary.map((item, i) => (
+                          <div key={i} className="flex items-center gap-4 w-full overflow-hidden">
+                              <div className='flex flex-col gap-5'>
+                              <div className='py-2 px-4 text-white overflow-hidden rounded-full font-semibold bg-primary'>{item.dayNumber}</div>
+                              <div className='rotate-90 h-1 w-full bg-accent overflow-hidden'></div>
+                            </div>
+                            <h1 className='text-text'>{item.heading}</h1>
+                          </div>
+                        ))} */}
+                      </div>
+
+                      <p className='text-sm text-[#666666] mt-8 flex w-full text-center justify-center font-semibold'>*This overview highlights key points; <br />however, the trip will encompass many additional experiences that can&apos;t be detailed in text.</p>
+                    </TabsContent>
                   
                   <TabsContent value="inc/exl">
                       <div className={`flex ${styles.incexc} w-full h-fit gap-4`}>

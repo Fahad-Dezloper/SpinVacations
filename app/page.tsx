@@ -8,6 +8,7 @@ import UpcomingTour from "./components/home/UpcomingTour";
 import AllTrips from "./components/home/AllTrips";
 import dynamic from "next/dynamic";
 import Loading from "./components/home/Loading";
+import WChannel from "./components/home/WChannel";
 
 export default function Home() {
   return (
@@ -23,6 +24,7 @@ export default function Home() {
       <div className="w-full h-full img">
       <ChooseUs />
       <Testimonials />
+      <WChannel />
       </div>
       </div>
       </>
