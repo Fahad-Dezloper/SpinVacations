@@ -72,7 +72,7 @@ const Tabs = () => {
     </div>
 }
 
-const Tab = ({ children, tab, handleSetSelected, selected, isDropdown, scrollToSection, title }: { children: ReactNode; tab: number; handleSetSelected: (val: number | null) => void; selected: number | null; isDropdown: boolean;  }) => { 
+const Tab = ({ children, tab, handleSetSelected, selected, isDropdown, scrollToSection, title }: { children: ReactNode; tab: number; handleSetSelected: (val: number | null) => void; selected: number | null; isDropdown: boolean;  scrollToSection: (sectionId: any) => void; title: string; }) => { 
                 return  <Button
             id={`shift-tab-${tab}`}
             onMouseOver={() => handleSetSelected(tab)}
