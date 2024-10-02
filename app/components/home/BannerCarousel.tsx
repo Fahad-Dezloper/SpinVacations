@@ -1,9 +1,10 @@
 "use client";
-import { ArrowLeftIcon, ArrowRightIcon } from "lucide-react";
+import { ArrowLeftIcon, ArrowRightIcon, SearchIcon } from "lucide-react";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import styles from '../css/Banner.module.css'
 import Image from "next/image";
+import SearchTrips from "./SearchTrips";
 
 const BannerCarousel = ({ data }) => {
   // console.log("hi", data)
@@ -33,7 +34,7 @@ const BannerCarousel = ({ data }) => {
   }
 
   return (
-    <div className={`w-full h-fit ${styles.mainCont} flex items-center justify-center`}>
+    <div className={`w-full h-fit ${styles.mainCont} relative flex items-center justify-center`}>
       <div className={`relative ${styles.container} overflow-hidden`}>
         {/* Left arrow */}
         <button
@@ -79,6 +80,7 @@ const BannerCarousel = ({ data }) => {
               </Link>
             </div>
           ))}
+
         </div>
 
         {/* Dots indicator */}
@@ -93,6 +95,13 @@ const BannerCarousel = ({ data }) => {
           ))}
         </div>
       </div>
+      {/* Search (commented out if not needed)
+        <div className={`absolute bottom-[-1.3rem] left-[9vh] lg:hidden overflow-hidden`}>
+          <div className="cursor-pointer w-full relative flex items-center">
+            <SearchTrips />
+            <SearchIcon className="absolute top-2 right-3 p-[3px] h-8 w-8 bg-primary text-white rounded-full" />
+          </div>
+        </div> */}
     </div>
   );
 };

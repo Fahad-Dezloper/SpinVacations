@@ -93,7 +93,7 @@ const Testimonials = () => {
 
   
     return (
-      <div className={`w-full h-[110vh] mt-[4vw] ${styles.mainCont} flex flex-col items-center relative overflow-hidden`}>
+      <div id="testimonials" className={`w-full h-[110vh] mt-[4vw] ${styles.mainCont} flex flex-col items-center relative overflow-hidden`}>
        
         <div className={`avatar ${styles.avatar} w-full h-[66vh] relative`}>
           <div className={`w-28 h-28 absolute overflow-hidden shadow-xl ${styles.position1} rounded-full`}>

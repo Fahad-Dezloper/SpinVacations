@@ -11,6 +11,7 @@ export default {
       name: 'name',
       title: 'Name of the Trip',
       type: 'string',
+      validation: (Rule: Rule) => Rule.required(),
     },
     {
       name: 'featuredImage',
@@ -19,12 +20,14 @@ export default {
       options: {
         hotspot: true,
       },
+      validation: (Rule: Rule) => Rule.required(),
     },
     {
       name: 'tripImages',
       title: 'Trip Images',
       type: 'array',
       of: [{type: 'image'}],
+      validation: (Rule: Rule) => Rule.required(),
     },
     {
       name: 'avgprice',
@@ -88,6 +91,7 @@ export default {
         source: 'name',
         maxLength: 96,
       },
+      validation: (Rule: Rule) => Rule.required(),
     },
     {
       name: 'categories', // Update to an array of references
@@ -101,6 +105,7 @@ export default {
       ],
       description: 'Select categories for this trip',
       inputComponent: embeddingsIndexReferenceInput,
+      validation: (Rule: Rule) => Rule.required(),
     },
     {
       name: 'packageOverview',
@@ -149,6 +154,7 @@ export default {
           title: 'Accommodation',
           type: 'array',
           of: [{type: 'string'}],
+          validation: (Rule: Rule) => Rule.required(),
         },
         {
           name: 'meals',
@@ -221,6 +227,7 @@ export default {
           type: 'array',
           of: [{type: 'string'}],
           inputComponent: embeddingsIndexReferenceInput,
+          validation: (Rule: Rule) => Rule.required(),
         },
       ],
     },
@@ -255,6 +262,7 @@ export default {
           ],
         },
       ],
+      validation: (Rule: Rule) => Rule.required(),
     },
     {
       name: 'inclusionsExclusions',
@@ -274,6 +282,7 @@ export default {
           of: [{type: 'string'}],
         },
       ],
+      validation: (Rule: Rule) => Rule.required(),
     },
     {
       name: 'additionalInfo',
@@ -296,6 +305,7 @@ export default {
           ],
         },
       ],
+      validation: (Rule: Rule) => Rule.required(),
     },
   ],
 }

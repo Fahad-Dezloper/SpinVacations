@@ -281,16 +281,13 @@ const generateWhatsAppLink = (tripName) => {
                   </div>
                   </div>
                 <div className='w-full bg-white flex px-4 py-4 items-center justify-center'>
-                  <button className='w-full h-12 border border-primary rounded-full text-base text-accent font-semibold tracking-tight'>
-                    <a 
-                      href={generateWhatsAppLink(trip.name)} 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
+                  <Link href={generateWhatsAppLink(trip.name)}target="_blank" rel="noopener noreferrer" className='w-full h-12 border border-primary rounded-full flex items-center justify-center hover:bg-primary hover:text-white duration-200 ease-in-out text-base text-accent font-semibold tracking-tight'>
+                    <span
                       className=''
                     >
                       CONTACT US
-                    </a>
-                  </button>
+                    </span>
+                  </Link>
                 </div>
               </div>
 
@@ -364,7 +361,13 @@ const generateWhatsAppLink = (tripName) => {
                   </div>
                   </div>
                 <div className='w-full bg-white flex px-4 py-3 items-center justify-center'>
-                  <button className='w-full h-11 border border-primary rounded-full text-base text-accent font-semibold tracking-tight'>CONTACT US</button>
+                  <Link href={generateWhatsAppLink(trip.name)}target="_blank" rel="noopener noreferrer" className='w-full h-12 border border-primary rounded-full flex items-center justify-center hover:bg-primary hover:text-white duration-200 ease-in-out text-base text-accent font-semibold tracking-tight'>
+                    <span
+                      className=''
+                    >
+                      CONTACT US
+                    </span>
+                  </Link>
                 </div>
               </div>
             {/* </div> */}
@@ -384,7 +387,7 @@ const generateWhatsAppLink = (tripName) => {
                         src={trip.imageUrl}
                         alt='Tour Image'
                         fill
-                        style={{ objectFit: "cover" }}
+                        style={{ objectFit: "cover", objectPosition: "center" }}
                         className='w-full h-full object-cover'
                       />
                   <div className={`absolute h-[16vh] ${styles.tripDetails} w-full px-6 bottom-0 bg-white border-accent border-b-2 rounded-2xl shadow-gradient-shadow`}>
@@ -398,7 +401,7 @@ const generateWhatsAppLink = (tripName) => {
                           <div className='flex justify-between w-full h-full items-center'>
                             <div className='flex flex-col gap-[4px]'>
                               <div className='flex gap-2 items-center'>
-                                <h3 className='text-text text-base font-sans font-semibold'>
+                                <h3 className='text-text capitalize text-base font-sans font-semibold'>
                                   {trip.name}
                                 </h3>
                                 <p className='text-gray-500 font-semibold text-xs'>
@@ -408,7 +411,7 @@ const generateWhatsAppLink = (tripName) => {
                                 </p>
                               </div>
                               <div className='flex justify-between items-center'>
-                                <p className='font-sans text-xl font-semibold'>₹{trip.avgprice}</p>
+                                <p className='font-sans text-xl'>₹{trip.avgprice}</p>
                               </div>
                             </div>
                             <div className='flex justify-center items-center'>

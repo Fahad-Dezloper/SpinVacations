@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import React from 'react'
 import styles from '../css/WChannel.module.css'
+import illust from '@/public/wchannelillustration.svg'
+import Image from 'next/image'
 
 const WChannel = () => {
   return (
@@ -17,12 +19,20 @@ const WChannel = () => {
         
         {/* Mobile */}
         <div className={`flex flex-col justify-between ${styles.mobile}`}>
-          <h1 className='text-sm leading-none text-text tracking-tight'>Join Our <span className='text-[#25d366] tracking-normal font-semibold font-sans'>WhatsApp</span> channel to receive timely updates on all our <span className='underline decoration-[#25d366]'>upcoming trips</span>.</h1>
-          <Link href="/" className='w-full flex items-center justify-center'>
+          <h1 className='text-lg text-text tracking-tight'>Join Our <span className='text-[#25d366] tracking-normal font-semibold font-sans'>WhatsApp</span> channel to receive timely updates on all our <span className='underline decoration-[#25d366]'>upcoming trips</span>.</h1>
+          <Link href="/" className='w-full flex items-center justify-end'>
             <button className='py-2 px-6 bg-[#25d366] text-white font-semibold rounded-full text-xs w-fit'>Join Now</button>
           </Link>
         </div>
-        <div className={`w-[50vw] ${styles.gif} h-full rounded-2xl bg-red-300`}></div>
+        
+        <div className={`w-[35vw] ${styles.gif} h-[35vh] scale-x-[-1] relative rounded-2xl `}>
+          <Image
+            src={illust}
+            alt="illustration"
+            fill
+            style={{ objectFit: "contain" }}
+            className={`w-full h-full object-cover`} />
+        </div>
       </div>
     </div>
   )

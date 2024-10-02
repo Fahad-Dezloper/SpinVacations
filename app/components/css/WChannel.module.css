@@ -30,7 +30,7 @@
    }
 
    .gif{
-    width: 100vw;
+    display: none;
    }
 
    .lap{
@@ -60,6 +60,15 @@
    }
 
    .btn{
-    line-height: 1.25rem /* 20px */;
+    font-size: 1rem /* 20px */;
+    line-height: 1.75rem /* 28px */;
+   }
+
+   .gif{
+    display: flex;
+    width: 48%;
+    height: 100%;
+    justify-content: flex-start;
+    align-items: flex-end;
    }
 }

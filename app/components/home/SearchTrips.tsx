@@ -53,10 +53,10 @@ const SearchTrips = () => {
         <div className='w-full flex flex-col items-center justify-center relative'>
       <input
         type="text"
-        placeholder="eg: couples"
+        placeholder="Desert, Couples..."
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
-        className="border border-gray-300 rounded-full focus:ring-transparent py-2 px-10 bg-transparent w-full"
+        className="border border-gray-300 rounded-full bg-white focus:ring-transparent py-3 px-4 w-full"
       />
           <div className="w-full z-[999] absolute bottom-[-20vw] h-[20vw] overflow-y-auto flex flex-col rounded-2xl ">
             {tripResults.map((trip, i) => (

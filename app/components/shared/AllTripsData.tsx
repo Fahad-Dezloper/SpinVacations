@@ -39,7 +39,7 @@ const AllTripsData = ({ data }) => { // Accept data as a prop
             src={trip.imageUrl}
             alt='Tour Image'
             fill
-            style={{ objectFit: "cover" }}
+            style={{ objectFit: "cover", objectPosition: "center" }}
             className='w-full h-full object-cover'
           />
           <div className={`absolute h-[16vh] ${styles.tripDetails} w-full px-6 bottom-0 bg-white border-accent border-b-2 rounded-2xl shadow-gradient-shadow`}>
@@ -53,7 +53,7 @@ const AllTripsData = ({ data }) => { // Accept data as a prop
               <div className='flex justify-between w-full h-full items-center'>
                 <div className='flex flex-col gap-[4px]'>
                   <div className='flex gap-2 items-center'>
-                    <h3 className='text-text text-base font-sans font-semibold'>
+                    <h3 className='text-text text-base font-sans font-semibold capitalize'>
                       {trip.name}
                     </h3>
                     <p className='text-gray-500 font-semibold text-xs'>

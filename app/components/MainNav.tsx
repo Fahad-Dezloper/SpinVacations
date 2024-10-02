@@ -50,7 +50,7 @@ const MainNav = () => {
               className="h-full w-full object-cover"
               fill
               priority
-              sizes="(max-width: 640px) 7rem, 8.5vw"
+              sizes="(max-width: 640px) 5rem, 8.5vw"
               style={{ objectFit: 'cover' }}
             />
       </Link>
@@ -59,14 +59,6 @@ const MainNav = () => {
         <div className={`w-full z-[999] mr-16 ${styles.mainnav}`}>
           <MegaMenu />
         </div>
-
-        {/* Search (commented out if not needed) */}
-        {/* <div className={`${styles.searchBar}`}>
-          <div className="cursor-pointer w-full relative flex items-center">
-            <SearchIcon className="absolute top-2 left-2 text-[#666666]" />
-            <SearchTrips />
-          </div>
-        </div> */}
 
         {/* Sidebar */}
         <div className={`${styles.sidebar}`}>

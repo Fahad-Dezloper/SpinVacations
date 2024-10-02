@@ -2,12 +2,12 @@
     display: none;
   }
 
-.searchBar{
+/* .searchBar{
   position: absolute;
   right: 1rem;
   width: 20vw;
   z-index: 999;
-}
+} */
 
 .logo{
   height: 4.5vw;
@@ -51,9 +51,9 @@
 
 /* MObile max width of 640px*/
 @media (max-width: 640px) {
-  .searchBar{
+  /* .searchBar{
     display: none;
-  }
+  } */
 
   .container{
   padding-left: 1rem /* 16px */;
@@ -62,8 +62,8 @@
 }
 
   .logo{
-  height: 3.6rem;
-  width: 7rem;
+  height: 3rem;
+  width: 5rem;
 }
 
 .skeleton{

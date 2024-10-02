@@ -30,6 +30,13 @@ const Tabs = () => {
         
         setSelected(val);
     }
+    // Function to handle smooth scrolling
+    const scrollToSection = (sectionId) => {
+        const section = document.getElementById(sectionId);
+        if (section) {
+            section.scrollIntoView({ behavior: "smooth" });
+        }
+    };
     return <div
         onMouseLeave={() => handleSetSelected(null)}
         className='relative h-fit flex gap-2'
@@ -37,24 +44,26 @@ const Tabs = () => {
 
         {/* render all tabs  */}
         {TABS.map((t) => {
-            return (
-                <Tab
-                    key={t.id}
-                    selected={selected}
-                    handleSetSelected={handleSetSelected}
-                    tab={t.id}
-                    isDropdown={t.isDropdown}
-                >
-                    {t.link ? (
+                return (
+                    <Tab
+                        key={t.id}
+                        selected={selected}
+                        handleSetSelected={handleSetSelected}
+                        tab={t.id}
+                        isDropdown={t.isDropdown}
+                        scrollToSection={scrollToSection} // Pass scroll function
+                        title={t.title} // Pass title for conditional check
+                    >
+                        {t.link ? (
                             <Link href={t.link}>
                                 {t.title}
                             </Link>
                         ) : (
-                            <span>{t.title}</span>  // If no link, just render a span
+                            <span>{t.title}</span>
                         )}
-                                </Tab>
-                            );
-                        })}
+                    </Tab>
+                );
+            })}
 
         {/* render all content */}
         <AnimatePresence>
@@ -63,10 +72,29 @@ const Tabs = () => {
     </div>
 }
 
-const Tab = ({ children, tab, handleSetSelected, selected, isDropdown }: { children: ReactNode; tab: number; handleSetSelected: (val: number | null) => void; selected: number | null; isDropdown: boolean;  }) => { 
-                return <Button id={`shift-tab-${tab}`} onMouseOver={() => handleSetSelected(tab)} onClick={() => handleSetSelected(tab)} className={`flex items-center gap-1 font-semibold rounded-full px-3 py-1.5 text-sm transition-colors ${selected === tab ? "text-white bg-primary" : "text-[#666666] bg-white"}`}>
-                <span>{children}</span>
-            {isDropdown && <FiChevronDown className={`transition-transform ${selected === tab ? "rotate-180" : ""}`} />}
+const Tab = ({ children, tab, handleSetSelected, selected, isDropdown, scrollToSection, title }: { children: ReactNode; tab: number; handleSetSelected: (val: number | null) => void; selected: number | null; isDropdown: boolean;  }) => { 
+                return  <Button
+            id={`shift-tab-${tab}`}
+            onMouseOver={() => handleSetSelected(tab)}
+            onClick={() => {
+                if (title === "Happy Customers") {
+                    scrollToSection("testimonials"); // Scroll to testimonials if Happy Customers is clicked
+                } else {
+                    handleSetSelected(tab); // Default behavior for other tabs
+                }
+            }}
+            className={`flex items-center gap-1 font-semibold rounded-full px-3 py-1.5 text-sm transition-colors ${
+                selected === tab ? "text-white bg-primary" : "text-[#666666] bg-white"
+            }`}
+        >
+            <span>{children}</span>
+            {isDropdown && (
+                <FiChevronDown
+                    className={`transition-transform ${
+                        selected === tab ? "rotate-180" : ""
+                    }`}
+                />
+            )}
         </Button>
 }
 
@@ -171,23 +199,23 @@ const TABS = [
         title: "Home",
         Component: ExampleComponent,
         isDropdown: false,
-        link: "/"
+        link: "/",
     },
     {
         title: "Tour Packages",
         Component: TourPackages,
         isDropdown: true,
-        link: "/all-tours"
+        link: "/all-tours",
     },
     {
         title: "Upcoming Tours",
         Component: UpcomingTours,
         isDropdown: true,
-        link: "/upcoming-trips"
+        link: "/upcoming-trips",
     },
     {
         title: "Happy Customers",
         Component: ExampleComponent,
-        isDropdown: false
+        isDropdown: false,
     },
 ].map((n, idx) => ({...n, id: idx + 1}))
