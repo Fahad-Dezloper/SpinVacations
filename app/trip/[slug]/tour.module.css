@@ -57,6 +57,10 @@
     flex-shrink: 0;
   }
 
+  .iti{
+    display: none;
+  }
+
   .mainSimiliarCont{
     gap: 16rem;
   }
@@ -67,6 +71,10 @@
     min-width: 70vw;
     height: 38vh;
     flex-shrink: 0;
+  }
+
+  .iti{
+    display: none;
   }
 
   .mainSimiliarCont{

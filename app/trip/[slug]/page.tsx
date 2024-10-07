@@ -126,7 +126,7 @@ const TripDetailPage = ({ params }: { params: { slug: string } }) => {
 
 const generateWhatsAppLink = (tripName) => {
   const message = `
-    Hi Spin Vacations,
+    Hi Travel Agency,
     I just came across your amazing ${tripName} trip, and I’d love to book it!
     Looking forward to hearing from you!
 
@@ -178,14 +178,14 @@ const generateWhatsAppLink = (tripName) => {
                       <div className="relative flex flex-col gap-4 w-full justify-center">
                         {trip.itinerary.map((item, i) => (
                           <div key={i} className='flex gap-4 items-start'>
-                          <div className="flex flex-col items-center">
+                          <div className={`flex flex-col ${styles.iti} items-center`}>
                             <h1>Day</h1>
                               <div className='py-2 px-4 text-white overflow-hidden rounded-full font-semibold bg-primary'>{item.dayNumber}</div>
                           </div>
                           
                           <div className='w-full h-fit flex flex-col border border-primary rounded-md overflow-hidden'>
-                              <div className='flex px-3 py-2 w-full bg-pgradient'>
-                                <h1 className='font-semibold'>{item.heading}</h1>
+                              <div className='flex px-3 py-2 w-full bg-pgradient items-center'>
+                                <h1 className={`font-semibold hidden ${styles.show} gap-1 items-center`}>Day <span className='font-sans font-semibold text-white'>{item.dayNumber}: </span>{item.heading}</h1>
                               </div>
                               <div className='flex p-3 font-lato w-full h-full'>
                                 <p>{item.overview}</p>

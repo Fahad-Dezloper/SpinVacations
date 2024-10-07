@@ -64,7 +64,7 @@ export function Sidebar() {
           </nav>
 
           <div className="bg-primary text-white px-6 py-2 rounded-full flex items-center justify-center">
-            <Link href="https://wa.me/9315600374?text=Hi,%20Spin%20Vacations!%20I%27m%20interested%20in%20planning%20a%20trip%20with%20you">
+            <Link href="https://wa.me/9315600374?text=Hi,%Travel%20Agency!%20I%27m%20interested%20in%20planning%20a%20trip%20with%20you">
                 <button>Contact Us</button>
             </Link>
           </div>

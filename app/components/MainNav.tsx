@@ -43,16 +43,8 @@ const MainNav = () => {
     <div className="w-full z-[999]">
       <div className={`${styles.container} flex items-center pt-2 relative`}>
         {/* Logo */}
-        <Link href="/" className={`${styles.logo} relative overflow-hidden`}>
-            <Image
-              src={urlFor(data.logo).url()}
-              alt="Logo"
-              className="h-full w-full object-cover"
-              fill
-              priority
-              sizes="(max-width: 640px) 5rem, 8.5vw"
-              style={{ objectFit: 'cover' }}
-            />
+        <Link href="/" className={`w-fit`}>
+            <h1 className="flex gap-3 text-xl w-full h-full items-center justify-center">Agency <span className="text-primary font-semibold">Logo</span></h1>
       </Link>
 
         {/* Main Navigation */}

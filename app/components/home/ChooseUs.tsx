@@ -51,7 +51,7 @@ const ChooseUs = () => {
               <h3 className='text-[#666666]'>Every trip, a story worth telling.</h3>
           </div>
           <div className={`text-lg flex items-center w-full justify-end text-text gap-3 font-sans font-semibold ${styles.stepsHide} `}>
-            Ease your travel with Spin Vacations
+            Ease your travel with Our Agency
             <div className='p-2 ml-2 rounded-full bg-[#F2F4F6] duration-200 hover:text-white border-primary hover:bg-accent border-2'>
               <ArrowUpRight className='rotate-12'/>
             </div>
@@ -74,7 +74,7 @@ const ChooseUs = () => {
             </div>
           </div>
           <div className={`text-lg hidden items-center w-full justify-end text-text gap-3 font-sans font-semibold ${styles.stepsH}`}>
-            Ease your travel with Spin Vacations
+            Ease your travel with Our Agency
             <div className='p-2 ml-2 rounded-full bg-[#F2F4F6] duration-200 hover:text-white border-primary hover:bg-accent border-2'>
               <ArrowUpRight className={`rotate-[180deg] ${styles.arrow}`}/>
             </div>

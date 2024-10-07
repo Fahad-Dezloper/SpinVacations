@@ -9,8 +9,8 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 
 
 export const metadata: Metadata = {
-  title: "Spin Vacations",
-  description: "Home | Spin Vacations",
+  title: "Travel Agency",
+  description: "Home | Travel Agency",
   icons: {
     icon: "/favicon.ico", // Update this path based on your favicon location
   },

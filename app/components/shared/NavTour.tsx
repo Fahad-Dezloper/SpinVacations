@@ -92,7 +92,7 @@ const NavTour = () => {
                     <div className='flex flex-col gap-3'>
                     <div className='flex flex-wrap gap-3'>
                         {badges.map((badge, index) => (
-                            <Link key={index} href={`https://spin-vacations.vercel.app/category/${badge.label.toLowerCase()}`}>
+                            <Link key={index} href={`#`}>
                             <Badge
                                 className={`${badge.bgColor} text-sm hover:bg-primary hover:text-white duration-200 ${badge.textColor}`}
                             >
@@ -107,7 +107,7 @@ const NavTour = () => {
                         <h1 className='text-xl font-sans text-text'>More here 👇🏼</h1>
                         <div className='flex gap-3'>
                             <button className='font-bold text-sm py-2 px-4 rounded-full border-accent text-[#666666] border hover:bg-primary-dark'>Explore more</button>
-                            <Link href="https://wa.me/9315600374?text=Hi,%20Spin%20Vacations!%20I%27m%20interested%20in%20planning%20a%20trip%20with%20you" className='text-white font-bold text-sm py-2 px-4 rounded-full bg-primary hover:bg-primary-dark'>Contact Us</Link>
+                            <Link href="https://wa.me/9315600374?text=Hi,%20Travel%20Agency!%20I%27m%20interested%20in%20planning%20a%20trip%20with%20you" className='text-white font-bold text-sm py-2 px-4 rounded-full bg-primary hover:bg-primary-dark'>Contact Us</Link>
                         </div>
                     </div>
                 </div>

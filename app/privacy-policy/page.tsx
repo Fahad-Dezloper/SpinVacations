@@ -5,12 +5,12 @@ const page = () => {
       <div className="max-w-4xl h-fit mx-auto px-6 pb-12 pt-8">
       {/* <!-- Main Heading --> */}
       <h1 className="font-sans text-4xl font-bold text-center mb-8">
-        Spin Vacations Privacy Policy
+        Our Agency Privacy Policy
       </h1>
 
       {/* <!-- Introduction --> */}
       <p className="font-lato text-lg leading-snug mb-6">
-        At Spin Vacations, we value your privacy and are committed to protecting
+        At Our Agency, we value your privacy and are committed to protecting
         your personal information. This Privacy Policy outlines how we collect,
         use, and safeguard your information when you interact with our services.
         Please take a moment to review our practices and understand your rights
@@ -109,17 +109,17 @@ const page = () => {
         your information, please contact us at:
       </p>
       <p className="font-lato leading-relaxed mb-6">
-        Spin Vacations<br />
-        1/6969-A, Main Hanuman Road, Shivaji Park, Shahdara, Delhi – 110032<br />
-        Email: <a href="mailto:Team@spinvacations.in" className="underline text-blue-600">Team@spinvacations.in</a> / 
-        <a href="mailto:Spinvacations@gmail.com" className="underline text-blue-600">Spinvacations@gmail.com</a><br />
-        Phone: <a href="tel:9910025306" className="underline text-blue-600">9910025306</a> / 
-        <a href="tel:9810305100" className="underline text-blue-600">9810305100</a>
+        Our Agency<br />
+        xyz Address<br />
+        Email: <a href="#" className="underline text-blue-600">Team@agency.in</a> / 
+        <a href="#" className="underline text-blue-600">travelagency@gmail.com</a><br />
+        Phone: <a href="tel:9910025306" className="underline text-blue-600">1234567891</a> / 
+        <a href="tel:9810305100" className="underline text-blue-600">1987654321</a>
       </p>
 
       {/* <!-- Closing Statement --> */}
       <p className="font-lato leading-relaxed mb-6">
-        Thank you for trusting Spin Vacations with your travel plans. We are committed
+        Thank you for trusting Our Agency with your travel plans. We are committed
         to ensuring your privacy and providing you with a secure and enjoyable travel
         experience.
       </p>
