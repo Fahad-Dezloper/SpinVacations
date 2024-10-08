@@ -94,8 +94,9 @@ const FeaturedDestination = () => {
         </Link>
       </div>
 
-      <div className={`grid grid-cols-3 ${styles.tripCont} justify-items-center h-full gap-7 w-full gap-y-8 grid-rows-1`}>
+      <div className={`grid grid-cols-3 ${styles.tripCont} justify-items-center h-full gap-7 w-full gap-y-8 grid-rows-2`}>
         {data.map((item, index) => (
+           index < 6 && (
           <TripCard
             className={`${styles.griditem}`}
             key={index}
@@ -107,7 +108,8 @@ const FeaturedDestination = () => {
             nights={item.packageOverview.tripDuration.nights}
             meals={item.packageOverview.meals}
             transport={item.packageOverview.transport}
-          />
+            />
+           )
         ))}
       </div>
     </div>

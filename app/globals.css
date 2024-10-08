@@ -117,3 +117,7 @@ sup {
     margin-top: 1rem /* 16px */;
   }
 } 
+
+.griditem:nth-child(n+7) {
+  display: none;
+}
