@@ -186,6 +186,7 @@ const generateWhatsAppLink = (tripName) => {
                           <div className='w-full h-fit flex flex-col border border-primary rounded-md overflow-hidden'>
                               <div className='flex px-3 py-2 w-full bg-pgradient items-center'>
                                 <h1 className={`font-semibold hidden ${styles.show} gap-1 items-center`}>Day <span className='font-sans font-semibold text-white'>{item.dayNumber}: </span>{item.heading}</h1>
+                                <h1 className={`font-semibold ${styles.iti}`}>{item.heading}</h1>
                               </div>
                               <div className='flex p-3 font-lato w-full h-full'>
                                 <p>{item.overview}</p>
