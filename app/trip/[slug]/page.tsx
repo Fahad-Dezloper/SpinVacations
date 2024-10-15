@@ -136,7 +136,7 @@ const generateWhatsAppLink = (tripName) => {
   // Remove the `\n` and extra spaces for WhatsApp link
   const cleanMessage = message.trim().replace(/\s+/g, ' '); // Removes all newlines and extra spaces
   const encodedMessage = encodeURIComponent(cleanMessage);
-  return `https://wa.me/9315600374?text=${encodedMessage}`;
+  return `https://wa.me/9910025306?text=${encodedMessage}`;
 };
 
 
